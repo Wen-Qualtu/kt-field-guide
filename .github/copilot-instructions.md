@@ -11,7 +11,8 @@ known limitations and next priorities. See [README](../README.md) for commands.
 - UI development belongs here, not in the source kt-datacards browser prototype.
 - Generated data and images come from kt-datacards via `scripts/sync.py`.
   Do not hand-edit snapshots or rerun the extraction/rendering pipeline here.
-- Team summaries use the full team's roster, independent of operative filters.
+- Team summaries use the explicitly selected opponent operative types (all by
+  default), independent of operative-browser filters. Shared potential sources remain.
   Preserve distinct stat values, rule parameters and source traceability.
 - A prose rule mention is not necessarily a grant. Preserve conditions and source
   text rather than asserting unconditional access to a rule.

@@ -101,7 +101,15 @@ activate those controls. Actions are pinned; checkout does not retain credential
 ## Data limitations
 
 This is a synced snapshot, not a live feed of official rule updates. Stats represent
-the whole team roster, regardless of search/stat filters in the operative browser.
+the checked opponent operative types (all checked initially), independently of
+search/stat filters in the operative browser. Uncheck absent types in the briefing;
+Select all/none offers quick resets. Choices persist per team while the page is open,
+not across reloads. No model counts, weapon loadout or roster legality are inferred.
+Shared faction rules, equipment and ploys remain visible as potential sources.
+Rule badges identify weapon (W), ability (A), equipment (E), faction rule (FR),
+firefight ploy (FP) and strategy ploy (SP) sources, including combinations.
+Repeated card headings are hidden in displayed descriptions only when matched;
+synced source text remains unchanged.
 Rule sources in prose are found by matching weapon-rule names and values; a mention
 is not proof that a rule is always granted. Read the expanded source for restrictions,
 conditions, exceptions and duration. Use official publications for authoritative rules.

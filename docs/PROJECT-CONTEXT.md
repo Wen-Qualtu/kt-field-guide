@@ -25,6 +25,15 @@ Those paths are conveniences, not requirements. The sync accepts `--source`.
 
 ## Product decisions from the conversation
 
+Update (2026-11-06, opponent-selection follow-up): the briefing now allows actual
+opponent operative-type checkboxes, all checked initially. Stats and operative
+rule sources reflect checked types, independent of browser filters. Empty means
+no operative sources, not a reset to all. Choices are per-team and page-session
+only. Shared equipment, ploys and faction rules remain potential sources, with
+labelled rule-source badges. Display-only heading cleanup preserves raw text.
+This supersedes earlier whole-roster-only wording below; no legality/count or
+weapon-loadout selection is implied.
+
 1. **Understand the team at a glance.** Select a team and see its combined baseline
    stats: APL, movement, save, wounds and base size.
 2. **Show distinct values, not averages.** If all operatives have a 4+ save, show

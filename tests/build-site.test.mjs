@@ -3,7 +3,62 @@ import { existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync, symlinkSync, 
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { test } from 'node:test';
+import { runInNewContext } from 'node:vm';
 import { buildSite } from '../scripts/build-site.mjs';
+
+function appLogic() {
+  const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+  const script = html.match(/<script>([\s\S]*?)<\/script>/)[1].replace(/\bstart\(\);/, '');
+  const control = { addEventListener() {} };
+  return runInNewContext(`${script}\n({ referenceBody, teamSummaryData, opponentSelection, ruleSourceBadges, state })`, {
+    document: { querySelector: () => control, querySelectorAll: () => [] },
+  });
+}
+
+test('reference display strips verified card headers without changing body or input', () => {
+  const { referenceBody } = appLogic();
+  const entry = { name: 'adjust-doctrine', text: 'ANGEL OF DEATH\nFIREFIGHT PLOY\nADJUST DOCTRINE\nLore.\nUse this ploy.' };
+  assert.equal(referenceBody(entry), 'Lore.\nUse this ploy.');
+  assert.match(entry.text, /^ANGEL OF DEATH/);
+  assert.equal(referenceBody({ name: 'other', text: entry.text }), entry.text);
+  assert.equal(referenceBody({ name: 'long-title', text: 'TEAM\nFACTION RULE\nLONG\nTITLE\nBody.' }), 'Body.');
+  assert.equal(referenceBody({ name: 'rule', text: 'IMPORTANT\nDo not remove this.' }), 'IMPORTANT\nDo not remove this.');
+});
+
+test('opponent selection starts full, remembers empty selections and isolates teams', () => {
+  const { opponentSelection } = appLogic();
+  const roster = [{ id: 'one' }, { id: 'two' }];
+  const selected = opponentSelection('team', roster);
+  assert.equal(selected.size, 2);
+  selected.clear();
+  assert.equal(opponentSelection('team', roster).size, 0);
+  assert.equal(opponentSelection('other', roster).size, 2);
+});
+
+test('selected operatives narrow stats and rules while shared sources retain combination badges', () => {
+  const { teamSummaryData, ruleSourceBadges, state } = appLogic();
+  state.weaponRuleNames = ['Lethal x+', 'Balanced'];
+  const roster = [
+    { name: 'Leader', save: '3+', weapons: [{ name: 'Blade', special_rules: 'Lethal 5+' }] },
+    { name: 'Trooper', save: '4+', weapons: [{ name: 'Gun', special_rules: 'Balanced' }] },
+  ];
+  const content = {
+    equipment: [{ name: 'Upgrade', type: 'Equipment', text: 'Balanced' }],
+    firefightPloys: [{ name: 'Ploy', type: 'Firefight ploy', text: 'Balanced' }],
+    strategyPloys: [{ name: 'Strategy', type: 'Strategy ploy', text: 'Balanced' }],
+  };
+  const result = teamSummaryData(roster.slice(1), content);
+  assert.equal(result.stats.find(stat => stat.label === 'Save').values.length, 1);
+  assert.equal(result.stats.find(stat => stat.label === 'Save').values[0][0], '4+');
+  assert.equal(result.rules.some(rule => rule.name === 'Lethal 5+'), false);
+  const badges = ruleSourceBadges(result.rules[0]);
+  for (const label of ['Weapon', 'Equipment', 'Firefight ploy', 'Strategy ploy']) {
+    assert.ok(badges.includes(`aria-label="${label}"`));
+  }
+  const empty = teamSummaryData([], content);
+  assert.equal(empty.rules[0].weapons.size, 0);
+  assert.equal(empty.rules[0].ploys.size, 3);
+});
 
 function fixture(context) {
   const root = mkdtempSync(join(tmpdir(), 'kt-site-'));

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-W7XynN7qMJP4Ht88x5/+0YVDW2LwFq5EEXZzpYgu2B8='; style-src 'unsafe-inline'; img-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-M2XDdSsvFg2MB6aWtqZZ/LpJ33OOktKj9NyxpAev+rI='; style-src 'unsafe-inline'; img-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
   <meta name="referrer" content="no-referrer">
   <title>KT Field Guide | Know your opponent</title>
   <style>
@@ -79,6 +79,16 @@
     .team-heading::after { content: "+"; color: var(--muted); font-size: 15px; font-weight: 400; }
     .team-group[open] > .team-heading::after { content: "-"; }
     .team-size { margin-left: auto; color: var(--muted); font-size: 9px; font-weight: 500; }
+    .opponent-picker { margin: 18px 0; padding: 12px; border: 1px solid var(--line); }
+    .opponent-picker > summary { cursor: pointer; font-weight: 700; }
+    .opponent-picker p, .rule-legend { color: var(--muted); font-size: 12px; line-height: 1.5; }
+    .opponent-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 5px 12px; margin-top: 10px; }
+    .opponent-options label { display: flex; align-items: center; gap: 9px; min-height: 44px; font-size: 13px; cursor: pointer; }
+    .opponent-options input { accent-color: var(--forest); width: 18px; height: 18px; flex-shrink: 0; }
+    .opponent-actions { display: flex; gap: 8px; }
+    .opponent-actions button { min-height: 40px; padding: 6px 12px; border: 1px solid var(--line); background: white; }
+    .rule-badges { display: inline-flex; flex-wrap: wrap; gap: 4px; }
+    .rule-badge { padding: 3px 6px; border: 1px solid #becfbe; border-radius: 3px; background: #edf2eb; color: var(--forest); font-size: 11px; font-weight: 800; }
     .view-switch { display: flex; gap: 6px; margin-top: 12px; }
     .view-switch button { min-height: 31px; padding: 0 10px; border: 1px solid var(--line); background: #fff; color: var(--muted); font-size: 10px; font-weight: 800; }
     .view-switch button[aria-pressed="true"] { border-color: var(--forest); background: var(--forest); color: #fff; }
@@ -308,6 +318,7 @@
       operatives: [], selectedId: null, cardSide: "front", cardIndex: 0,
       multi: { weaponRules: new Set(), keywords: new Set() },
       collapsedTeams: new Set(),
+      opponentSelections: new Map(),
       teamContent: {}, weaponRuleNames: [], view: "summary",
     };
     const el = {
@@ -334,12 +345,34 @@
       return /^\.\/output\/[a-z0-9-]+\/cards\/datacards\/[a-z0-9-]+-(front|back)\.jpg$/.test(String(value)) ? value : "";
     }
 
+    function referenceName(value) {
+      return String(value ?? "").replace(/-/g, " ").replace(/\s+/g, " ").trim().toLocaleUpperCase();
+    }
+
+    function referenceBody(entry) {
+      const lines = String(entry.text ?? "").trim().split(/\r?\n/);
+      const name = referenceName(entry.name);
+      const categories = new Set(["FACTION RULE", "FIREFIGHT PLOY", "STRATEGY PLOY", "FACTION EQUIPMENT", "EQUIPMENT"]);
+      const categoryIndex = lines.findIndex((line, index) => index < 3 && categories.has(referenceName(line)));
+      // Remove only a verified heading block, not arbitrary all-caps rules text.
+      if (categoryIndex >= 0 && lines.slice(0, categoryIndex).every((line) => line === line.toLocaleUpperCase())) {
+        let title = "";
+        for (let index = categoryIndex + 1; index < Math.min(lines.length, categoryIndex + 5); index += 1) {
+          title = referenceName(`${title} ${lines[index]}`);
+          if (title === name) return lines.slice(index + 1).join("\n").trim();
+          if (!name.startsWith(title)) break;
+        }
+      }
+      if (referenceName(lines[0]) === name) return lines.slice(1).join("\n").trim();
+      return String(entry.text ?? "");
+    }
+
     function renderReference(title, entries, unavailable, open = false) {
       return `<section class="reference-section"><h4>${escapeHtml(title)}</h4>${entries?.length
         ? entries.map((entry) => `<details class="reference-entry" ${open ? "open" : ""}>
-            <summary>${escapeHtml(entry.name)}</summary><p>${escapeHtml(entry.text)}</p>
+            <summary>${escapeHtml(entry.name)}</summary><p>${escapeHtml(referenceBody(entry))}</p>
             ${Array.isArray(entry.options) ? entry.options.map((option) => `<details class="reference-entry">
-              <summary>${escapeHtml(option.name)}</summary><p>${escapeHtml(option.text)}</p></details>`).join("") : ""}
+              <summary>${escapeHtml(option.name)}</summary><p>${escapeHtml(referenceBody(option))}</p></details>`).join("") : ""}
           </details>`).join("")
         : `<p class="content-unavailable">${escapeHtml(unavailable)}</p>`}</section>`;
     }
@@ -439,6 +472,25 @@
         .map(renderEntry).join("")}</ul></section>`;
     }
 
+    function opponentSelection(team, operatives) {
+      if (!state.opponentSelections.has(team)) {
+        state.opponentSelections.set(team, new Set(operatives.map((operative) => operative.id)));
+      }
+      return state.opponentSelections.get(team);
+    }
+
+    function ruleSourceBadges(rule) {
+      const labels = [];
+      if (rule.weapons.size) labels.push(["W", "Weapon"]);
+      if (rule.abilities.size) labels.push(["A", "Operative ability"]);
+      const types = new Set([...rule.ploys.values()].map((source) => source.type));
+      for (const [type, short] of [["Equipment", "E"], ["Faction rule", "FR"], ["Firefight ploy", "FP"], ["Strategy ploy", "SP"]]) {
+        if (types.has(type)) labels.push([short, type]);
+      }
+      return `<span class="rule-badges">${labels.map(([short, label]) =>
+        `<span class="rule-badge" title="${label}" aria-label="${label}">${short}</span>`).join("")}</span>`;
+    }
+
     function renderTeamSummary() {
       const team = el.team.value;
       if (!team) {
@@ -446,11 +498,13 @@
         el.count.innerHTML = "<strong>—</strong><br>team";
         return;
       }
-      const operatives = state.operatives.filter((operative) => operative.team === team);
-      const teamLabel = operatives[0]?.teamLabel || team.replace(/-/g, " ").replace(/\b\w/g, (letter) => letter.toUpperCase());
+      const roster = state.operatives.filter((operative) => operative.team === team);
+      const selected = opponentSelection(team, roster);
+      const operatives = roster.filter((operative) => selected.has(operative.id));
+      const teamLabel = roster[0]?.teamLabel || team.replace(/-/g, " ").replace(/\b\w/g, (letter) => letter.toUpperCase());
       const content = state.teamContent[team];
-      el.count.innerHTML = `<strong>${operatives.length}</strong><br>datacard types`;
-      if (!operatives.length) {
+      el.count.innerHTML = `<strong>${operatives.length}/${roster.length}</strong><br>types selected`;
+      if (!roster.length) {
         el.teamSummary.innerHTML = '<div class="summary-empty">No operative data is available for this team.</div>';
         return;
       }
@@ -474,8 +528,9 @@
               .find((ability) => ability.name === source.detail)?.description || "")}</p></details></li>`);
         const ploySources = renderSummarySources("Faction rules, ploys and equipment", rule.ploys, (source) =>
           `<li><details class="summary-ploy"><summary>${escapeHtml(source.type)} — ${escapeHtml(source.name)}</summary>
-            <p>${escapeHtml(source.text)}</p></details></li>`);
+            <p>${escapeHtml(referenceBody(source))}</p></details></li>`);
         return `<details class="summary-rule"><summary><span class="summary-rule-name">${escapeHtml(rule.name)}</span>
+          ${ruleSourceBadges(rule)}
           <span>${sourceCount} ${sourceCount === 1 ? "source" : "sources"}</span></summary>
           <div class="summary-rule-sources">${weaponSources}${abilitySources}${ploySources}</div></details>`;
       }).join("");
@@ -483,11 +538,18 @@
         ? ""
         : `<p class="summary-empty">Faction rules and ploys are unavailable for ${escapeHtml(teamLabel)}.</p>`;
       el.teamSummary.innerHTML = `
-        <h3 class="summary-title">${escapeHtml(teamLabel)}<span>${operatives.length} datacard types</span></h3>
+        <h3 class="summary-title">${escapeHtml(teamLabel)}<span>${operatives.length} of ${roster.length} datacard types selected</span></h3>
+        <details class="opponent-picker" open><summary>What is your opponent bringing?</summary>
+          <p>Uncheck absent operative types to narrow stats and operative rule sources. Shared faction rules, ploys and equipment remain potential sources. This is not a roster-legality or weapon-loadout checker.</p>
+          <div class="opponent-actions"><button type="button" data-opponent-all="true">Select all</button><button type="button" data-opponent-all="false">Select none</button></div>
+          <div class="opponent-options">${roster.map((operative) =>
+            `<label><input type="checkbox" data-opponent-id="${escapeHtml(operative.id)}" ${selected.has(operative.id) ? "checked" : ""}>${escapeHtml(operative.name)}</label>`).join("")}</div>
+        </details>
         ${renderReference("Operative selection", content?.operativeSelection,
           "Operative selection is unavailable in this snapshot. Datacard types are not the deployed team size.")}
-        <div class="summary-stats">${statCards}</div>
+        ${operatives.length ? `<div class="summary-stats">${statCards}</div>` : '<p class="summary-empty">No operative types selected. Only shared potential rule sources are shown.</p>'}
         <section class="summary-rules"><h4>Weapon rules and abilities</h4>
+          <p class="rule-legend">W: weapon · A: ability · E: equipment · FR: faction rule · FP: firefight ploy · SP: strategy ploy. Badges indicate sources or mentions, not unconditional grants.</p>
           ${ruleDetails || '<p class="summary-empty">No weapon rules found.</p>'}
         </section>
         ${renderReference("Faction rules", content?.factionRules, "Faction rules unavailable.")}
@@ -496,6 +558,19 @@
         ${renderReference("Equipment", content?.equipment, "Equipment unavailable in this snapshot.")}
         ${content?.sourcePath ? `<p class="source-note">Source: ${escapeHtml(content.sourcePath)}${content.generatedAt
           ? `<br>Source generated: ${escapeHtml(content.generatedAt)}` : ""}</p>` : ""}${missingContent}`;
+      el.teamSummary.querySelectorAll("[data-opponent-id]").forEach((checkbox) => checkbox.addEventListener("change", () => {
+        if (checkbox.checked) selected.add(checkbox.dataset.opponentId);
+        else selected.delete(checkbox.dataset.opponentId);
+        renderTeamSummary();
+        el.teamSummary.querySelectorAll("[data-opponent-id]").forEach((replacement) => {
+          if (replacement.dataset.opponentId === checkbox.dataset.opponentId) replacement.focus({ preventScroll: true });
+        });
+      }));
+      el.teamSummary.querySelectorAll("[data-opponent-all]").forEach((button) => button.addEventListener("click", () => {
+        state.opponentSelections.set(team, new Set(button.dataset.opponentAll === "true" ? roster.map((operative) => operative.id) : []));
+        renderTeamSummary();
+        el.teamSummary.querySelector(`[data-opponent-all="${button.dataset.opponentAll}"]`).focus({ preventScroll: true });
+      }));
     }
 
     function populateFilters() {

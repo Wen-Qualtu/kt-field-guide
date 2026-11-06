@@ -18,7 +18,8 @@ is supporting functionality.
 2. Inspect the relevant HTML/CSS/JavaScript in [index.html](../../../index.html)
    before editing. It currently contains the complete frontend.
 3. Preserve these contracts:
-   - Summary stats use all operatives in the selected team, not browser matches.
+   - Summary stats use checked opponent operative types (all by default), not
+     browser matches. Keep selections independent per team for the current session.
    - Show each distinct baseline stat value once, with its operative sources.
    - Keep parameterized rules distinct and expose weapons/abilities/ploy sources.
    - Matching prose is only a mention; original wording explains applicability.
@@ -42,6 +43,6 @@ is supporting functionality.
 - Lethal 5+: expand and inspect contributing weapons/operatives.
 - Any multi-card operative: current viewer uses the first card pair only.
 - No selected team: explicit prompt to choose one.
-- Switch views after filtering: summary stays whole-team; browser filters remain.
+- Switch views after filtering: summary keeps opponent selections; browser filters remain.
 
 Use `field-guide-sync` for generated data, source paths or deployment changes.
