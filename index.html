@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KT Field Guide | Know your opponent</title>
+  <style>
+    :root {
+      --ink: #17241d;
+      --muted: #64736a;
+      --line: #d7ded7;
+      --paper: #f3f5f0;
+      --forest: #193b2d;
+      --lime: #d7f36a;
+      --coral: #e65d43;
+      font-family: "Aptos", "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+    }
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    body { margin: 0; min-width: 320px; background: var(--paper); }
+    button, input, select { font: inherit; }
+    button { cursor: pointer; }
+    .masthead { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 17px clamp(16px, 4vw, 56px); color: #f5f8f2; background: var(--forest); border-bottom: 4px solid var(--lime); }
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .brand-mark { display: grid; place-items: center; width: 40px; height: 40px; color: var(--forest); background: var(--lime); font: 700 16px Georgia, serif; transform: rotate(-4deg); }
+    .eyebrow { margin: 0 0 3px; color: #b7c8b9; font-size: 10px; font-weight: 800; letter-spacing: 1.4px; }
+    h1 { margin: 0; font: 500 25px/1.05 Georgia, "Times New Roman", serif; }
+    .local-tag { padding: 8px 10px; border: 1px solid #6b8975; color: #e0eadf; font-size: 9px; font-weight: 800; letter-spacing: 1px; white-space: nowrap; }
+    main { max-width: 1600px; margin: 0 auto; padding: 24px clamp(12px, 3vw, 42px) 36px; }
+    .intro { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+    .intro h2 { margin: 0; font: 500 25px/1.15 Georgia, "Times New Roman", serif; }
+    .intro p { margin: 6px 0 0; color: var(--muted); font-size: 13px; }
+    .catalog-count { color: var(--forest); font: 500 16px Georgia, serif; white-space: nowrap; }
+    .workspace { display: grid; grid-template-columns: 230px minmax(330px, 1fr) minmax(300px, 380px); align-items: start; border: 1px solid var(--line); background: #fff; box-shadow: 0 18px 48px rgb(23 36 29 / 10%); }
+    .workspace.summary-view { grid-template-columns: 230px minmax(0, 1fr); }
+    .filters { position: sticky; top: 12px; max-height: calc(100vh - 24px); overflow: auto; padding: 17px 15px; background: #edf2eb; border-right: 1px solid var(--line); }
+    .filter-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 13px; }
+    .section-label { margin: 0; color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: 1.3px; text-transform: uppercase; }
+    .active-count { color: var(--forest); font-size: 10px; font-weight: 700; white-space: nowrap; }
+    .field { display: grid; gap: 6px; margin: 0 0 12px; }
+    .field label { font-size: 11px; font-weight: 700; }
+    .field input, .field select, .search-box input { width: 100%; min-width: 0; height: 36px; padding: 0 9px; border: 1px solid #c6d0c7; border-radius: 2px; outline: 0; background: #fff; }
+    .field input:focus, .field select:focus, .search-box:focus-within { border-color: var(--forest); box-shadow: 0 0 0 2px rgb(25 59 45 / 12%); }
+    .filter-section { border-top: 1px solid #d5ded5; }
+    .filter-section > summary { display: flex; align-items: center; justify-content: space-between; min-height: 39px; cursor: pointer; color: var(--ink); font-size: 11px; font-weight: 800; list-style: none; }
+    .filter-section > summary::-webkit-details-marker, .multi-filter > summary::-webkit-details-marker { display: none; }
+    .filter-section > summary::after { content: "+"; color: var(--muted); font-size: 15px; font-weight: 400; }
+    .filter-section[open] > summary::after { content: "-"; }
+    .filter-stack { padding: 1px 0 11px; }
+    .range-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+    .multi-filter { position: relative; margin-bottom: 10px; }
+    .multi-filter > summary { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 36px; padding: 0 9px; border: 1px solid #c6d0c7; background: #fff; cursor: pointer; font-size: 11px; font-weight: 700; list-style: none; }
+    .multi-filter > summary::after { content: "+"; color: var(--muted); font-size: 15px; font-weight: 400; }
+    .multi-filter[open] > summary::after { content: "-"; }
+    .multi-count { overflow: hidden; color: var(--muted); font-size: 10px; font-weight: 500; text-overflow: ellipsis; white-space: nowrap; }
+    .multi-options { max-height: 180px; overflow: auto; padding: 5px 8px; border: 1px solid #c6d0c7; border-top: 0; background: #fff; }
+    .multi-options label { display: flex; align-items: start; gap: 7px; padding: 5px 1px; color: #34473a; font-size: 10px; line-height: 1.35; cursor: pointer; }
+    .multi-options input { margin: 1px 0 0; accent-color: var(--forest); }
+    .clear-button { width: 100%; min-height: 34px; margin-top: 12px; border: 1px solid #b8c5b9; background: transparent; color: var(--forest); font-size: 11px; font-weight: 800; }
+    .clear-button:hover { border-color: var(--forest); background: #fff; }
+    .results { min-width: 0; }
+    .results-head { padding: 17px 18px 13px; border-bottom: 1px solid var(--line); }
+    .search-row { display: flex; align-items: center; gap: 10px; }
+    .search-box { display: flex; align-items: center; flex: 1; border: 1px solid #c6d0c7; background: #fff; }
+    .search-icon { padding-left: 11px; color: var(--muted); font-size: 16px; }
+    .search-box input { height: 40px; border: 0; box-shadow: none !important; }
+    .result-count { min-width: 66px; color: var(--muted); font-size: 10px; text-align: right; }
+    .result-count strong { color: var(--ink); font-size: 15px; }
+    .column-head, .operative-row { display: grid; grid-template-columns: minmax(135px, 1fr) 40px 42px 40px 48px; align-items: center; gap: 5px; }
+    .column-head { padding: 11px 17px 8px; color: #758279; font-size: 8px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
+    .list { max-height: min(68vh, 760px); overflow: auto; }
+    .team-group { border-top: 1px solid var(--line); }
+    .team-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 39px; padding: 0 17px; background: #f6f8f4; color: var(--forest); cursor: pointer; font-size: 10px; font-weight: 800; list-style: none; }
+    .team-heading::-webkit-details-marker { display: none; }
+    .team-heading::after { content: "+"; color: var(--muted); font-size: 15px; font-weight: 400; }
+    .team-group[open] > .team-heading::after { content: "-"; }
+    .team-size { margin-left: auto; color: var(--muted); font-size: 9px; font-weight: 500; }
+    .view-switch { display: flex; gap: 6px; margin-top: 12px; }
+    .view-switch button { min-height: 31px; padding: 0 10px; border: 1px solid var(--line); background: #fff; color: var(--muted); font-size: 10px; font-weight: 800; }
+    .view-switch button[aria-pressed="true"] { border-color: var(--forest); background: var(--forest); color: #fff; }
+    .team-summary { padding: 17px 18px; }
+    .summary-title { margin: 0 0 14px; font: 500 20px/1.2 Georgia, "Times New Roman", serif; }
+    .summary-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(125px, 1fr)); gap: 8px; }
+    .summary-stat { min-width: 0; padding: 10px; border: 1px solid var(--line); background: #f8faf7; }
+    .summary-stat h4, .summary-rules h4 { margin: 0 0 8px; color: var(--muted); font-size: 9px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
+    .summary-stat-value { border-top: 1px solid #e4e9e3; }
+    .summary-stat-value > summary, .summary-rule > summary { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 32px; cursor: pointer; list-style: none; }
+    .summary-stat-value > summary::-webkit-details-marker, .summary-rule > summary::-webkit-details-marker { display: none; }
+    .summary-stat-value > summary b { color: var(--forest); font-size: 13px; }
+    .summary-stat-value > summary span, .summary-rule > summary span:last-child { color: var(--muted); font-size: 9px; }
+    .summary-sources { margin: 0; padding: 0 0 7px 15px; color: #46564a; font-size: 10px; line-height: 1.5; }
+    .summary-rules { margin-top: 19px; }
+    .summary-rule { border-top: 1px solid var(--line); }
+    .summary-rule > summary { min-height: 38px; }
+    .summary-rule-name { color: var(--ink); font-size: 11px; font-weight: 800; }
+    .summary-rule-sources { display: grid; gap: 10px; padding: 0 0 12px 10px; }
+    .summary-rule-sources h5 { margin: 0 0 4px; color: var(--muted); font-size: 9px; font-weight: 800; letter-spacing: .7px; text-transform: uppercase; }
+    .summary-rule-sources ul { margin: 0; padding-left: 16px; color: #46564a; font-size: 10px; line-height: 1.5; }
+    .summary-ploy { margin-top: 5px; }
+    .summary-ploy summary { color: var(--forest); cursor: pointer; font-size: 10px; font-weight: 700; }
+    .summary-ploy p { margin: 5px 0 0; color: #46564a; font-size: 10px; line-height: 1.5; white-space: pre-line; }
+    .summary-empty { padding: 34px 18px; color: var(--muted); text-align: center; font-size: 12px; }
+    .operative-row { width: 100%; min-height: 58px; padding: 8px 17px; border: 0; border-top: 1px solid #edf0ec; background: #fff; text-align: left; }
+    .operative-row:hover { background: #f6f8f4; }
+    .operative-row[aria-selected="true"] { background: #eff5e8; box-shadow: inset 3px 0 var(--coral); }
+    .op-name { overflow: hidden; color: var(--ink); font-size: 11px; font-weight: 800; text-overflow: ellipsis; white-space: nowrap; }
+    .op-team { display: block; overflow: hidden; margin-top: 4px; color: var(--muted); font-size: 9px; font-weight: 500; text-overflow: ellipsis; white-space: nowrap; }
+    .stat-cell { color: #3a4b40; font-size: 11px; text-align: center; }
+    .wound-cell { display: inline-grid; place-items: center; justify-self: center; width: 31px; height: 27px; background: #e7eee7; color: var(--forest); font-size: 11px; font-weight: 800; }
+    .empty-state { padding: 42px 18px; color: var(--muted); text-align: center; font-size: 13px; }
+    .detail { min-width: 0; min-height: 580px; border-left: 1px solid var(--line); background: #f8faf7; }
+    .detail-empty { display: grid; min-height: 580px; place-content: center; padding: 28px; color: var(--muted); text-align: center; font: 16px Georgia, serif; }
+    .detail-top { padding: 18px 18px 14px; border-bottom: 1px solid var(--line); }
+    .detail-team { margin: 0 0 6px; color: var(--coral); font-size: 9px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; }
+    .detail h3 { margin: 0; font: 500 20px/1.15 Georgia, "Times New Roman", serif; }
+    .stats { display: grid; grid-template-columns: repeat(5, 1fr); margin-top: 15px; border: 1px solid var(--line); background: #fff; }
+    .stat { padding: 8px 4px; text-align: center; border-right: 1px solid var(--line); }
+    .stat:last-child { border-right: 0; }
+    .stat b { display: block; color: var(--forest); font-size: 15px; }
+    .stat span { display: block; margin-top: 3px; color: var(--muted); font-size: 8px; font-weight: 800; letter-spacing: .7px; text-transform: uppercase; }
+    .card-viewer { padding: 14px 18px 10px; }
+    .card-frame { display: grid; min-height: 170px; place-items: center; overflow: hidden; background: #e8ede7; border: 1px solid #d5ddd5; }
+    .card-frame img { display: block; width: 100%; max-height: 250px; object-fit: contain; }
+    .image-fallback { padding: 25px; color: var(--muted); font-size: 11px; text-align: center; }
+    .image-actions { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 8px; }
+    .side-switch { display: inline-flex; gap: 3px; }
+    .side-switch button, .open-image { min-height: 29px; padding: 0 9px; border: 1px solid var(--line); background: #fff; color: var(--muted); font-size: 9px; font-weight: 800; }
+    .side-switch button[aria-pressed="true"] { border-color: var(--forest); background: var(--forest); color: #fff; }
+    .open-image { display: inline-flex; align-items: center; color: var(--forest); text-decoration: none; }
+    .detail-content { padding: 2px 18px 20px; }
+    .detail-section { padding-top: 12px; margin-top: 11px; border-top: 1px solid var(--line); }
+    .detail-section h4 { margin: 0 0 8px; color: var(--muted); font-size: 9px; font-weight: 800; letter-spacing: 1.1px; text-transform: uppercase; }
+    .weapon { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 7px; padding: 7px 0; border-bottom: 1px solid #e8ece7; font-size: 10px; }
+    .weapon:last-child { border-bottom: 0; }
+    .weapon-name { font-weight: 800; }
+    .weapon-meta { color: var(--muted); text-align: right; white-space: nowrap; }
+    .rule { margin: 0 0 9px; font-size: 10px; line-height: 1.5; }
+    .rule b { display: block; margin-bottom: 2px; }
+    .keyword-list { display: flex; flex-wrap: wrap; gap: 5px; }
+    .keyword { padding: 4px 6px; border: 1px solid #d4ddd4; color: #47574c; font-size: 8px; font-weight: 700; }
+    .load-error { padding: 28px; color: #9c3425; font-size: 13px; }
+    .footer-note { margin: 12px 0 0; color: #758279; font-size: 10px; }
+    @media (max-width: 1080px) {
+      .workspace { grid-template-columns: 210px minmax(300px, 1fr); }
+      .workspace.summary-view { grid-template-columns: 210px minmax(0, 1fr); }
+      .detail { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(280px, .9fr) 1.1fr; border-top: 1px solid var(--line); border-left: 0; }
+      .detail-empty { grid-column: 1 / -1; min-height: 230px; }
+      .detail-top { grid-column: 1 / -1; }
+      .card-viewer, .detail-content { grid-row: 2; }
+    }
+    @media (max-width: 650px) {
+      .masthead { padding: 13px 14px; }
+      .brand-mark { width: 35px; height: 35px; }
+      h1 { font-size: 21px; }
+      .local-tag { padding: 7px; font-size: 8px; }
+      main { padding: 18px 9px 28px; }
+      .intro h2 { font-size: 21px; }
+      .intro p { max-width: 230px; font-size: 11px; }
+      .catalog-count { font-size: 12px; }
+      .workspace { grid-template-columns: 1fr; }
+      .workspace.summary-view { grid-template-columns: 1fr; }
+      .filters { position: static; max-height: none; overflow: visible; border-right: 0; border-bottom: 1px solid var(--line); }
+      .results { grid-row: 2; }
+      .column-head, .operative-row { grid-template-columns: minmax(100px, 1fr) 32px 36px 34px 40px; gap: 3px; padding-right: 8px; padding-left: 10px; }
+      .column-head { font-size: 7px; }
+      .team-summary { padding: 14px 11px; }
+      .summary-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .op-name { font-size: 9px; }
+      .op-team { font-size: 8px; }
+      .stat-cell, .wound-cell { font-size: 9px; }
+      .wound-cell { width: 26px; height: 24px; }
+      .results-head { padding: 11px; }
+      .detail { display: block; grid-column: 1; grid-row: 3; }
+      .detail-empty { min-height: 160px; }
+      .list { max-height: 52vh; }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">KT</div>
+      <div><p class="eyebrow">KILL TEAM / KNOW YOUR OPPONENT</p><h1>KT Field Guide</h1></div>
+    </div>
+    <div class="local-tag">UNOFFICIAL FIELD GUIDE</div>
+  </header>
+  <main>
+    <section class="intro" aria-labelledby="page-heading">
+      <div><h2 id="page-heading">Understand the opposing team.</h2><p>Explore team stats, weapon rules, and the operatives and ploys behind them.</p></div>
+      <div class="catalog-count" id="team-count">Loading teams...</div>
+    </section>
+    <div class="workspace summary-view">
+      <aside class="filters" aria-label="Roster filters">
+        <div class="filter-heading"><p class="section-label">Filter roster</p><span class="active-count" id="active-filter-count">No filters</span></div>
+        <div class="field"><label for="team-filter">Team</label><select id="team-filter"><option value="">All teams</option></select></div>
+        <details class="filter-section" open>
+          <summary>Operative stats</summary>
+          <div class="filter-stack">
+            <div class="field"><label for="apl-filter">APL</label><select id="apl-filter" data-filter="apl" data-label="APL"><option value="">Any APL</option></select></div>
+            <div class="field"><label for="movement-filter">Movement</label><select id="movement-filter" data-filter="movement" data-label="Movement"><option value="">Any movement</option></select></div>
+            <div class="field"><label for="save-filter">Save</label><select id="save-filter" data-filter="save" data-label="Save"><option value="">Any save</option></select></div>
+            <div class="field"><label for="base-size-filter">Base size</label><select id="base-size-filter" data-filter="baseSize" data-label="base size"><option value="">Any base size</option></select></div>
+            <div class="field"><label for="wounds-mode">Wounds</label><select id="wounds-mode"><option value="any">Any wounds</option><option value="exact">Exactly</option><option value="range">Between</option></select></div>
+            <div class="field" id="wounds-exact-field" hidden><label for="wounds-exact">Wound value</label><input id="wounds-exact" type="number" min="0" inputmode="numeric" placeholder="Enter wounds"></div>
+            <div class="field" id="wounds-range-field" hidden>
+              <label>Wound range</label>
+              <div class="range-fields"><input id="wounds-min" type="number" min="0" inputmode="numeric" placeholder="Min" aria-label="Minimum wounds"><input id="wounds-max" type="number" min="0" inputmode="numeric" placeholder="Max" aria-label="Maximum wounds"></div>
+            </div>
+          </div>
+        </details>
+        <details class="filter-section">
+          <summary>Weapon profile</summary>
+          <div class="filter-stack">
+            <div class="field"><label for="attacks-filter">Attack dice</label><select id="attacks-filter" data-filter="attacks" data-label="attack dice"><option value="">Any attacks</option></select></div>
+            <div class="field"><label for="hit-filter">Hit</label><select id="hit-filter" data-filter="hit" data-label="hit"><option value="">Any hit</option></select></div>
+            <div class="field"><label for="damage-filter">Damage</label><select id="damage-filter" data-filter="damage" data-label="damage"><option value="">Any damage</option></select></div>
+            <details class="multi-filter">
+              <summary><span>Weapon rules</span><span class="multi-count" id="weapon-rules-count">Any</span></summary>
+              <div class="multi-options" id="weapon-rules-options"></div>
+            </details>
+          </div>
+        </details>
+        <details class="filter-section">
+          <summary>Keywords</summary>
+          <div class="filter-stack">
+            <details class="multi-filter">
+              <summary><span>Operative keywords</span><span class="multi-count" id="keywords-count">Any</span></summary>
+              <div class="multi-options" id="keywords-options"></div>
+            </details>
+          </div>
+        </details>
+        <button type="button" class="clear-button" id="clear-filters">Clear all filters</button>
+      </aside>
+      <section class="results" aria-label="Operative results">
+        <div class="results-head"><div class="search-row">
+          <label class="search-box" for="search-input"><span class="search-icon" aria-hidden="true">Search</span><input id="search-input" type="search" placeholder="Name, weapon, ability, keyword..." autocomplete="off"></label>
+          <div class="result-count" id="result-count" aria-live="polite"><strong>0</strong><br>results</div>
+        </div><div class="view-switch" role="group" aria-label="Results view">
+          <button type="button" data-view="operatives" aria-pressed="false">Operatives</button>
+          <button type="button" data-view="summary" aria-pressed="true">Team summary</button>
+        </div></div>
+        <div id="operative-view">
+          <div class="column-head" aria-hidden="true"><span>Operative</span><span>APL</span><span>Move</span><span>Save</span><span>Wounds</span></div>
+          <div class="list" id="results-list" role="listbox" aria-label="Operatives"></div>
+        </div>
+        <div class="team-summary" id="team-summary-view" hidden></div>
+      </section>
+      <aside class="detail" id="detail-panel" aria-label="Selected operative details"><div class="detail-empty">Select an operative to inspect its card and stats.</div></aside>
+    </div>
+    <p class="footer-note">Unofficial fan reference, not affiliated with Games Workshop. Data is synced from kt-datacards; check official rules for current wording and conditions.</p>
+  </main>
+  <script>
+    const MULTI_FILTERS = [
+      { key: "weaponRules", optionsId: "weapon-rules-options", countId: "weapon-rules-count" },
+      { key: "keywords", optionsId: "keywords-options", countId: "keywords-count" },
+    ];
+    const WEAPON_FIELDS = new Set(["attacks", "hit", "damage"]);
+    const state = {
+      operatives: [], selectedId: null, cardSide: "front",
+      multi: { weaponRules: new Set(), keywords: new Set() },
+      collapsedTeams: new Set(),
+      teamContent: {}, weaponRuleNames: [], view: "summary",
+    };
+    const el = {
+      team: document.querySelector("#team-filter"), woundsMode: document.querySelector("#wounds-mode"),
+      woundsExact: document.querySelector("#wounds-exact"), woundsMin: document.querySelector("#wounds-min"),
+      woundsMax: document.querySelector("#wounds-max"),
+      search: document.querySelector("#search-input"), list: document.querySelector("#results-list"),
+      count: document.querySelector("#result-count"), detail: document.querySelector("#detail-panel"),
+      teamCount: document.querySelector("#team-count"), activeFilterCount: document.querySelector("#active-filter-count"),
+      operativeView: document.querySelector("#operative-view"), teamSummary: document.querySelector("#team-summary-view"),
+    };
+
+    function escapeHtml(value) {
+      return String(value ?? "").replace(/[&<>"']/g, (character) => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;",
+      })[character]);
+    }
+
+    function escapeRegExp(value) {
+      return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    }
+
+    function weaponRulePattern(ruleName) {
+      const pattern = escapeRegExp(ruleName)
+        .replace(/x\\\+/gi, "\\d+\\+")
+        .replace(/x/gi, "\\d+(?:\\.\\d+)?(?:[\"″”])?");
+      return new RegExp(`(^|[^\\w])(${pattern})(?![\\w])`, "gi");
+    }
+
+    function canonicalRuleLabel(label) {
+      for (const ruleName of state.weaponRuleNames) {
+        const baseName = ruleName.replace(/\s+x\+?$/i, "");
+        if (new RegExp(`^${escapeRegExp(baseName)}(?:$|[\\s(])`, "i").test(label)) {
+          return `${baseName}${label.slice(baseName.length)}`;
+        }
+      }
+      return label;
+    }
+
+    function addRuleSource(rules, label, sourceType, source, detail = "") {
+      const normalizedLabel = canonicalRuleLabel(label.trim());
+      const key = normalizedLabel.toLocaleLowerCase();
+      if (!key) return;
+      if (!rules.has(key)) {
+        rules.set(key, { name: normalizedLabel, weapons: new Map(), abilities: new Map(), ploys: new Map() });
+      }
+      const sources = rules.get(key)[sourceType];
+      const sourceKey = `${source.name}:${detail}`;
+      if (!sources.has(sourceKey)) {
+        sources.set(sourceKey, { name: source.name, type: source.type, detail, text: source.text });
+      }
+    }
+
+    function findRuleMentions(text, ruleNames) {
+      const mentions = new Map();
+      for (const ruleName of ruleNames) {
+        const pattern = weaponRulePattern(ruleName);
+        for (const match of String(text ?? "").matchAll(pattern)) {
+          const label = match[2].trim();
+          mentions.set(label.toLocaleLowerCase(), label);
+        }
+      }
+      return [...mentions.values()];
+    }
+
+    function teamSummaryData(operatives, content) {
+      const statFields = [
+        ["APL", "apl"], ["Movement", "movement"], ["Save", "save"],
+        ["Wounds", "wounds"], ["Base size", "baseSize"],
+      ];
+      const stats = statFields.map(([label, field]) => {
+        const values = new Map();
+        for (const operative of operatives) {
+          const value = String(operative[field] ?? "—");
+          if (!values.has(value)) values.set(value, []);
+          values.get(value).push(operative.name);
+        }
+        return { label, values: [...values.entries()].sort((first, second) =>
+          first[0].localeCompare(second[0], undefined, { numeric: true, sensitivity: "base" })) };
+      });
+
+      const rules = new Map();
+      for (const operative of operatives) {
+        for (const weapon of operative.weapons || []) {
+          const weaponRules = (weapon.special_rules || "").split(",").map((rule) => rule.trim()).filter(Boolean);
+          for (const rule of weaponRules) {
+            addRuleSource(rules, rule, "weapons", { name: operative.name }, weapon.name);
+          }
+        }
+        for (const ability of [...(operative.passiveAbilities || []), ...(operative.uniqueActions || [])]) {
+          for (const rule of findRuleMentions(ability.description, state.weaponRuleNames)) {
+            addRuleSource(rules, rule, "abilities", { name: operative.name }, ability.name);
+          }
+        }
+      }
+
+      const sources = [
+        ...(content?.factionRules || []),
+        ...(content?.firefightPloys || []),
+        ...(content?.strategyPloys || []),
+      ];
+      for (const source of sources) {
+        for (const rule of findRuleMentions(source.text, state.weaponRuleNames)) {
+          addRuleSource(rules, rule, "ploys", source);
+        }
+      }
+      return { stats, rules: [...rules.values()].sort((first, second) => first.name.localeCompare(second.name, undefined, { sensitivity: "base" })) };
+    }
+
+    function renderSummarySources(title, entries, renderEntry) {
+      if (!entries.size) return "";
+      return `<section><h5>${title}</h5><ul>${[...entries.values()]
+        .sort((first, second) => first.name.localeCompare(second.name, undefined, { sensitivity: "base" }))
+        .map(renderEntry).join("")}</ul></section>`;
+    }
+
+    function renderTeamSummary() {
+      const team = el.team.value;
+      if (!team) {
+        el.teamSummary.innerHTML = '<div class="summary-empty">Choose a team in the filters to see its combined stats and rules.</div>';
+        el.count.innerHTML = "<strong>—</strong><br>team";
+        return;
+      }
+      const operatives = state.operatives.filter((operative) => operative.team === team);
+      const teamLabel = operatives[0]?.teamLabel || team.replace(/-/g, " ").replace(/\b\w/g, (letter) => letter.toUpperCase());
+      const content = state.teamContent[team];
+      el.count.innerHTML = `<strong>${operatives.length}</strong><br>${operatives.length === 1 ? "operative" : "operatives"}`;
+      if (!operatives.length) {
+        el.teamSummary.innerHTML = '<div class="summary-empty">No operative data is available for this team.</div>';
+        return;
+      }
+      const { stats, rules } = teamSummaryData(operatives, content);
+      const statCards = stats.map((stat) => `
+        <section class="summary-stat"><h4>${escapeHtml(stat.label)}</h4>
+          ${stat.values.map(([value, names]) => `
+            <details class="summary-stat-value">
+              <summary><b>${escapeHtml(value)}</b><span>${names.length} ${names.length === 1 ? "operative" : "operatives"}</span></summary>
+              <ul class="summary-sources">${names.map((name) => `<li>${escapeHtml(name)}</li>`).join("")}</ul>
+            </details>`).join("")}
+        </section>`).join("");
+      const ruleDetails = rules.map((rule) => {
+        const sourceCount = rule.weapons.size + rule.abilities.size + rule.ploys.size;
+        const weaponSources = renderSummarySources("Operatives / weapons", rule.weapons, (source) =>
+          `<li>${escapeHtml(source.name)} — ${escapeHtml(source.detail)}</li>`);
+        const abilitySources = renderSummarySources("Operative abilities", rule.abilities, (source) =>
+          `<li><details class="summary-ploy"><summary>${escapeHtml(source.name)} — ${escapeHtml(source.detail)}</summary>
+            <p>${escapeHtml([...(operatives.find((operative) => operative.name === source.name)?.passiveAbilities || []),
+              ...(operatives.find((operative) => operative.name === source.name)?.uniqueActions || [])]
+              .find((ability) => ability.name === source.detail)?.description || "")}</p></details></li>`);
+        const ploySources = renderSummarySources("Faction rules and ploys", rule.ploys, (source) =>
+          `<li><details class="summary-ploy"><summary>${escapeHtml(source.type)} — ${escapeHtml(source.name)}</summary>
+            <p>${escapeHtml(source.text)}</p></details></li>`);
+        return `<details class="summary-rule"><summary><span class="summary-rule-name">${escapeHtml(rule.name)}</span>
+          <span>${sourceCount} ${sourceCount === 1 ? "source" : "sources"}</span></summary>
+          <div class="summary-rule-sources">${weaponSources}${abilitySources}${ploySources}</div></details>`;
+      }).join("");
+      const missingContent = content?.contentAvailable
+        ? ""
+        : `<p class="summary-empty">Faction rules and ploys are unavailable for ${escapeHtml(teamLabel)}.</p>`;
+      el.teamSummary.innerHTML = `
+        <h3 class="summary-title">${escapeHtml(teamLabel)} team summary <span>(${operatives.length} operatives)</span></h3>
+        <div class="summary-stats">${statCards}</div>
+        <section class="summary-rules"><h4>Weapon rules and abilities</h4>
+          ${ruleDetails || '<p class="summary-empty">No weapon rules found.</p>'}
+        </section>${missingContent}`;
+    }
+
+    function populateFilters() {
+      document.querySelectorAll("[data-filter]").forEach((select) => {
+        const field = select.dataset.filter;
+        const values = state.operatives.flatMap((operative) => {
+          if (WEAPON_FIELDS.has(field)) return (operative.weapons || []).map((weapon) => weapon[field]);
+          return [operative[field]];
+        }).filter((value) => value !== null && value !== undefined && String(value) !== "");
+        const uniqueValues = [...new Set(values.map(String))]
+          .sort((first, second) => first.localeCompare(second, undefined, { numeric: true, sensitivity: "base" }));
+        const label = select.dataset.label;
+        select.innerHTML = `<option value="">Any ${escapeHtml(label)}</option>` + uniqueValues
+          .map((value) => `<option value="${escapeHtml(value)}">${escapeHtml(value)}</option>`).join("");
+      });
+
+      for (const filter of MULTI_FILTERS) {
+        const values = [...new Set(state.operatives.flatMap((operative) => operative[filter.key] || []))]
+          .sort((first, second) => first.localeCompare(second, undefined, { sensitivity: "base" }));
+        const options = document.querySelector(`#${filter.optionsId}`);
+        options.innerHTML = values.map((value) => `
+          <label><input type="checkbox" data-multi="${filter.key}" value="${escapeHtml(value)}">${escapeHtml(value)}</label>`).join("");
+        options.querySelectorAll("[data-multi]").forEach((checkbox) => checkbox.addEventListener("change", () => {
+          if (checkbox.checked) state.multi[filter.key].add(checkbox.value);
+          else state.multi[filter.key].delete(checkbox.value);
+          renderList();
+        }));
+      }
+    }
+
+    function matchesField(operative, field, value) {
+      if (WEAPON_FIELDS.has(field)) {
+        return (operative.weapons || []).some((weapon) => String(weapon[field] ?? "") === value);
+      }
+      return String(operative[field] ?? "") === value;
+    }
+
+    function filteredOperatives() {
+      const query = el.search.value.trim().toLocaleLowerCase();
+      const woundMode = el.woundsMode.value;
+      const exact = el.woundsExact.value === "" ? null : Number(el.woundsExact.value);
+      const min = el.woundsMin.value === "" ? null : Number(el.woundsMin.value);
+      const max = el.woundsMax.value === "" ? null : Number(el.woundsMax.value);
+      return state.operatives.filter((operative) => {
+        if (el.team.value && operative.team !== el.team.value) return false;
+        if (query && !JSON.stringify(operative).toLocaleLowerCase().includes(query)) return false;
+        for (const select of document.querySelectorAll("[data-filter]")) {
+          if (select.value && !matchesField(operative, select.dataset.filter, select.value)) return false;
+        }
+        const wounds = Number(operative.wounds);
+        if (woundMode === "exact" && exact !== null && wounds !== exact) return false;
+        if (woundMode === "range" && min !== null && wounds < min) return false;
+        if (woundMode === "range" && max !== null && wounds > max) return false;
+        for (const filter of MULTI_FILTERS) {
+          const selected = state.multi[filter.key];
+          if (selected.size && ![...selected].some((value) => (operative[filter.key] || []).includes(value))) return false;
+        }
+        return true;
+      });
+    }
+
+    function updateFilterSummary() {
+      let activeCount = Number(Boolean(el.team.value || el.search.value.trim()));
+      activeCount += [...document.querySelectorAll("[data-filter]")].filter((select) => select.value).length;
+      const woundMode = el.woundsMode.value;
+      if ((woundMode === "exact" && el.woundsExact.value !== "") ||
+          (woundMode === "range" && (el.woundsMin.value !== "" || el.woundsMax.value !== ""))) activeCount += 1;
+      for (const filter of MULTI_FILTERS) {
+        const selected = [...state.multi[filter.key]];
+        document.querySelector(`#${filter.countId}`).textContent = selected.length === 0
+          ? "Any"
+          : selected.length === 1 ? selected[0] : `${selected.length} selected`;
+        if (selected.length) activeCount += 1;
+      }
+      el.activeFilterCount.textContent = activeCount ? `${activeCount} active` : "No filters";
+    }
+
+    function renderDetail(operative) {
+      if (!operative) {
+        el.detail.innerHTML = '<div class="detail-empty">No operative matches those filters.</div>';
+        return;
+      }
+      const image = state.cardSide === "front" ? operative.frontImage : operative.backImage;
+      const weapons = (operative.weapons || []).map((weapon) => `
+        <div class="weapon"><span><span class="weapon-name">${escapeHtml(weapon.name)}</span><br><span class="weapon-meta">${escapeHtml(weapon.special_rules || "")}</span></span>
+        <span class="weapon-meta">${escapeHtml(weapon.attacks || "-")} ATK<br>${escapeHtml(weapon.hit || "-")} HIT<br>${escapeHtml(weapon.damage || "-")} DMG</span></div>`).join("");
+      const abilities = [...(operative.passiveAbilities || []), ...(operative.uniqueActions || [])].map((ability) => `<p class="rule"><b>${escapeHtml(ability.name)}</b>${escapeHtml(ability.description || "")}</p>`).join("");
+      const keywords = (operative.keywords || []).map((keyword) => `<span class="keyword">${escapeHtml(keyword)}</span>`).join("");
+      el.detail.innerHTML = `
+        <div class="detail-top"><p class="detail-team">${escapeHtml(operative.teamLabel)}</p><h3>${escapeHtml(operative.name)}</h3>
+          <div class="stats">
+            <div class="stat"><b>${escapeHtml(operative.apl)}</b><span>APL</span></div>
+            <div class="stat"><b>${escapeHtml(operative.movement)}</b><span>Move</span></div>
+            <div class="stat"><b>${escapeHtml(operative.save)}</b><span>Save</span></div>
+            <div class="stat"><b>${escapeHtml(operative.wounds)}</b><span>Wounds</span></div>
+            <div class="stat"><b>${escapeHtml(operative.baseSize)}</b><span>Base</span></div>
+          </div>
+        </div>
+        <div class="card-viewer"><div class="card-frame">
+          <img src="${escapeHtml(image)}" alt="${escapeHtml(operative.name)} datacard ${state.cardSide}" onerror="this.hidden=true; this.nextElementSibling.hidden=false">
+          <div class="image-fallback" hidden>Generated ${state.cardSide} image not found.</div>
+        </div>
+        <div class="image-actions"><div class="side-switch" role="group" aria-label="Datacard side">
+          <button type="button" data-side="front" aria-pressed="${state.cardSide === "front"}">Front</button>
+          <button type="button" data-side="back" aria-pressed="${state.cardSide === "back"}">Back</button>
+        </div><a class="open-image" href="${escapeHtml(image)}" target="_blank" rel="noreferrer">Open image</a></div></div>
+        <div class="detail-content">
+          ${weapons ? `<section class="detail-section"><h4>Weapons</h4>${weapons}</section>` : ""}
+          ${abilities ? `<section class="detail-section"><h4>Abilities and actions</h4>${abilities}</section>` : ""}
+          ${keywords ? `<section class="detail-section"><h4>Keywords</h4><div class="keyword-list">${keywords}</div></section>` : ""}
+        </div>`;
+      el.detail.querySelectorAll("[data-side]").forEach((button) => button.addEventListener("click", () => {
+        state.cardSide = button.dataset.side;
+        renderDetail(operative);
+      }));
+    }
+
+    function renderList() {
+      document.querySelector(".workspace").classList.toggle("summary-view", state.view === "summary");
+      updateFilterSummary();
+      if (state.view === "summary") {
+        el.operativeView.hidden = true;
+        el.teamSummary.hidden = false;
+        el.detail.hidden = true;
+        renderTeamSummary();
+        return;
+      }
+      el.operativeView.hidden = false;
+      el.teamSummary.hidden = true;
+      el.detail.hidden = false;
+      const matches = filteredOperatives();
+      el.count.innerHTML = `<strong>${matches.length}</strong><br>${matches.length === 1 ? "result" : "results"}`;
+      if (!matches.some((operative) => operative.id === state.selectedId)) state.selectedId = matches[0]?.id ?? null;
+      if (!matches.length) {
+        el.list.innerHTML = '<div class="empty-state">No operatives match those filters.</div>';
+        renderDetail(null);
+        return;
+      }
+      const teams = new Map();
+      for (const operative of matches) {
+        if (!teams.has(operative.team)) teams.set(operative.team, { label: operative.teamLabel, operatives: [] });
+        teams.get(operative.team).operatives.push(operative);
+      }
+      el.list.innerHTML = [...teams.entries()]
+        .sort((first, second) => first[1].label.localeCompare(second[1].label))
+        .map(([team, group]) => `
+          <details class="team-group" data-team="${escapeHtml(team)}" ${state.collapsedTeams.has(team) ? "" : "open"}>
+            <summary class="team-heading"><span>${escapeHtml(group.label)}</span><span class="team-size">${group.operatives.length} ${group.operatives.length === 1 ? "operative" : "operatives"}</span></summary>
+            ${group.operatives.map((operative) => `
+              <button type="button" class="operative-row" role="option" aria-selected="${operative.id === state.selectedId}" data-id="${escapeHtml(operative.id)}">
+                <span class="op-name">${escapeHtml(operative.name)}<span class="op-team">${escapeHtml(operative.teamLabel)}</span></span>
+                <span class="stat-cell">${escapeHtml(operative.apl)}</span><span class="stat-cell">${escapeHtml(operative.movement)}</span>
+                <span class="stat-cell">${escapeHtml(operative.save)}</span><span class="wound-cell">${escapeHtml(operative.wounds)}</span>
+              </button>`).join("")}
+          </details>`).join("");
+      el.list.querySelectorAll(".team-group").forEach((group) => group.addEventListener("toggle", () => {
+        if (group.open) state.collapsedTeams.delete(group.dataset.team);
+        else state.collapsedTeams.add(group.dataset.team);
+      }));
+      el.list.querySelectorAll(".operative-row").forEach((row) => row.addEventListener("click", () => {
+        state.selectedId = row.dataset.id;
+        state.cardSide = "front";
+        renderList();
+      }));
+      renderDetail(matches.find((operative) => operative.id === state.selectedId));
+    }
+
+    function updateWoundsFields() {
+      const mode = el.woundsMode.value;
+      document.querySelector("#wounds-exact-field").hidden = mode !== "exact";
+      document.querySelector("#wounds-range-field").hidden = mode !== "range";
+      if (mode !== "exact") el.woundsExact.value = "";
+      if (mode !== "range") {
+        el.woundsMin.value = "";
+        el.woundsMax.value = "";
+      }
+      renderList();
+    }
+
+    async function start() {
+      try {
+        const response = await fetch("./data/operatives.json");
+        if (!response.ok) throw new Error(`Catalog request failed (${response.status})`);
+        state.operatives = await response.json();
+        try {
+          const contentResponse = await fetch("./data/team-content.json");
+          if (!contentResponse.ok) throw new Error(`Team content request failed (${contentResponse.status})`);
+          const teamContent = await contentResponse.json();
+          state.teamContent = teamContent.teams || {};
+          state.weaponRuleNames = teamContent.weaponRuleNames || [];
+        } catch (error) {
+          console.error("Team summary content could not be loaded.", error);
+        }
+        const teams = [...new Map(state.operatives.map((operative) => [operative.team, operative.teamLabel])).entries()]
+          .sort((first, second) => first[1].localeCompare(second[1]));
+        el.team.insertAdjacentHTML("beforeend", teams.map(([value, label]) => `<option value="${escapeHtml(value)}">${escapeHtml(label)}</option>`).join(""));
+        el.teamCount.textContent = `${teams.length} teams / ${state.operatives.length} operatives`;
+        populateFilters();
+        renderList();
+      } catch (error) {
+        el.teamCount.textContent = "Catalog unavailable";
+        el.operativeView.hidden = false;
+        el.teamSummary.hidden = true;
+        el.list.innerHTML = `<div class="load-error">${escapeHtml(error.message)}<br>The synced catalog could not be loaded. Please try again later.</div>`;
+      }
+    }
+
+    [el.team, ...document.querySelectorAll("[data-filter]")].forEach((control) => control.addEventListener("change", renderList));
+    [el.woundsExact, el.woundsMin, el.woundsMax, el.search].forEach((control) => control.addEventListener("input", renderList));
+    document.querySelectorAll("[data-view]").forEach((button) => button.addEventListener("click", () => {
+      state.view = button.dataset.view;
+      document.querySelectorAll("[data-view]").forEach((viewButton) => {
+        viewButton.setAttribute("aria-pressed", String(viewButton === button));
+      });
+      renderList();
+    }));
+    el.woundsMode.addEventListener("change", updateWoundsFields);
+    document.querySelector("#clear-filters").addEventListener("click", () => {
+      el.team.value = "";
+      document.querySelectorAll("[data-filter]").forEach((select) => { select.value = ""; });
+      el.woundsMode.value = "any";
+      el.woundsExact.value = "";
+      el.woundsMin.value = "";
+      el.woundsMax.value = "";
+      el.search.value = "";
+      for (const filter of MULTI_FILTERS) state.multi[filter.key].clear();
+      document.querySelectorAll("[data-multi]").forEach((checkbox) => { checkbox.checked = false; });
+      updateWoundsFields();
+    });
+    start();
+  </script>
+</body>
+</html>
