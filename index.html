@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-W7XynN7qMJP4Ht88x5/+0YVDW2LwFq5EEXZzpYgu2B8='; style-src 'unsafe-inline'; img-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <meta name="referrer" content="no-referrer">
   <title>KT Field Guide | Know your opponent</title>
   <style>
     :root {
@@ -176,6 +178,51 @@
       .detail-empty { min-height: 160px; }
       .list { max-height: 52vh; }
     }
+    body { background-image: repeating-linear-gradient(0deg, transparent, transparent 31px, rgb(25 59 45 / 3%) 32px); }
+    button:focus-visible, select:focus-visible, input:focus-visible, summary:focus-visible, a:focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; }
+    .workspace.summary-view { grid-template-columns: minmax(0, 1fr); box-shadow: none; }
+    .summary-view .filters { position: static; max-height: none; padding: 14px 18px; border-right: 0; border-bottom: 1px solid var(--line); }
+    .summary-view .filters .field { max-width: 380px; margin: 0; }
+    .summary-view .filter-heading, .summary-view .filter-section, .summary-view .clear-button, .summary-view .search-box { display: none; }
+    .summary-view .results { grid-row: auto; }
+    .summary-view .results-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .summary-view .search-row { order: 2; }
+    .summary-title { font-size: 26px; margin-bottom: 18px; overflow-wrap: anywhere; }
+    .summary-title span { display: block; margin-top: 6px; font: 400 14px/1.5 "Aptos", "Segoe UI", sans-serif; color: var(--muted); }
+    .summary-stat { padding: 12px; border-radius: 2px; }
+    .summary-stat h4, .summary-rules h4 { font-size: 12px; letter-spacing: 0; }
+    .summary-stat-value > summary, .summary-rule > summary { min-height: 44px; }
+    .summary-stat-value > summary b { font-size: 20px; }
+    .summary-stat-value > summary span, .summary-rule > summary span:last-child { font-size: 12px; }
+    .summary-rule-name { font-size: 15px; }
+    .summary-sources, .summary-rule-sources ul, .summary-ploy p { font-size: 14px; line-height: 1.6; }
+    .summary-rule-sources h5 { font-size: 12px; letter-spacing: 0; }
+    .summary-ploy summary { min-height: 44px; align-content: center; font-size: 14px; }
+    .reference-section { margin: 24px 0; padding-top: 16px; border-top: 1px solid var(--line); }
+    .reference-section h4 { margin: 0 0 12px; font: 500 20px/1.3 Georgia, serif; }
+    .reference-entry { border-top: 1px solid var(--line); }
+    .reference-entry summary { min-height: 44px; padding: 10px 0; cursor: pointer; font-weight: 700; font-size: 15px; }
+    .reference-entry p, .reference-entry pre { font: 400 15px/1.6 "Aptos", "Segoe UI", sans-serif; white-space: pre-wrap; overflow-wrap: anywhere; }
+    .source-note, .content-unavailable { color: var(--muted); font-size: 13px; line-height: 1.6; overflow-wrap: anywhere; }
+    .card-select { display: grid; gap: 6px; margin: 12px 0; font-size: 14px; }
+    .card-select select, .field select, .field input { min-height: 44px; }
+    .side-switch button, .view-switch button, .clear-button { min-height: 44px; }
+    .op-name, .stat-cell, .wound-cell, .weapon-meta, .rule { font-size: 13px; }
+    .op-team, .detail-team, .keyword, .footer-note { font-size: 12px; letter-spacing: 0; }
+    .image-actions { flex-wrap: wrap; gap: 10px; }
+    @media (max-width: 650px) {
+      .intro { display: block; }
+      .intro p { max-width: none; }
+      .catalog-count { margin-top: 8px; font-size: 14px; }
+      .local-tag { display: none; }
+      .summary-view .filters { padding: 12px; }
+      .summary-title { font-size: 23px; }
+      .summary-stat-value > summary { flex-wrap: wrap; gap: 4px; }
+      .summary-rule > summary { align-items: start; }
+      .summary-rule > summary span:last-child { flex-shrink: 0; }
+      .op-name, .stat-cell, .wound-cell { font-size: 12px; }
+      .column-head { font-size: 11px; }
+    }
   </style>
 </head>
 <body>
@@ -188,7 +235,7 @@
   </header>
   <main>
     <section class="intro" aria-labelledby="page-heading">
-      <div><h2 id="page-heading">Understand the opposing team.</h2><p>Explore team stats, weapon rules, and the operatives and ploys behind them.</p></div>
+      <div><h2 id="page-heading">Team briefing</h2></div>
       <div class="catalog-count" id="team-count">Loading teams...</div>
     </section>
     <div class="workspace summary-view">
@@ -239,7 +286,7 @@
           <div class="result-count" id="result-count" aria-live="polite"><strong>0</strong><br>results</div>
         </div><div class="view-switch" role="group" aria-label="Results view">
           <button type="button" data-view="operatives" aria-pressed="false">Operatives</button>
-          <button type="button" data-view="summary" aria-pressed="true">Team summary</button>
+          <button type="button" data-view="summary" aria-pressed="true">Team briefing</button>
         </div></div>
         <div id="operative-view">
           <div class="column-head" aria-hidden="true"><span>Operative</span><span>APL</span><span>Move</span><span>Save</span><span>Wounds</span></div>
@@ -258,7 +305,7 @@
     ];
     const WEAPON_FIELDS = new Set(["attacks", "hit", "damage"]);
     const state = {
-      operatives: [], selectedId: null, cardSide: "front",
+      operatives: [], selectedId: null, cardSide: "front", cardIndex: 0,
       multi: { weaponRules: new Set(), keywords: new Set() },
       collapsedTeams: new Set(),
       teamContent: {}, weaponRuleNames: [], view: "summary",
@@ -281,6 +328,20 @@
 
     function escapeRegExp(value) {
       return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    }
+
+    function safeImageUrl(value) {
+      return /^\.\/output\/[a-z0-9-]+\/cards\/datacards\/[a-z0-9-]+-(front|back)\.jpg$/.test(String(value)) ? value : "";
+    }
+
+    function renderReference(title, entries, unavailable, open = false) {
+      return `<section class="reference-section"><h4>${escapeHtml(title)}</h4>${entries?.length
+        ? entries.map((entry) => `<details class="reference-entry" ${open ? "open" : ""}>
+            <summary>${escapeHtml(entry.name)}</summary><p>${escapeHtml(entry.text)}</p>
+            ${Array.isArray(entry.options) ? entry.options.map((option) => `<details class="reference-entry">
+              <summary>${escapeHtml(option.name)}</summary><p>${escapeHtml(option.text)}</p></details>`).join("") : ""}
+          </details>`).join("")
+        : `<p class="content-unavailable">${escapeHtml(unavailable)}</p>`}</section>`;
     }
 
     function weaponRulePattern(ruleName) {
@@ -361,6 +422,7 @@
         ...(content?.factionRules || []),
         ...(content?.firefightPloys || []),
         ...(content?.strategyPloys || []),
+        ...(content?.equipment || []),
       ];
       for (const source of sources) {
         for (const rule of findRuleMentions(source.text, state.weaponRuleNames)) {
@@ -380,14 +442,14 @@
     function renderTeamSummary() {
       const team = el.team.value;
       if (!team) {
-        el.teamSummary.innerHTML = '<div class="summary-empty">Choose a team in the filters to see its combined stats and rules.</div>';
+        el.teamSummary.innerHTML = '<div class="summary-empty">No team selected.</div>';
         el.count.innerHTML = "<strong>—</strong><br>team";
         return;
       }
       const operatives = state.operatives.filter((operative) => operative.team === team);
       const teamLabel = operatives[0]?.teamLabel || team.replace(/-/g, " ").replace(/\b\w/g, (letter) => letter.toUpperCase());
       const content = state.teamContent[team];
-      el.count.innerHTML = `<strong>${operatives.length}</strong><br>${operatives.length === 1 ? "operative" : "operatives"}`;
+      el.count.innerHTML = `<strong>${operatives.length}</strong><br>datacard types`;
       if (!operatives.length) {
         el.teamSummary.innerHTML = '<div class="summary-empty">No operative data is available for this team.</div>';
         return;
@@ -397,7 +459,7 @@
         <section class="summary-stat"><h4>${escapeHtml(stat.label)}</h4>
           ${stat.values.map(([value, names]) => `
             <details class="summary-stat-value">
-              <summary><b>${escapeHtml(value)}</b><span>${names.length} ${names.length === 1 ? "operative" : "operatives"}</span></summary>
+              <summary><b>${escapeHtml(value)}</b><span>${names.length} ${names.length === 1 ? "type" : "types"}</span></summary>
               <ul class="summary-sources">${names.map((name) => `<li>${escapeHtml(name)}</li>`).join("")}</ul>
             </details>`).join("")}
         </section>`).join("");
@@ -410,7 +472,7 @@
             <p>${escapeHtml([...(operatives.find((operative) => operative.name === source.name)?.passiveAbilities || []),
               ...(operatives.find((operative) => operative.name === source.name)?.uniqueActions || [])]
               .find((ability) => ability.name === source.detail)?.description || "")}</p></details></li>`);
-        const ploySources = renderSummarySources("Faction rules and ploys", rule.ploys, (source) =>
+        const ploySources = renderSummarySources("Faction rules, ploys and equipment", rule.ploys, (source) =>
           `<li><details class="summary-ploy"><summary>${escapeHtml(source.type)} — ${escapeHtml(source.name)}</summary>
             <p>${escapeHtml(source.text)}</p></details></li>`);
         return `<details class="summary-rule"><summary><span class="summary-rule-name">${escapeHtml(rule.name)}</span>
@@ -421,11 +483,19 @@
         ? ""
         : `<p class="summary-empty">Faction rules and ploys are unavailable for ${escapeHtml(teamLabel)}.</p>`;
       el.teamSummary.innerHTML = `
-        <h3 class="summary-title">${escapeHtml(teamLabel)} team summary <span>(${operatives.length} operatives)</span></h3>
+        <h3 class="summary-title">${escapeHtml(teamLabel)}<span>${operatives.length} datacard types</span></h3>
+        ${renderReference("Operative selection", content?.operativeSelection,
+          "Operative selection is unavailable in this snapshot. Datacard types are not the deployed team size.")}
         <div class="summary-stats">${statCards}</div>
         <section class="summary-rules"><h4>Weapon rules and abilities</h4>
           ${ruleDetails || '<p class="summary-empty">No weapon rules found.</p>'}
-        </section>${missingContent}`;
+        </section>
+        ${renderReference("Faction rules", content?.factionRules, "Faction rules unavailable.")}
+        ${renderReference("Strategy ploys", content?.strategyPloys, "Strategy ploys unavailable.")}
+        ${renderReference("Firefight ploys", content?.firefightPloys, "Firefight ploys unavailable.")}
+        ${renderReference("Equipment", content?.equipment, "Equipment unavailable in this snapshot.")}
+        ${content?.sourcePath ? `<p class="source-note">Source: ${escapeHtml(content.sourcePath)}${content.generatedAt
+          ? `<br>Source generated: ${escapeHtml(content.generatedAt)}` : ""}</p>` : ""}${missingContent}`;
     }
 
     function populateFilters() {
@@ -508,7 +578,9 @@
         el.detail.innerHTML = '<div class="detail-empty">No operative matches those filters.</div>';
         return;
       }
-      const image = state.cardSide === "front" ? operative.frontImage : operative.backImage;
+      const cards = operative.cards?.length ? operative.cards : [operative];
+      state.cardIndex = Math.min(state.cardIndex, cards.length - 1);
+      const image = safeImageUrl(cards[state.cardIndex][`${state.cardSide}Image`]);
       const weapons = (operative.weapons || []).map((weapon) => `
         <div class="weapon"><span><span class="weapon-name">${escapeHtml(weapon.name)}</span><br><span class="weapon-meta">${escapeHtml(weapon.special_rules || "")}</span></span>
         <span class="weapon-meta">${escapeHtml(weapon.attacks || "-")} ATK<br>${escapeHtml(weapon.hit || "-")} HIT<br>${escapeHtml(weapon.damage || "-")} DMG</span></div>`).join("");
@@ -525,18 +597,28 @@
           </div>
         </div>
         <div class="card-viewer"><div class="card-frame">
-          <img src="${escapeHtml(image)}" alt="${escapeHtml(operative.name)} datacard ${state.cardSide}" onerror="this.hidden=true; this.nextElementSibling.hidden=false">
-          <div class="image-fallback" hidden>Generated ${state.cardSide} image not found.</div>
+          <img ${image ? `src="${escapeHtml(image)}"` : "hidden"} alt="${escapeHtml(operative.name)} datacard ${state.cardIndex + 1} ${state.cardSide}">
+          <div class="image-fallback" ${image ? "hidden" : ""}>Generated ${state.cardSide} image not found.</div>
         </div>
+        ${cards.length > 1 ? `<label class="card-select">Datacard<select id="card-pair">${cards.map((card, index) =>
+          `<option value="${index}" ${index === state.cardIndex ? "selected" : ""}>${index + 1} / ${cards.length}</option>`).join("")}</select></label>` : ""}
         <div class="image-actions"><div class="side-switch" role="group" aria-label="Datacard side">
           <button type="button" data-side="front" aria-pressed="${state.cardSide === "front"}">Front</button>
           <button type="button" data-side="back" aria-pressed="${state.cardSide === "back"}">Back</button>
-        </div><a class="open-image" href="${escapeHtml(image)}" target="_blank" rel="noreferrer">Open image</a></div></div>
+        </div>${image ? `<a class="open-image" href="${escapeHtml(image)}" target="_blank" rel="noreferrer">Open image</a>` : ""}</div></div>
         <div class="detail-content">
           ${weapons ? `<section class="detail-section"><h4>Weapons</h4>${weapons}</section>` : ""}
           ${abilities ? `<section class="detail-section"><h4>Abilities and actions</h4>${abilities}</section>` : ""}
           ${keywords ? `<section class="detail-section"><h4>Keywords</h4><div class="keyword-list">${keywords}</div></section>` : ""}
         </div>`;
+      el.detail.querySelector("img").addEventListener("error", (event) => {
+        event.target.hidden = true;
+        event.target.nextElementSibling.hidden = false;
+      });
+      el.detail.querySelector("#card-pair")?.addEventListener("change", (event) => {
+        state.cardIndex = Number(event.target.value);
+        renderDetail(operative);
+      });
       el.detail.querySelectorAll("[data-side]").forEach((button) => button.addEventListener("click", () => {
         state.cardSide = button.dataset.side;
         renderDetail(operative);
@@ -558,7 +640,11 @@
       el.detail.hidden = false;
       const matches = filteredOperatives();
       el.count.innerHTML = `<strong>${matches.length}</strong><br>${matches.length === 1 ? "result" : "results"}`;
-      if (!matches.some((operative) => operative.id === state.selectedId)) state.selectedId = matches[0]?.id ?? null;
+      if (!matches.some((operative) => operative.id === state.selectedId)) {
+        state.selectedId = matches[0]?.id ?? null;
+        state.cardIndex = 0;
+        state.cardSide = "front";
+      }
       if (!matches.length) {
         el.list.innerHTML = '<div class="empty-state">No operatives match those filters.</div>';
         renderDetail(null);
@@ -588,6 +674,7 @@
       el.list.querySelectorAll(".operative-row").forEach((row) => row.addEventListener("click", () => {
         state.selectedId = row.dataset.id;
         state.cardSide = "front";
+        state.cardIndex = 0;
         renderList();
       }));
       renderDetail(matches.find((operative) => operative.id === state.selectedId));
@@ -622,7 +709,7 @@
         const teams = [...new Map(state.operatives.map((operative) => [operative.team, operative.teamLabel])).entries()]
           .sort((first, second) => first[1].localeCompare(second[1]));
         el.team.insertAdjacentHTML("beforeend", teams.map(([value, label]) => `<option value="${escapeHtml(value)}">${escapeHtml(label)}</option>`).join(""));
-        el.teamCount.textContent = `${teams.length} teams / ${state.operatives.length} operatives`;
+        el.teamCount.textContent = `${teams.length} teams / ${state.operatives.length} datacard types`;
         populateFilters();
         renderList();
       } catch (error) {

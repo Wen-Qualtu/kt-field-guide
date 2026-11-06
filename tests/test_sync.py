@@ -1,7 +1,11 @@
+import base64
 import json
+import hashlib
+import re
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 from scripts.sync import build_catalog, sync
 
@@ -84,6 +88,103 @@ class SyncTests(unittest.TestCase):
         self.assertTrue(operatives[0]["frontImage"].endswith("test-leader-card1-front.jpg"))
         self.assertEqual(len(images), 2)
         self.assertFalse(warnings)
+
+
+    def test_dry_run_does_not_create_destination(self) -> None:
+        sync(self.source, self.site, strict=True, dry_run=True)
+        self.assertFalse(self.site.exists())
+
+    def test_invalid_manifest_fails_before_copying(self) -> None:
+        data_dir = self.site / "data"
+        data_dir.mkdir(parents=True)
+        (data_dir / "sync-manifest.json").write_text(json.dumps({"images": ["../outside.jpg"]}), encoding="utf-8")
+        with self.assertRaisesRegex(ValueError, "Invalid managed image"):
+            sync(self.source, self.site)
+        self.assertFalse((self.site / "output").exists())
+
+    def test_selection_and_equipment_preserve_source(self) -> None:
+        self.write_json("layers/integration/test-team/content/test-team-content.json", {
+            "operatives_selection": [{"name": "Selection", "text": "Select 1 leader and 5 others.",
+                                      "selection": {"Warrior": ["Gun"]}}],
+            "equipment": [{"name": "Grenade", "text": "Once per battle."}],
+        })
+        _, content, _, _ = build_catalog(self.source)
+        team = content["teams"]["test-team"]
+        self.assertEqual(team["operativeSelection"][0]["selection"], {"Warrior": ["Gun"]})
+        self.assertEqual(team["equipment"][0]["text"], "Once per battle.")
+        self.assertEqual(team["sourcePath"], "layers/integration/test-team/content/test-team-content.json")
+
+    def test_new_team_and_all_numbered_pairs_are_discovered(self) -> None:
+        self.write_json("output/new-team/data/new-team-team-data.json", {
+            "team": "new-team", "datacards": [{"name": "New Warrior"}],
+        })
+        folder = self.source / "output" / "new-team" / "cards" / "datacards"
+        folder.mkdir(parents=True)
+        for number in (1, 2, 10):
+            for side in ("front", "back"):
+                (folder / f"new-warrior-card{number}-{side}.jpg").write_bytes(b"fixture")
+        operatives, content, images, _ = build_catalog(self.source)
+        operative = next(item for item in operatives if item["team"] == "new-team")
+        self.assertEqual(len(operative["cards"]), 3)
+        self.assertTrue(operative["cards"][-1]["frontImage"].endswith("card10-front.jpg"))
+        self.assertIn("new-team", content["teams"])
+        self.assertEqual(len(images), 8)
+
+    def test_malformed_nested_content_is_rejected(self) -> None:
+        self.write_json("layers/integration/test-team/content/test-team-content.json", {
+            "equipment": ["invalid entry"],
+        })
+        with self.assertRaisesRegex(ValueError, "Malformed equipment"):
+            sync(self.source, self.site, strict=True)
+        self.assertFalse(self.site.exists())
+
+    def test_symlinked_temporary_file_cannot_overwrite_ui(self) -> None:
+        data_dir = self.site / "data"
+        data_dir.mkdir(parents=True)
+        index = self.site / "index.html"
+        index.write_text("keep UI", encoding="utf-8")
+        try:
+            (data_dir / "operatives.json.tmp").symlink_to(index)
+        except OSError as error:
+            self.skipTest(f"Symlinks unavailable: {error}")
+        with self.assertRaisesRegex(ValueError, "Unsafe destination"):
+            sync(self.source, self.site, strict=True)
+        self.assertEqual(index.read_text(encoding="utf-8"), "keep UI")
+        self.assertFalse((self.site / "output").exists())
+
+    def test_interrupted_copy_preserves_previous_image(self) -> None:
+        sync(self.source, self.site, strict=True)
+        image = self.site / "output" / "test-team" / "cards" / "datacards" / "test-leader-front.jpg"
+        original = image.read_bytes()
+        with patch("scripts.sync.shutil.copyfile", side_effect=OSError("Interrupted")):
+            with self.assertRaisesRegex(OSError, "Interrupted"):
+                sync(self.source, self.site, strict=True)
+        self.assertEqual(image.read_bytes(), original)
+        self.assertEqual(len(list(image.parent.iterdir())), 2)
+
+
+class SiteContractTests(unittest.TestCase):
+    def test_inline_script_matches_security_policy(self) -> None:
+        root = Path(__file__).resolve().parents[1]
+        html = (root / "index.html").read_text(encoding="utf-8")
+        scripts = re.findall(r"<script>(.*?)</script>", html, flags=re.DOTALL)
+        self.assertEqual(len(scripts), 1)
+        digest = base64.b64encode(hashlib.sha256(scripts[0].encode("utf-8")).digest()).decode("ascii")
+        policy = re.search(r'<meta http-equiv="Content-Security-Policy" content="([^"]+)"', html)
+        self.assertIsNotNone(policy)
+        self.assertIn(f"script-src 'sha256-{digest}'", policy[1])
+        self.assertNotRegex(html, r"\son(?:error|click|load)=")
+
+    def test_published_snapshot_images_are_local_and_exist(self) -> None:
+        root = Path(__file__).resolve().parents[1]
+        operatives = json.loads((root / "data" / "operatives.json").read_text(encoding="utf-8"))
+        for operative in operatives:
+            for card in operative.get("cards") or [operative]:
+                for side in ("front", "back"):
+                    relative = card[f"{side}Image"]
+                    with self.subTest(operative=operative["id"], image=relative):
+                        self.assertRegex(relative, r"^\./output/[a-z0-9-]+/cards/datacards/[a-z0-9-]+-(front|back)\.jpg$")
+                        self.assertTrue((root / relative).is_file())
 
 
 if __name__ == "__main__":
