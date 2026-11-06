@@ -27,6 +27,17 @@ production remains untouched. Remove the guard and enable Cloudflare production
 only after separate release approval. Branch protection and optional preview
 Access policies are not provisioned by this setup.
 
+Staging is live and verified at <https://staging.kt-field-guide.pages.dev/>.
+The first successful preview is
+<https://4ea4b5c1.kt-field-guide.pages.dev/> (commit `2ecc0bf`).
+The initial preview stalled during cloning; canceling it and retrying once
+completed successfully. Both test suites passed in the Cloudflare build.
+Live checks confirmed opponent selection narrows stats and unique weapon rules,
+source badges and cleaned descriptions render, card images load, and the mobile
+layout has no horizontal overflow. Both preview URLs return `X-Robots-Tag:
+noindex, nofollow, noarchive` and the configured security headers. Staging is
+public, not protected by Access.
+
 ## Account setup
 
 1. Review and commit the implementation on the existing feature branch, then
@@ -51,7 +62,8 @@ Access policies are not provisioned by this setup.
    build may fail during setup; GitHub Pages production remains unchanged.
    After staging acceptance, enable automatic production deployments and merge
    the reviewed staging PR into main. Then verify `https://<project>.pages.dev/`.
-   These are planned URLs, not links proven live by local tests.
+   Staging is verified live as recorded above; the Cloudflare production URL
+   remains unactivated.
 6. Enable the Pages preview Access policy and restrict it to approved testers
    if staging should be private. Verify both the branch alias and immutable
    preview URLs require login, while production remains public. `noindex`
