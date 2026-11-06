@@ -7,9 +7,25 @@ deployed URLs: `main` is production, `staging` is the test environment. A stagin
 push does not redeploy production. GitHub Pages remains the existing production
 mirror during activation; it only deploys `main`.
 
-This configuration and refreshed snapshot are prepared locally, not activated.
-No Cloudflare resources, remote branches, protections or deployments have been
-created. A local staging commit does not change the current public Pages site.
+## Activation status - 2026-11-06
+
+Cloudflare Pages project `kt-field-guide` is connected to GitHub, with app access
+limited to this repository. Remote `staging` contains the briefing foundation and
+opponent-selection changes. Automatic production deployments are disabled;
+preview branch controls include only `staging` (no excludes).
+`NODE_VERSION=22` and `PYTHON_VERSION=3.13` are set for both build environments.
+
+During staging-only activation the build command has this additional guard before
+the test/build command below:
+
+```sh
+if [ "$CF_PAGES_BRANCH" != "staging" ]; then echo "Only staging deployments are currently approved"; exit 1; fi
+```
+
+The initial main build is deliberately rejected by that guard. GitHub Pages
+production remains untouched. Remove the guard and enable Cloudflare production
+only after separate release approval. Branch protection and optional preview
+Access policies are not provisioned by this setup.
 
 ## Account setup
 
