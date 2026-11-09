@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "entries": [
+    {
+      "id": "pathfinders/faction_rules/markerlights-2/1",
+      "sourceUpdatedAt": "2026-10-28T13:54:59.450346+00:00",
+      "pointer": "/faction_rules/1/options/0/text",
+      "confirmedBy": "user",
+      "confirmedOn": "2026-11-09",
+      "clarification": "The numbered benefits are conditional weapon-rule grants based on the enemy target's Markerlight tokens: Saturate and Balanced at 1 token, Seek Light at 4 tokens, and full Seek at 5 tokens. Preserve these as potential access through the faction rule; do not model the other stat effects or invent extra restrictions.",
+      "grants": [
+        { "rule": "Saturate", "markerlightTokens": 1 },
+        { "rule": "Balanced", "markerlightTokens": 1 },
+        { "rule": "Seek Light", "markerlightTokens": 4 },
+        { "rule": "Seek", "markerlightTokens": 5 }
+      ]
+    }
+  ]
+}

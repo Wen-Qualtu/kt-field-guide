@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "completeBaseline": true,
+  "nextNumber": 96,
+  "latestPass": {
+    "runId": "9dd1e61e-fd2a-4bed-8225-4469b6186c4a",
+    "policyVersion": 7,
+    "scope": "targeted",
+    "reviewedRecords": 1
+  },
+  "entries": []
+}

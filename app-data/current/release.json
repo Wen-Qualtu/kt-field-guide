@@ -1,0 +1,93 @@
+{
+  "acceptanceOnly": true,
+  "assignedCoverageComplete": true,
+  "completeCoverage": true,
+  "counts": {
+    "operatives": 453,
+    "records": 1207,
+    "teams": 48
+  },
+  "files": {
+    "operatives.json": {
+      "sha256": "20959c63fc803c40f126bdaff4db42d9c03895b5fccb143468bed89f0a337dcd"
+    },
+    "team-content.json": {
+      "sha256": "c1aa9d8174b82d3c0a08ff4411a728ecc75dc3553db72bc270724dae1cf52394"
+    }
+  },
+  "mixedProvenance": true,
+  "policyVersions": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "productionApproved": false,
+  "reviewedRuns": [
+    {
+      "automaticCopies": 0,
+      "kind": "full",
+      "policyVersion": 1,
+      "records": 1207,
+      "runId": "145374b0-b189-4d58-86ef-c42a71420f7f"
+    },
+    {
+      "automaticCopies": 0,
+      "kind": "targeted",
+      "policyVersion": 2,
+      "records": 3,
+      "runId": "9be6bb23-e0a4-4f2b-95e2-89d7577e50d7"
+    },
+    {
+      "automaticCopies": 0,
+      "kind": "targeted",
+      "policyVersion": 3,
+      "records": 9,
+      "runId": "d0b3c610-7285-403b-b3ac-1ff6327de1d0"
+    },
+    {
+      "automaticCopies": 0,
+      "kind": "targeted",
+      "policyVersion": 4,
+      "records": 9,
+      "runId": "6a92973f-5e49-44da-9974-1c05a722ef1a"
+    },
+    {
+      "automaticCopies": 0,
+      "kind": "targeted",
+      "policyVersion": 5,
+      "records": 9,
+      "runId": "319c23dd-42fe-49e4-9c2c-1f154a8d2739"
+    },
+    {
+      "automaticCopies": 47,
+      "kind": "targeted",
+      "policyVersion": 6,
+      "records": 47,
+      "runId": "5e8edf86-9a52-4500-b03a-3656befd2f0a"
+    },
+    {
+      "automaticCopies": 0,
+      "kind": "targeted",
+      "policyVersion": 6,
+      "records": 30,
+      "runId": "ff91b063-cb8f-4f93-9886-37c62590f66c"
+    },
+    {
+      "automaticCopies": 0,
+      "kind": "targeted",
+      "policyVersion": 7,
+      "records": 1,
+      "runId": "9dd1e61e-fd2a-4bed-8225-4469b6186c4a"
+    }
+  ],
+  "schemaVersion": 1,
+  "semanticCorrectnessProven": false,
+  "status": "accepted-curated",
+  "uncertain": false,
+  "unresolvedFindings": 0,
+  "wholeSourceCoverage": true
+}

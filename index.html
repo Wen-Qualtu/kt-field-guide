@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-M2XDdSsvFg2MB6aWtqZZ/LpJ33OOktKj9NyxpAev+rI='; style-src 'unsafe-inline'; img-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-Xte1izmb7z8mJ05YP96Q26zdBFHyHTLA1DoiNkPNYc8='; style-src 'unsafe-inline'; img-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
   <meta name="referrer" content="no-referrer">
   <title>KT Field Guide | Know your opponent</title>
   <style>
@@ -79,16 +79,46 @@
     .team-heading::after { content: "+"; color: var(--muted); font-size: 15px; font-weight: 400; }
     .team-group[open] > .team-heading::after { content: "-"; }
     .team-size { margin-left: auto; color: var(--muted); font-size: 9px; font-weight: 500; }
-    .opponent-picker { margin: 18px 0; padding: 12px; border: 1px solid var(--line); }
-    .opponent-picker > summary { cursor: pointer; font-weight: 700; }
-    .opponent-picker p, .rule-legend { color: var(--muted); font-size: 12px; line-height: 1.5; }
-    .opponent-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 5px 12px; margin-top: 10px; }
-    .opponent-options label { display: flex; align-items: center; gap: 9px; min-height: 44px; font-size: 13px; cursor: pointer; }
-    .opponent-options input { accent-color: var(--forest); width: 18px; height: 18px; flex-shrink: 0; }
-    .opponent-actions { display: flex; gap: 8px; }
-    .opponent-actions button { min-height: 40px; padding: 6px 12px; border: 1px solid var(--line); background: white; }
+    .opponent-setup { margin: 18px 0 24px; padding: 16px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .setup-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+    .setup-heading h4 { margin: 0; font: 500 21px Georgia, serif; }
+    .turning-point { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+    .turning-point select { min-height: 44px; padding: 0 10px; border: 1px solid var(--line); background: #fff; }
+    .setup-tabs { display: flex; border-bottom: 1px solid var(--line); }
+    .setup-tabs button { flex: 1; min-width: 0; min-height: 48px; padding: 8px; border: 0; border-bottom: 3px solid transparent; background: transparent; color: var(--muted); font-size: 14px; }
+    .setup-tabs button[aria-selected="true"] { border-bottom-color: var(--forest); color: var(--forest); font-weight: 700; background: #f3f6ef; }
+    .setup-tabs small { display: inline-block; margin-left: 6px; font-size: 12px; }
+    .setup-panel { padding-top: 12px; }
+    .setup-actions { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .setup-actions button { min-height: 44px; padding: 6px 12px; border: 1px solid var(--line); background: #fff; color: var(--forest); }
+    .setup-actions span { margin-left: auto; font-size: 12px; color: var(--muted); }
+    .setup-group { margin: 0; padding: 0; border: 0; min-width: 0; }
+    .setup-group + .setup-group { margin-top: 16px; }
+    .setup-group legend { padding: 8px 0; font-weight: 700; font-size: 14px; }
+    .opponent-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 0 20px; }
+    .setup-choice { min-width: 0; padding: 4px 0; border-bottom: 1px solid #edf0ec; }
+    .setup-choice label { display: flex; align-items: center; gap: 10px; min-height: 44px; font-size: 13px; line-height: 1.4; overflow-wrap: anywhere; cursor: pointer; }
+    .setup-choice input { accent-color: var(--forest); width: 18px; height: 18px; flex-shrink: 0; }
+    .setup-choice:has(input:not(:checked)) label { color: var(--muted); }
+    .setup-choice details { margin-left: 28px; font-size: 13px; }
+    .setup-choice summary { min-height: 32px; align-content: center; color: var(--forest); cursor: pointer; }
+    .setup-choice p { line-height: 1.6; white-space: pre-line; overflow-wrap: anywhere; }
+    .rule-legend { color: var(--muted); font-size: 12px; line-height: 1.5; }
     .rule-badges { display: inline-flex; flex-wrap: wrap; gap: 4px; }
     .rule-badge { padding: 3px 6px; border: 1px solid #becfbe; border-radius: 3px; background: #edf2eb; color: var(--forest); font-size: 11px; font-weight: 800; }
+    .summary-rule-heading { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; min-width: 0; }
+    .summary-source-count { margin-left: auto; flex-shrink: 0; }
+    .source-operative { min-height: 44px; padding: 0; border: 0; background: transparent; color: var(--forest); font-size: inherit; text-align: left; text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere; }
+    .datacard-dialog { width: min(900px, calc(100% - 24px)); max-width: calc(100% - 24px); max-height: calc(100dvh - 24px); padding: 0; border: 1px solid var(--line); border-radius: 4px; color: var(--ink); background: #f8faf7; }
+    .datacard-dialog::backdrop { background: rgb(15 28 20 / 65%); }
+    body:has(.datacard-dialog[open]) { overflow: hidden; }
+    .dialog-toolbar { position: sticky; top: 0; z-index: 1; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 8px 18px; border-bottom: 1px solid var(--line); background: #fff; }
+    .dialog-toolbar button { width: 44px; height: 44px; flex-shrink: 0; border: 1px solid var(--line); background: #fff; color: var(--forest); font-size: 25px; }
+    .datacard-dialog .card-frame img { max-height: 65dvh; }
+    .datacard-dialog h3 { margin: 0; font: 500 22px Georgia, serif; }
+    .datacard-dialog .weapon > span:first-child { overflow-wrap: anywhere; min-width: 0; }
+    .datacard-dialog .weapon > span:first-child .weapon-meta { white-space: normal; }
+    .datacard-dialog .rule, .datacard-dialog h3 { overflow-wrap: anywhere; }
     .view-switch { display: flex; gap: 6px; margin-top: 12px; }
     .view-switch button { min-height: 31px; padding: 0 10px; border: 1px solid var(--line); background: #fff; color: var(--muted); font-size: 10px; font-weight: 800; }
     .view-switch button[aria-pressed="true"] { border-color: var(--forest); background: var(--forest); color: #fff; }
@@ -101,7 +131,7 @@
     .summary-stat-value > summary, .summary-rule > summary { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 32px; cursor: pointer; list-style: none; }
     .summary-stat-value > summary::-webkit-details-marker, .summary-rule > summary::-webkit-details-marker { display: none; }
     .summary-stat-value > summary b { color: var(--forest); font-size: 13px; }
-    .summary-stat-value > summary span, .summary-rule > summary span:last-child { color: var(--muted); font-size: 9px; }
+    .summary-stat-value > summary span, .summary-rule > summary > .summary-source-count { color: var(--muted); font-size: 9px; }
     .summary-sources { margin: 0; padding: 0 0 7px 15px; color: #46564a; font-size: 10px; line-height: 1.5; }
     .summary-rules { margin-top: 19px; }
     .summary-rule { border-top: 1px solid var(--line); }
@@ -203,7 +233,7 @@
     .summary-stat h4, .summary-rules h4 { font-size: 12px; letter-spacing: 0; }
     .summary-stat-value > summary, .summary-rule > summary { min-height: 44px; }
     .summary-stat-value > summary b { font-size: 20px; }
-    .summary-stat-value > summary span, .summary-rule > summary span:last-child { font-size: 12px; }
+    .summary-stat-value > summary span, .summary-rule > summary > .summary-source-count { font-size: 12px; }
     .summary-rule-name { font-size: 15px; }
     .summary-sources, .summary-rule-sources ul, .summary-ploy p { font-size: 14px; line-height: 1.6; }
     .summary-rule-sources h5 { font-size: 12px; letter-spacing: 0; }
@@ -229,7 +259,9 @@
       .summary-title { font-size: 23px; }
       .summary-stat-value > summary { flex-wrap: wrap; gap: 4px; }
       .summary-rule > summary { align-items: start; }
-      .summary-rule > summary span:last-child { flex-shrink: 0; }
+      .summary-source-count { font-size: 11px; }
+      .setup-tabs button { font-size: 13px; }
+      .setup-tabs small { display: block; margin: 3px 0 0; }
       .op-name, .stat-cell, .wound-cell { font-size: 12px; }
       .column-head { font-size: 11px; }
     }
@@ -308,6 +340,10 @@
     </div>
     <p class="footer-note">Unofficial fan reference, not affiliated with Games Workshop. Data is synced from kt-datacards; check official rules for current wording and conditions.</p>
   </main>
+  <dialog id="source-card-dialog" class="datacard-dialog" aria-label="Operative datacard">
+    <div class="dialog-toolbar"><strong>Operative datacard</strong><button type="button" id="close-source-card" aria-label="Close datacard">&times;</button></div>
+    <div id="source-card-content"></div>
+  </dialog>
   <script>
     const MULTI_FILTERS = [
       { key: "weaponRules", optionsId: "weapon-rules-options", countId: "weapon-rules-count" },
@@ -319,6 +355,7 @@
       multi: { weaponRules: new Set(), keywords: new Set() },
       collapsedTeams: new Set(),
       opponentSelections: new Map(),
+      briefingSetups: new Map(),
       teamContent: {}, weaponRuleNames: [], view: "summary",
     };
     const el = {
@@ -379,6 +416,7 @@
 
     function weaponRulePattern(ruleName) {
       const pattern = escapeRegExp(ruleName)
+        .replace(/^Seek$/i, "Seek(?:\\s+Light)?")
         .replace(/x\\\+/gi, "\\d+\\+")
         .replace(/x/gi, "\\d+(?:\\.\\d+)?(?:[\"″”])?");
       return new RegExp(`(^|[^\\w])(${pattern})(?![\\w])`, "gi");
@@ -394,7 +432,20 @@
       return label;
     }
 
+    function isKnownWeaponRule(label) {
+      const value = String(label).trim().replace(/\*+$/, "");
+      return state.weaponRuleNames.some((name) => {
+        const base = name.replace(/\s+x\+?$/i, "");
+        if (base === "Seek") return /^Seek(?:\s+Light)?$/i.test(value);
+        if (base === "Heavy") return /^Heavy(?:\s+\((?:Dash|Reposition) only\))?$/i.test(value);
+        const parameter = /\s+x\+$/i.test(name) ? "(?:\\s+\\d+\\+)?"
+          : /\s+x$/i.test(name) ? "(?:\\s+\\d+(?:\\.\\d+)?(?:[\"″”])?)?" : "";
+        return new RegExp(`^${escapeRegExp(base)}${parameter}$`, "i").test(value);
+      });
+    }
+
     function addRuleSource(rules, label, sourceType, source, detail = "") {
+      if (!isKnownWeaponRule(label)) return;
       const normalizedLabel = canonicalRuleLabel(label.trim());
       const key = normalizedLabel.toLocaleLowerCase();
       if (!key) return;
@@ -445,7 +496,10 @@
           }
         }
         for (const ability of [...(operative.passiveAbilities || []), ...(operative.uniqueActions || [])]) {
-          for (const rule of findRuleMentions(ability.description, state.weaponRuleNames)) {
+          const labels = Array.isArray(ability.weaponRuleEffects)
+            ? ability.weaponRuleEffects.filter((effect) => effect.kind === "grant").map((effect) => effect.rule)
+            : findRuleMentions(ability.description, state.weaponRuleNames);
+          for (const rule of labels) {
             addRuleSource(rules, rule, "abilities", { name: operative.name }, ability.name);
           }
         }
@@ -457,11 +511,17 @@
         ...(content?.strategyPloys || []),
         ...(content?.equipment || []),
       ];
-      for (const source of sources) {
-        for (const rule of findRuleMentions(source.text, state.weaponRuleNames)) {
-          addRuleSource(rules, rule, "ploys", source);
+      function collectSource(source, parent = null) {
+        const labels = Array.isArray(source.weaponRuleEffects)
+          ? source.weaponRuleEffects.filter((effect) => effect.kind === "grant").map((effect) => effect.rule)
+          : findRuleMentions(source.text, state.weaponRuleNames);
+        const reference = parent ? { ...source, type: parent.type, name: `${parent.name} / ${source.name}` } : source;
+        for (const rule of labels) {
+          addRuleSource(rules, rule, "ploys", reference);
         }
+        for (const option of source.options || []) collectSource(option, reference);
       }
+      for (const source of sources) collectSource(source);
       return { stats, rules: [...rules.values()].sort((first, second) => first.name.localeCompare(second.name, undefined, { sensitivity: "base" })) };
     }
 
@@ -477,6 +537,99 @@
         state.opponentSelections.set(team, new Set(operatives.map((operative) => operative.id)));
       }
       return state.opponentSelections.get(team);
+    }
+
+    function briefingSetup(team, content) {
+      if (!state.briefingSetups.has(team)) {
+        state.briefingSetups.set(team, {
+          tab: "operatives", round: 1,
+          equipment: new Set((content?.equipment || []).map((entry) => entry.name)),
+          rounds: new Map(),
+        });
+      }
+      return state.briefingSetups.get(team);
+    }
+
+    function turningPointSelection(setup, content) {
+      if (!setup.rounds.has(setup.round)) {
+        setup.rounds.set(setup.round, {
+          strategyPloys: new Set((content?.strategyPloys || []).map((entry) => entry.name)),
+          firefightPloys: new Set((content?.firefightPloys || []).map((entry) => entry.name)),
+        });
+      }
+      return setup.rounds.get(setup.round);
+    }
+
+    function selectedTeamContent(team, content) {
+      const setup = briefingSetup(team, content);
+      const ploys = turningPointSelection(setup, content);
+      return {
+        ...content,
+        equipment: (content?.equipment || []).filter((entry) => setup.equipment.has(entry.name)),
+        strategyPloys: (content?.strategyPloys || []).filter((entry) => ploys.strategyPloys.has(entry.name)),
+        firefightPloys: (content?.firefightPloys || []).filter((entry) => ploys.firefightPloys.has(entry.name)),
+      };
+    }
+
+    function setupGroups(roster, content, selected, setup) {
+      const ploys = turningPointSelection(setup, content);
+      return [
+        { key: "operatives", label: "Operatives", entries: roster, selected, identity: "id" },
+        { key: "equipment", label: "Equipment", entries: content?.equipment || [], selected: setup.equipment, identity: "name" },
+        { key: "strategyPloys", label: "Strategy ploys", entries: content?.strategyPloys || [], selected: ploys.strategyPloys, identity: "name" },
+        { key: "firefightPloys", label: "Firefight ploys", entries: content?.firefightPloys || [], selected: ploys.firefightPloys, identity: "name" },
+      ];
+    }
+
+    function renderOpponentSetup(roster, content, selected, setup) {
+      const groups = setupGroups(roster, content, selected, setup);
+      const tabs = [
+        { key: "operatives", label: "Operatives", groups: [groups[0]] },
+        { key: "equipment", label: "Equipment", groups: [groups[1]] },
+        { key: "ploys", label: "Ploys", groups: groups.slice(2) },
+      ];
+      const active = tabs.find((tab) => tab.key === setup.tab);
+      return `<section class="opponent-setup" aria-labelledby="setup-heading">
+        <div class="setup-heading"><h4 id="setup-heading">Opponent setup</h4>
+          <label class="turning-point">Turning point<select id="turning-point">${[1, 2, 3, 4].map((round) =>
+            `<option value="${round}" ${round === setup.round ? "selected" : ""}>${round}</option>`).join("")}</select></label>
+        </div>
+        <div class="setup-tabs" role="tablist" aria-label="Opponent setup categories">${tabs.map((tab) => {
+          const entries = tab.groups.reduce((total, group) => total + group.entries.length, 0);
+          const checked = tab.groups.reduce((total, group) => total + group.entries.filter((entry) => group.selected.has(entry[group.identity])).length, 0);
+          return `<button type="button" role="tab" id="setup-tab-${tab.key}" data-setup-tab="${tab.key}" aria-controls="setup-panel" aria-selected="${tab.key === setup.tab}" tabindex="${tab.key === setup.tab ? 0 : -1}">${tab.label}<small>${checked}/${entries}</small></button>`;
+        }).join("")}</div>
+        <div id="setup-panel" class="setup-panel" role="tabpanel" aria-labelledby="setup-tab-${setup.tab}">
+          <div class="setup-actions"><button type="button" data-setup-all="true">Select all</button><button type="button" data-setup-all="false">Clear</button>
+            <span>${setup.tab === "ploys" ? `Turning point ${setup.round}` : "All turning points"}</span></div>
+          ${active.groups.map((group) => `<fieldset class="setup-group"><legend>${group.label}</legend>
+            <div class="opponent-options">${group.entries.map((entry) => `<div class="setup-choice"><label>
+              <input type="checkbox" data-setup-group="${group.key}" data-setup-id="${escapeHtml(entry[group.identity])}" ${group.key === "operatives" ? `data-opponent-id="${escapeHtml(entry.id)}"` : ""} ${group.selected.has(entry[group.identity]) ? "checked" : ""}>
+              ${escapeHtml(entry.name.replace(/-/g, " "))}</label>
+              ${group.key !== "operatives" ? `<details><summary>Rule text</summary><p>${escapeHtml(referenceBody(entry))}</p></details>` : ""}</div>`).join("") || '<p class="content-unavailable">No entries available in this snapshot.</p>'}</div>
+          </fieldset>`).join("")}
+        </div></section>`;
+    }
+
+    function operativeSourceLink(name, roster) {
+      const operative = roster.find((entry) => entry.name === name);
+      return operative ? `<button type="button" class="source-operative" data-source-operative="${escapeHtml(operative.id)}">${escapeHtml(name)}</button>` : escapeHtml(name);
+    }
+
+    function openSourceDatacard(identifier) {
+      const operative = state.operatives.find((entry) => entry.id === identifier);
+      if (!operative) return;
+      const dialog = document.querySelector("#source-card-dialog");
+      const previous = { index: state.cardIndex, side: state.cardSide };
+      state.cardIndex = 0;
+      state.cardSide = "front";
+      renderDetail(operative, document.querySelector("#source-card-content"));
+      dialog.addEventListener("close", () => {
+        state.cardIndex = previous.index;
+        state.cardSide = previous.side;
+        document.querySelector("#source-card-content").innerHTML = "";
+      }, { once: true });
+      dialog.showModal();
     }
 
     function ruleSourceBadges(rule) {
@@ -503,35 +656,37 @@
       const operatives = roster.filter((operative) => selected.has(operative.id));
       const teamLabel = roster[0]?.teamLabel || team.replace(/-/g, " ").replace(/\b\w/g, (letter) => letter.toUpperCase());
       const content = state.teamContent[team];
+      const setup = briefingSetup(team, content);
+      const includedContent = selectedTeamContent(team, content);
       el.count.innerHTML = `<strong>${operatives.length}/${roster.length}</strong><br>types selected`;
       if (!roster.length) {
         el.teamSummary.innerHTML = '<div class="summary-empty">No operative data is available for this team.</div>';
         return;
       }
-      const { stats, rules } = teamSummaryData(operatives, content);
+      const { stats, rules } = teamSummaryData(operatives, includedContent);
       const statCards = stats.map((stat) => `
         <section class="summary-stat"><h4>${escapeHtml(stat.label)}</h4>
           ${stat.values.map(([value, names]) => `
             <details class="summary-stat-value">
               <summary><b>${escapeHtml(value)}</b><span>${names.length} ${names.length === 1 ? "type" : "types"}</span></summary>
-              <ul class="summary-sources">${names.map((name) => `<li>${escapeHtml(name)}</li>`).join("")}</ul>
+              <ul class="summary-sources">${names.map((name) => `<li>${operativeSourceLink(name, roster)}</li>`).join("")}</ul>
             </details>`).join("")}
         </section>`).join("");
       const ruleDetails = rules.map((rule) => {
         const sourceCount = rule.weapons.size + rule.abilities.size + rule.ploys.size;
         const weaponSources = renderSummarySources("Operatives / weapons", rule.weapons, (source) =>
-          `<li>${escapeHtml(source.name)} — ${escapeHtml(source.detail)}</li>`);
+          `<li>${operativeSourceLink(source.name, roster)} — ${escapeHtml(source.detail)}</li>`);
         const abilitySources = renderSummarySources("Operative abilities", rule.abilities, (source) =>
-          `<li><details class="summary-ploy"><summary>${escapeHtml(source.name)} — ${escapeHtml(source.detail)}</summary>
+          `<li><details class="summary-ploy"><summary>${operativeSourceLink(source.name, roster)} — ${escapeHtml(source.detail)}</summary>
             <p>${escapeHtml([...(operatives.find((operative) => operative.name === source.name)?.passiveAbilities || []),
               ...(operatives.find((operative) => operative.name === source.name)?.uniqueActions || [])]
               .find((ability) => ability.name === source.detail)?.description || "")}</p></details></li>`);
         const ploySources = renderSummarySources("Faction rules, ploys and equipment", rule.ploys, (source) =>
           `<li><details class="summary-ploy"><summary>${escapeHtml(source.type)} — ${escapeHtml(source.name)}</summary>
             <p>${escapeHtml(referenceBody(source))}</p></details></li>`);
-        return `<details class="summary-rule"><summary><span class="summary-rule-name">${escapeHtml(rule.name)}</span>
-          ${ruleSourceBadges(rule)}
-          <span>${sourceCount} ${sourceCount === 1 ? "source" : "sources"}</span></summary>
+        return `<details class="summary-rule"><summary><span class="summary-rule-heading"><span class="summary-rule-name">${escapeHtml(rule.name)}</span>
+          ${ruleSourceBadges(rule)}</span>
+          <span class="summary-source-count">${sourceCount} ${sourceCount === 1 ? "source" : "sources"}</span></summary>
           <div class="summary-rule-sources">${weaponSources}${abilitySources}${ploySources}</div></details>`;
       }).join("");
       const missingContent = content?.contentAvailable
@@ -539,37 +694,61 @@
         : `<p class="summary-empty">Faction rules and ploys are unavailable for ${escapeHtml(teamLabel)}.</p>`;
       el.teamSummary.innerHTML = `
         <h3 class="summary-title">${escapeHtml(teamLabel)}<span>${operatives.length} of ${roster.length} datacard types selected</span></h3>
-        <details class="opponent-picker" open><summary>What is your opponent bringing?</summary>
-          <p>Uncheck absent operative types to narrow stats and operative rule sources. Shared faction rules, ploys and equipment remain potential sources. This is not a roster-legality or weapon-loadout checker.</p>
-          <div class="opponent-actions"><button type="button" data-opponent-all="true">Select all</button><button type="button" data-opponent-all="false">Select none</button></div>
-          <div class="opponent-options">${roster.map((operative) =>
-            `<label><input type="checkbox" data-opponent-id="${escapeHtml(operative.id)}" ${selected.has(operative.id) ? "checked" : ""}>${escapeHtml(operative.name)}</label>`).join("")}</div>
-        </details>
+        ${renderOpponentSetup(roster, content, selected, setup)}
         ${renderReference("Operative selection", content?.operativeSelection,
           "Operative selection is unavailable in this snapshot. Datacard types are not the deployed team size.")}
-        ${operatives.length ? `<div class="summary-stats">${statCards}</div>` : '<p class="summary-empty">No operative types selected. Only shared potential rule sources are shown.</p>'}
+        ${operatives.length ? `<div class="summary-stats">${statCards}</div>` : '<p class="summary-empty">No operative types selected. Only selected shared potential rule sources are shown.</p>'}
         <section class="summary-rules"><h4>Weapon rules and abilities</h4>
           <p class="rule-legend">W: weapon · A: ability · E: equipment · FR: faction rule · FP: firefight ploy · SP: strategy ploy. Badges indicate sources or mentions, not unconditional grants.</p>
           ${ruleDetails || '<p class="summary-empty">No weapon rules found.</p>'}
         </section>
         ${renderReference("Faction rules", content?.factionRules, "Faction rules unavailable.")}
-        ${renderReference("Strategy ploys", content?.strategyPloys, "Strategy ploys unavailable.")}
-        ${renderReference("Firefight ploys", content?.firefightPloys, "Firefight ploys unavailable.")}
-        ${renderReference("Equipment", content?.equipment, "Equipment unavailable in this snapshot.")}
+        ${renderReference(`Strategy ploys · Turning point ${setup.round}`, includedContent.strategyPloys, content?.strategyPloys?.length ? "No strategy ploys selected for this turning point." : "Strategy ploys unavailable.")}
+        ${renderReference(`Firefight ploys · Turning point ${setup.round}`, includedContent.firefightPloys, content?.firefightPloys?.length ? "No firefight ploys selected for this turning point." : "Firefight ploys unavailable.")}
+        ${renderReference("Equipment", includedContent.equipment, content?.equipment?.length ? "No equipment selected." : "Equipment unavailable in this snapshot.")}
         ${content?.sourcePath ? `<p class="source-note">Source: ${escapeHtml(content.sourcePath)}${content.generatedAt
           ? `<br>Source generated: ${escapeHtml(content.generatedAt)}` : ""}</p>` : ""}${missingContent}`;
-      el.teamSummary.querySelectorAll("[data-opponent-id]").forEach((checkbox) => checkbox.addEventListener("change", () => {
-        if (checkbox.checked) selected.add(checkbox.dataset.opponentId);
-        else selected.delete(checkbox.dataset.opponentId);
+      el.teamSummary.querySelectorAll("[data-setup-id]").forEach((checkbox) => checkbox.addEventListener("change", () => {
+        const group = setupGroups(roster, content, selected, setup).find((entry) => entry.key === checkbox.dataset.setupGroup);
+        if (checkbox.checked) group.selected.add(checkbox.dataset.setupId);
+        else group.selected.delete(checkbox.dataset.setupId);
         renderTeamSummary();
-        el.teamSummary.querySelectorAll("[data-opponent-id]").forEach((replacement) => {
-          if (replacement.dataset.opponentId === checkbox.dataset.opponentId) replacement.focus({ preventScroll: true });
+        el.teamSummary.querySelectorAll("[data-setup-id]").forEach((replacement) => {
+          if (replacement.dataset.setupId === checkbox.dataset.setupId && replacement.dataset.setupGroup === checkbox.dataset.setupGroup) replacement.focus({ preventScroll: true });
         });
       }));
-      el.teamSummary.querySelectorAll("[data-opponent-all]").forEach((button) => button.addEventListener("click", () => {
-        state.opponentSelections.set(team, new Set(button.dataset.opponentAll === "true" ? roster.map((operative) => operative.id) : []));
+      el.teamSummary.querySelectorAll("[data-setup-all]").forEach((button) => button.addEventListener("click", () => {
+        const groups = setupGroups(roster, content, selected, setup).filter((group) => setup.tab === "ploys" ? group.key.endsWith("Ploys") : group.key === setup.tab);
+        for (const group of groups) {
+          group.selected.clear();
+          if (button.dataset.setupAll === "true") group.entries.forEach((entry) => group.selected.add(entry[group.identity]));
+        }
         renderTeamSummary();
-        el.teamSummary.querySelector(`[data-opponent-all="${button.dataset.opponentAll}"]`).focus({ preventScroll: true });
+        el.teamSummary.querySelector(`[data-setup-all="${button.dataset.setupAll}"]`).focus({ preventScroll: true });
+      }));
+      el.teamSummary.querySelectorAll("[data-setup-tab]").forEach((button) => {
+        const selectTab = (tab) => {
+          setup.tab = tab;
+          renderTeamSummary();
+          el.teamSummary.querySelector(`[data-setup-tab="${tab}"]`).focus({ preventScroll: true });
+        };
+        button.addEventListener("click", () => selectTab(button.dataset.setupTab));
+        button.addEventListener("keydown", (event) => {
+          const tabs = ["operatives", "equipment", "ploys"];
+          const index = tabs.indexOf(setup.tab);
+          const next = { ArrowRight: tabs[(index + 1) % tabs.length], ArrowLeft: tabs[(index + tabs.length - 1) % tabs.length], Home: tabs[0], End: tabs[2] }[event.key];
+          if (next) { event.preventDefault(); selectTab(next); }
+        });
+      });
+      el.teamSummary.querySelector("#turning-point").addEventListener("change", (event) => {
+        setup.round = Number(event.target.value);
+        renderTeamSummary();
+        el.teamSummary.querySelector("#turning-point").focus({ preventScroll: true });
+      });
+      el.teamSummary.querySelectorAll("[data-source-operative]").forEach((button) => button.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        openSourceDatacard(button.dataset.sourceOperative);
       }));
     }
 
@@ -589,6 +768,7 @@
 
       for (const filter of MULTI_FILTERS) {
         const values = [...new Set(state.operatives.flatMap((operative) => operative[filter.key] || []))]
+          .filter((value) => filter.key !== "weaponRules" || isKnownWeaponRule(value))
           .sort((first, second) => first.localeCompare(second, undefined, { sensitivity: "base" }));
         const options = document.querySelector(`#${filter.optionsId}`);
         options.innerHTML = values.map((value) => `
@@ -648,9 +828,9 @@
       el.activeFilterCount.textContent = activeCount ? `${activeCount} active` : "No filters";
     }
 
-    function renderDetail(operative) {
+    function renderDetail(operative, container = el.detail) {
       if (!operative) {
-        el.detail.innerHTML = '<div class="detail-empty">No operative matches those filters.</div>';
+        container.innerHTML = '<div class="detail-empty">No operative matches those filters.</div>';
         return;
       }
       const cards = operative.cards?.length ? operative.cards : [operative];
@@ -661,7 +841,7 @@
         <span class="weapon-meta">${escapeHtml(weapon.attacks || "-")} ATK<br>${escapeHtml(weapon.hit || "-")} HIT<br>${escapeHtml(weapon.damage || "-")} DMG</span></div>`).join("");
       const abilities = [...(operative.passiveAbilities || []), ...(operative.uniqueActions || [])].map((ability) => `<p class="rule"><b>${escapeHtml(ability.name)}</b>${escapeHtml(ability.description || "")}</p>`).join("");
       const keywords = (operative.keywords || []).map((keyword) => `<span class="keyword">${escapeHtml(keyword)}</span>`).join("");
-      el.detail.innerHTML = `
+      container.innerHTML = `
         <div class="detail-top"><p class="detail-team">${escapeHtml(operative.teamLabel)}</p><h3>${escapeHtml(operative.name)}</h3>
           <div class="stats">
             <div class="stat"><b>${escapeHtml(operative.apl)}</b><span>APL</span></div>
@@ -675,7 +855,7 @@
           <img ${image ? `src="${escapeHtml(image)}"` : "hidden"} alt="${escapeHtml(operative.name)} datacard ${state.cardIndex + 1} ${state.cardSide}">
           <div class="image-fallback" ${image ? "hidden" : ""}>Generated ${state.cardSide} image not found.</div>
         </div>
-        ${cards.length > 1 ? `<label class="card-select">Datacard<select id="card-pair">${cards.map((card, index) =>
+        ${cards.length > 1 ? `<label class="card-select">Datacard<select data-card-pair id="${container === el.detail ? "card-pair" : "source-card-pair"}">${cards.map((card, index) =>
           `<option value="${index}" ${index === state.cardIndex ? "selected" : ""}>${index + 1} / ${cards.length}</option>`).join("")}</select></label>` : ""}
         <div class="image-actions"><div class="side-switch" role="group" aria-label="Datacard side">
           <button type="button" data-side="front" aria-pressed="${state.cardSide === "front"}">Front</button>
@@ -686,17 +866,19 @@
           ${abilities ? `<section class="detail-section"><h4>Abilities and actions</h4>${abilities}</section>` : ""}
           ${keywords ? `<section class="detail-section"><h4>Keywords</h4><div class="keyword-list">${keywords}</div></section>` : ""}
         </div>`;
-      el.detail.querySelector("img").addEventListener("error", (event) => {
+      container.querySelector("img").addEventListener("error", (event) => {
         event.target.hidden = true;
         event.target.nextElementSibling.hidden = false;
       });
-      el.detail.querySelector("#card-pair")?.addEventListener("change", (event) => {
+      container.querySelector("[data-card-pair]")?.addEventListener("change", (event) => {
         state.cardIndex = Number(event.target.value);
-        renderDetail(operative);
+        renderDetail(operative, container);
+        container.querySelector("[data-card-pair]").focus({ preventScroll: true });
       });
-      el.detail.querySelectorAll("[data-side]").forEach((button) => button.addEventListener("click", () => {
+      container.querySelectorAll("[data-side]").forEach((button) => button.addEventListener("click", () => {
         state.cardSide = button.dataset.side;
-        renderDetail(operative);
+        renderDetail(operative, container);
+        container.querySelector(`[data-side="${state.cardSide}"]`).focus({ preventScroll: true });
       }));
     }
 
@@ -769,11 +951,11 @@
 
     async function start() {
       try {
-        const response = await fetch("./data/operatives.json");
+        const response = await fetch("./app-data/current/operatives.json");
         if (!response.ok) throw new Error(`Catalog request failed (${response.status})`);
         state.operatives = await response.json();
         try {
-          const contentResponse = await fetch("./data/team-content.json");
+          const contentResponse = await fetch("./app-data/current/team-content.json");
           if (!contentResponse.ok) throw new Error(`Team content request failed (${contentResponse.status})`);
           const teamContent = await contentResponse.json();
           state.teamContent = teamContent.teams || {};
@@ -816,6 +998,19 @@
       for (const filter of MULTI_FILTERS) state.multi[filter.key].clear();
       document.querySelectorAll("[data-multi]").forEach((checkbox) => { checkbox.checked = false; });
       updateWoundsFields();
+    });
+    document.querySelector("#close-source-card").addEventListener("click", () => document.querySelector("#source-card-dialog").close());
+    document.querySelector("#source-card-dialog").addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        event.currentTarget.close();
+      }
+    });
+    document.querySelector("#source-card-dialog").addEventListener("click", (event) => {
+      if (event.target === event.currentTarget) {
+        const bounds = event.currentTarget.getBoundingClientRect();
+        if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) event.currentTarget.close();
+      }
     });
     start();
   </script>

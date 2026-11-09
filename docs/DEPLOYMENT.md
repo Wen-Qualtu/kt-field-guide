@@ -90,6 +90,23 @@ rendering, npm dependencies or runtime server is involved. Do not add secrets
 to Preview: branch build scripts are code under development and can read build
 environment variables. Git integration avoids a user-managed deployment token.
 
+## Curated acceptance snapshot
+
+The 2026-11-09 acceptance candidate includes `app-data/current/`, assembled from
+the validated full review and ordered targeted corrections. The UI fetches this
+curated data, not the repository's original raw `data/` snapshot. Build output
+also mirrors the reviewed files under `data/` for compatibility.
+
+The release manifest requires zero unresolved findings and complete review
+coverage. It records mixed policy provenance and does not prove semantic correctness.
+Builds verify artifact integrity and refuse `main` while `productionApproved` is
+false. No model review or source extraction is run by Cloudflare or GitHub CI.
+Staging, audit files and trial candidates are excluded from public output.
+
+The one maintained uncertainty list is `review/reports/uncertainties.md`; it is
+currently clear after the human-confirmed Markerlights review. Future changes
+still need review and a newly assembled current snapshot before deployment.
+
 ## Daily workflow
 
 1. Create a feature branch from staging and open a PR targeting `staging`.

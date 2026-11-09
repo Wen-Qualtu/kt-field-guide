@@ -1,4 +1,5 @@
-import { cpSync, existsSync, lstatSync, mkdirSync, readdirSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, lstatSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -23,7 +24,24 @@ export function buildSite(root, branch = 'main') {
   if (existsSync(destination)) {
     throw new Error('public already exists; remove the previous build explicitly before rebuilding');
   }
-  for (const entry of publicEntries) {
+  const curated = join(root, 'app-data', 'current');
+  const hasCurated = existsSync(curated);
+  if (hasCurated) {
+    validateEntry(curated);
+    const release = JSON.parse(readFileSync(join(curated, 'release.json'), 'utf8'));
+    if (release.status !== 'accepted-curated' || release.unresolvedFindings !== 0 || !release.completeCoverage) {
+      throw new Error('Curated app data is not approved for acceptance');
+    }
+    if (branch === 'main' && release.productionApproved !== true) {
+      throw new Error('Curated app data is acceptance-only; production release approval is required');
+    }
+    for (const filename of ['operatives.json', 'team-content.json']) {
+      const digest = createHash('sha256').update(readFileSync(join(curated, filename))).digest('hex');
+      if (digest !== release.files?.[filename]?.sha256) throw new Error(`Curated release integrity mismatch: ${filename}`);
+    }
+  }
+  const entries = publicEntries.filter(entry => !hasCurated || entry !== 'data');
+  for (const entry of entries) {
     const source = join(root, entry);
     validateEntry(source);
     const stat = lstatSync(source);
@@ -32,12 +50,21 @@ export function buildSite(root, branch = 'main') {
     }
   }
   mkdirSync(destination);
-  for (const entry of publicEntries) {
+  for (const entry of entries) {
     cpSync(join(root, entry), join(destination, entry), {
       recursive: true,
       errorOnExist: true,
       force: false,
     });
+  }
+  if (hasCurated) {
+    const published = join(destination, 'app-data', 'current');
+    mkdirSync(published, { recursive: true });
+    mkdirSync(join(destination, 'data'));
+    for (const filename of ['operatives.json', 'team-content.json', 'release.json']) {
+      cpSync(join(curated, filename), join(published, filename));
+      cpSync(join(curated, filename), join(destination, 'data', filename));
+    }
   }
   const headers = [
     '/*',

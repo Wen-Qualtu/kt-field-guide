@@ -26,7 +26,7 @@ jobs:
       - name: Test sync script
         run: python -m unittest discover -s tests -v
       - name: Test site packaging
-        run: node --test tests/build-site.test.mjs
+        run: node --test tests/*.test.mjs
       - name: Assemble public site
         env:
           CF_PAGES_BRANCH: ${{ github.head_ref || github.ref_name }}

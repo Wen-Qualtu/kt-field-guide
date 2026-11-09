@@ -1,0 +1,3391 @@
+# Semantic Review
+
+Status: report-only. Complete coverage: yes. Ready to publish: no.
+Structural validation does not prove semantic correctness.
+
+Coverage: 48 teams, 1207 records (453 datacards, 754 shared), 1644 segments.
+Cleanup: 750 records, 1544 spans. Grants: 343. Suppressed lexical tags: 195. Uncertainties: 95. Source issues: 3.
+
+## angels-of-death
+- "SPACE MARINE CAPTAIN" (angels-of-death/datacards/space-marine-captain/1)
+  - /datacards/0/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Control range is a positional restriction, not a Range weapon-rule grant."
+- "ASSAULT INTERCESSOR GRENADIER" (angels-of-death/datacards/assault-intercessor-grenadier/1)
+  - /datacards/3/passive_abilities/0/description: 0 deletions.
+  - "limited": modify. "Exempts these grenade uses from the allowance; does not grant Limited or invent a use count."
+- "ELIMINATOR SNIPER" (angels-of-death/datacards/eliminator-sniper/1)
+  - /datacards/8/passive_abilities/0/description: 0 deletions.
+  - "Saturate": counter. "Defensive immunity to an attacker's rule, not a friendly Saturate grant."
+  - /datacards/8/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Control range restricts the action; it is not the weapon Range rule."
+- "chapter-tactics" (angels-of-death/faction_rules/chapter-tactics/1)
+  - /faction_rules/0/text: 2 deletions.
+  - /faction_rules/0/options/0/text: 0 deletions.
+  - "Rending": grant. "Explicitly gives Rending to that operative's melee weapons, not all weapons or all unselected tactics."
+  - /faction_rules/0/options/1/text: 0 deletions.
+  - "Brutal": reference. "References enemy Brutal as an exception to the blocking benefit; grants no Brutal and does not negate it."
+  - /faction_rules/0/options/2/text: 0 deletions.
+  - "Shock": counter. "Negates enemy Shock rather than granting Shock."
+  - /faction_rules/0/options/4/text: 0 deletions.
+  - "range": reference. "A control-range movement exception, not a weapon-range grant."
+  - /faction_rules/0/options/6/text: 0 deletions.
+  - "Accurate 1": grant. "Explicit conditional Accurate 1 grant; does not cover non-bolt weapons or counteractions outside an activation."
+  - "Severe": grant. "Explicitly grants Severe under the same activation and weapon restrictions as Accurate 1."
+  - /faction_rules/0/options/7/text: 0 deletions.
+  - "Saturate": grant. "Direct ranged-weapon grant; the separate enemy-assistance restriction remains mechanical."
+- "astartes" (angels-of-death/faction_rules/astartes/1)
+  - /faction_rules/1/text: 2 deletions.
+  - "heavy": reference. "Heavy is part of a weapon name, not a grant or alteration of the Heavy weapon rule."
+- "combat-doctrine" (angels-of-death/strategy_ploys/combat-doctrine/1)
+  - /strategy_ploys/0/text: 2 deletions.
+  - "Balanced": grant. "Explicit grant with alternative, selected combat conditions; these are not unconditional team-wide rerolls."
+- "and-they-shall-know-no-fear" (angels-of-death/strategy_ploys/and-they-shall-know-no-fear/1)
+  - /strategy_ploys/1/text: 2 deletions.
+- "adaptive-tactics" (angels-of-death/strategy_ploys/adaptive-tactics/1)
+  - /strategy_ploys/2/text: 2 deletions.
+- "indomitus" (angels-of-death/strategy_ploys/indomitus/1)
+  - /strategy_ploys/3/text: 2 deletions.
+- "adjust-doctrine" (angels-of-death/firefight_ploys/adjust-doctrine/1)
+  - /firefight_ploys/0/text: 2 deletions.
+- "transhuman-physiology" (angels-of-death/firefight_ploys/transhuman-physiology/1)
+  - /firefight_ploys/1/text: 2 deletions.
+- "shock-assault" (angels-of-death/firefight_ploys/shock-assault/1)
+  - /firefight_ploys/2/text: 2 deletions.
+  - "brutal": flavour. "The adjective describes assaults; the following mechanics grant Shock, not Brutal."
+  - "Shock": grant. "Explicit temporary Shock grant; not a persistent grant and not a grant merely from the title."
+- "wrath-of-vengeance" (angels-of-death/firefight_ploys/wrath-of-vengeance/1)
+  - /firefight_ploys/3/text: 2 deletions.
+- "purity-seals" (angels-of-death/equipment/purity-seals/1)
+  - /equipment/0/text: 2 deletions.
+- "chapter-reliquaries" (angels-of-death/equipment/chapter-reliquaries/1)
+  - /equipment/1/text: 2 deletions.
+- "tilting-shields" (angels-of-death/equipment/tilting-shields/1)
+  - /equipment/2/text: 2 deletions.
+  - "Rending": counter. "Rending is a mechanically useful example of enemy critical conversion restricted by the shield, not a friendly grant."
+  - "Severe": counter. "Enemy critical-retention clarification; does not grant Severe or cancel unrelated weapon effects."
+  - "Lethal": counter. "Restricts enemy retention below 6; the parenthetical explains scope and must stay."
+- "auspex" (angels-of-death/equipment/auspex/1)
+  - /equipment/3/text: 2 deletions.
+- "OPERATIVE SELECTION" (angels-of-death/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 3 deletions.
+  - "heavy": reference. "Weapon names and roster labels do not independently confer the Heavy weapon rule."
+  - "SEEK": reference. "SEEK & DESTROY is an archetype, not Seek. Keep this meaningful metadata."
+## battleclade
+- "BATTLECLADE TECHNOARCHEOLOGIST" (battleclade/datacards/battleclade-technoarcheologist/1)
+  - /datacards/0/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Endpoint control range is not a weapon Range grant; STRATEGIC GAMBIT is mechanical."
+  - /datacards/0/unique_actions/0/description: 0 deletions.
+  - "Ceaseless": grant. "The enemy gains a token; the attacking friendly weapons, not the enemy, gain Ceaseless."
+- "BATTLECLADE AUTO-PROXY SERVITOR" (battleclade/datacards/battleclade-auto-proxy-servitor/1)
+  - /datacards/1/passive_abilities/0/description: 0 deletions.
+  - "Saturate": grant. "Explicit shared conditional grant, not an unconditional Auto-Proxy or team profile rule."
+  - "range": reference. "Positional switch for Saturate support, not a weapon Range rule."
+  - /datacards/1/unique_actions/0/description: 0 deletions.
+  - "Seek": grant. "Explicit conditional Seek Light grant with target, duration and optional use."
+  - "range": reference. "Action restriction, not a weapon-range parameter."
+- "BATTLECLADE BREACHER SERVITOR" (battleclade/datacards/battleclade-breacher-servitor/1)
+  - /datacards/2/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Terrain placement and access measurements, not a weapon Range rule."
+- "BATTLECLADE SERVITOR UNDERSEER" (battleclade/datacards/battleclade-servitor-underseer/1)
+  - /datacards/5/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action availability and support distances are not the weapon Range rule."
+  - /datacards/5/unique_actions/1/description: 0 deletions.
+  - "range": reference. "Control range restricts a support action, not weapon range."
+- "BATTLECLADE TECHNOMEDIC SERVITOR" (battleclade/datacards/battleclade-technomedic-servitor/1)
+  - /datacards/6/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Rescue eligibility and Dash endpoint use control range, not a weapon Range grant."
+  - /datacards/6/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Healing/action distance, not weapon Range."
+- "noospheric-network" (battleclade/faction_rules/noospheric-network/1)
+  - /faction_rules/0/text: 3 deletions.
+- "noospheric-possession" (battleclade/strategy_ploys/noospheric-possession/1)
+  - /strategy_ploys/0/text: 2 deletions.
+  - "Accurate 1": grant. "Direct support-dependent Accurate 1 grant; preserve SUPPORT and its equipment interaction."
+- "duty-of-reclamation" (battleclade/strategy_ploys/duty-of-reclamation/1)
+  - /strategy_ploys/1/text: 2 deletions.
+- "incantation-of-the-iron-soul" (battleclade/strategy_ploys/incantation-of-the-iron-soul/1)
+  - /strategy_ploys/2/text: 2 deletions.
+- "prioritised-acquisition" (battleclade/strategy_ploys/prioritised-acquisition/1)
+  - /strategy_ploys/3/text: 2 deletions.
+- "system-exorcism" (battleclade/firefight_ploys/system-exorcism/1)
+  - /firefight_ploys/0/text: 2 deletions.
+- "remote-access" (battleclade/firefight_ploys/remote-access/1)
+  - /firefight_ploys/1/text: 2 deletions.
+  - "range": reference. "Changes action reach, not any weapon's Range rule."
+- "auto-ferric-supplication" (battleclade/firefight_ploys/auto-ferric-supplication/1)
+  - /firefight_ploys/2/text: 2 deletions.
+  - "Piercing": counter. "Defensive negation of the attacker's Piercing, not an offensive grant."
+- "servile-surrogacy" (battleclade/firefight_ploys/servile-surrogacy/1)
+  - /firefight_ploys/3/text: 2 deletions.
+  - "Torrent": reference. "Existing attacker rule excludes the ploy; it is neither granted nor countered."
+  - "Blast": reference. "An exception based on an existing attacking profile, not a Blast grant or cancellation."
+  - "range": reference. "Temporary melee engagement treatment, not weapon Range."
+- "covert-guises" (battleclade/equipment/covert-guises/1)
+  - /equipment/0/text: 2 deletions.
+- "electromantic-capacitors" (battleclade/equipment/electromantic-capacitors/1)
+  - /equipment/1/text: 2 deletions.
+  - "Severe": grant. "Explicit additional Severe grant limited to retaliation, not all fighting."
+  - "Shock": grant. "Direct melee Shock grant; do not inherit Severe's narrower timing."
+- "concealed-apparatus" (battleclade/equipment/concealed-apparatus/1)
+  - /equipment/2/text: 2 deletions.
+- "neurocyclic-reserve-cells" (battleclade/equipment/neurocyclic-reserve-cells/1)
+  - /equipment/3/text: 2 deletions.
+- "OPERATIVE SELECTION" (battleclade/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 3 deletions.
+  - "heavy": reference. "Weapon-name references; direct profile Heavy rules remain structured source facts, not grants from roster prose."
+## blades-of-khaine
+- "DIRE AVENGER EXARCH" (blades-of-khaine/datacards/dire-avenger-exarch/1)
+  - /datacards/0/passive_abilities/0/description: 0 deletions.
+  - "Balanced": grant. "Explicit conditional grant; contesting is a separate alternative to shooting a contesting enemy."
+  - /datacards/0/passive_abilities/2/description: 0 deletions.
+  - "Piercing": counter. "Defensive aura counter, not a grant to friendly weapons."
+- "DIRE AVENGER WARRIOR" (blades-of-khaine/datacards/dire-avenger-warrior/1)
+  - /datacards/1/passive_abilities/0/description: 0 deletions.
+  - "Balanced": grant. "Explicit grant with two alternative conditions, not an unconditional profile rule."
+- "aspect-techniques" (blades-of-khaine/faction_rules/aspect-techniques/1)
+  - /faction_rules/0/text: 3 deletions.
+  - "lethal": flavour. "Ordinary adjective, not a Lethal rule grant."
+- "howling-banshee" (blades-of-khaine/faction_rules/howling-banshee/1)
+  - /faction_rules/1/text: 2 deletions.
+  - "range": reference. "Control range gates a movement technique, not weapon Range."
+  - /faction_rules/1/options/0/text: 1 deletions.
+  - "brutal": flavour. "Adjective does not grant Brutal; the actual ability concerns ending combat and falling back."
+- "dire-avenger" (blades-of-khaine/faction_rules/dire-avenger/1)
+  - /faction_rules/2/text: 2 deletions.
+  - /faction_rules/2/options/0/text: 1 deletions.
+  - "Torrent 2\"": grant. "Explicit parameterized grant with a restriction overriding ordinary Torrent target multiplicity."
+  - "lethal": flavour. "Mythological description does not grant Lethal or supply its threshold."
+  - /faction_rules/2/options/1/text: 1 deletions.
+  - "Lethal 5+": grant. "Explicit Lethal 5+ grant; not a pistol grant and not permanent."
+  - "punishing": flavour. "Ordinary verb in narrative; only Lethal 5+ is granted mechanically."
+  - /faction_rules/2/options/2/text: 1 deletions.
+  - /faction_rules/2/options/3/text: 1 deletions.
+- "striking-scorpion" (blades-of-khaine/faction_rules/striking-scorpion/1)
+  - /faction_rules/3/text: 2 deletions.
+  - "range": reference. "Movement/engagement permission and damage trigger, not weapon Range."
+  - /faction_rules/3/options/0/text: 1 deletions.
+  - /faction_rules/3/options/1/text: 1 deletions.
+  - "Seek": grant. "Explicit limited variant grant to the selected weapon only."
+  - /faction_rules/3/options/2/text: 1 deletions.
+  - "relentless": flavour. "Adjective 'relentless' is descriptive; subsequent mechanics grant Shock, not rerolls."
+  - "Shock": grant. "Explicit temporary Shock grant at the stated critical-strike trigger; not retaliation or a persistent profile grant."
+  - /faction_rules/3/options/3/text: 1 deletions.
+  - "Seek": counter. "Seek is a useful precedence example of a rule countered by target protection, not granted to the friendly operative."
+- "forewarned" (blades-of-khaine/strategy_ploys/forewarned/1)
+  - /strategy_ploys/0/text: 2 deletions.
+- "ruthless-poise" (blades-of-khaine/strategy_ploys/ruthless-poise/1)
+  - /strategy_ploys/1/text: 2 deletions.
+  - "Ceaseless": grant. "Explicit conditional grant with enemy readiness restriction."
+  - "lethal": flavour. "Descriptive adjective; does not accompany the mechanical Ceaseless grant as another rule."
+- "khaines-vengeance" (blades-of-khaine/strategy_ploys/khaines-vengeance/1)
+  - /strategy_ploys/2/text: 2 deletions.
+  - "Ceaseless": grant. "Explicit grant with target readiness and attack-type restrictions distinct from Ruthless Poise."
+- "dance-of-death" (blades-of-khaine/strategy_ploys/dance-of-death/1)
+  - /strategy_ploys/3/text: 2 deletions.
+- "bladewind" (blades-of-khaine/firefight_ploys/bladewind/1)
+  - /firefight_ploys/0/text: 2 deletions.
+- "starfall" (blades-of-khaine/firefight_ploys/starfall/1)
+  - /firefight_ploys/1/text: 2 deletions.
+  - "punishing": flavour. "Adjective does not grant Punishing."
+  - "accurate": flavour. "Descriptive accuracy is not an Accurate weapon-rule grant."
+- "fading-light" (blades-of-khaine/firefight_ploys/fading-light/1)
+  - /firefight_ploys/2/text: 2 deletions.
+- "contempt" (blades-of-khaine/firefight_ploys/contempt/1)
+  - /firefight_ploys/3/text: 2 deletions.
+  - "heavy": flavour. "Describes the force of strikes, not Heavy movement restrictions."
+- "rune-of-prophecy" (blades-of-khaine/equipment/rune-of-prophecy/1)
+  - /equipment/0/text: 2 deletions.
+- "rune-of-shielding" (blades-of-khaine/equipment/rune-of-shielding/1)
+  - /equipment/1/text: 2 deletions.
+- "rune-of-foresight" (blades-of-khaine/equipment/rune-of-foresight/1)
+  - /equipment/2/text: 2 deletions.
+- "wraithbone-talisman" (blades-of-khaine/equipment/wraithbone-talisman/1)
+  - /equipment/3/text: 2 deletions.
+- "OPERATIVE SELECTION" (blades-of-khaine/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 2 deletions.
+  - "Seek": reference. "Archetype name, not Seek targeting permission; this is mechanical roster context and stays."
+## blooded
+- "TRAITOR BRIMSTONE GRENADIER" (blooded/datacards/traitor-brimstone-grenadier/1)
+  - /datacards/1/passive_abilities/0/description: 0 deletions.
+  - "limited": modify. "Use-allocation exemption, not a Limited grant or removal from every grenade weapon."
+  - /datacards/1/passive_abilities/1/description: 0 deletions.
+  - "range": reference. "Engagement changes the trigger roll, not a Range weapon rule; allies are not excluded from 'each operative'."
+- "TRAITOR CORPSEMAN" (blooded/datacards/traitor-corpseman/1)
+  - /datacards/3/passive_abilities/1/description: 0 deletions; UNCERTAIN.
+  - /datacards/3/passive_abilities/3/description: 0 deletions.
+  - "Relentless": grant. "Explicit STIMM grant to its selected recipient, not automatic Relentless for the Corpseman or whole team."
+  - /datacards/3/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Support-action reach and restriction, not weapon Range."
+- "TRAITOR COMMSMAN" (blooded/datacards/traitor-commsman/1)
+  - /datacards/4/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action eligibility, not weapon Range; SUPPORT remains mechanical."
+  - /datacards/4/unique_actions/1/description: 0 deletions.
+  - "range": reference. "Action restriction, not a weapon-range rule."
+- "TRAITOR FLENSER" (blooded/datacards/traitor-flenser/1)
+  - /datacards/6/passive_abilities/0/description: 0 deletions.
+  - "Lethal 5+": grant. "Explicit contextual Lethal 5+ grant to this weapon."
+  - "Heavy": reference. "Heavy denotes terrain, not a Heavy weapon rule or movement restriction."
+  - "range": reference. "Engagement-distance test gates Lethal; does not grant weapon Range."
+- "TRAITOR OGRYN" (blooded/datacards/traitor-ogryn/1)
+  - /datacards/8/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Charge-end target distance, not weapon Range."
+  - /datacards/8/passive_abilities/1/description: 0 deletions.
+  - "Shock": counter. "Defensive immunity; Ogryn's direct profile Shock remains a separate source fact."
+  - "Stun": counter. "Negates enemy Stun, not a grant of Stun to its weapon."
+- "blooded" (blooded/faction_rules/blooded/1)
+  - /faction_rules/0/text: 3 deletions.
+  - "seek": flavour. "Ordinary verb 'seek', not the Seek rule."
+  - /faction_rules/0/options/0/text: 0 deletions.
+  - "Accurate 1": grant. "Explicit Accurate 1 grant plus a conditional modification to its retained success; the single candidate is classified as grant while preserving that modification."
+- "glory-kill" (blooded/strategy_ploys/glory-kill/1)
+  - /strategy_ploys/0/text: 2 deletions.
+  - "Relentless": grant. "Explicit token-dependent alternative grant; does not grant both reroll rules unconditionally."
+  - "Ceaseless": grant. "Explicit default grant with a token-dependent alternative, not a permanent profile rule."
+- "reckless-aspirant" (blooded/strategy_ploys/reckless-aspirant/1)
+  - /strategy_ploys/1/text: 2 deletions.
+  - "Accurate 1": grant. "Explicit grant restricted to tokenless aspiring attackers."
+  - "Punishing": grant. "Explicit independent token-bearing branch; preserve the distinction from Accurate 1."
+- "malevolent-grit" (blooded/strategy_ploys/malevolent-grit/1)
+  - /strategy_ploys/2/text: 2 deletions.
+- "bitter-demise" (blooded/strategy_ploys/bitter-demise/1)
+  - /strategy_ploys/3/text: 2 deletions.
+- "callous-disregard" (blooded/firefight_ploys/callous-disregard/1)
+  - /firefight_ploys/0/text: 2 deletions.
+  - "range": reference. "Target-engagement exception and collateral-damage distance, not weapon Range."
+- "moment-of-repute" (blooded/firefight_ploys/moment-of-repute/1)
+  - /firefight_ploys/1/text: 2 deletions.
+- "reward-earned" (blooded/firefight_ploys/reward-earned/1)
+  - /firefight_ploys/2/text: 2 deletions.
+- "dark-favour" (blooded/firefight_ploys/dark-favour/1)
+  - /firefight_ploys/3/text: 2 deletions.
+  - "Torrent": reference. "Attacker's existing rule prevents ploy use; not a grant or removal of Torrent."
+  - "Blast": reference. "An exclusion based on attacker profile, not a Blast grant or counter."
+  - "range": reference. "Temporary melee-engagement treatment, not weapon Range."
+- "chaos-sigil" (blooded/equipment/chaos-sigil/1)
+  - /equipment/0/text: 2 deletions.
+- "sinister-trophies" (blooded/equipment/sinister-trophies/1)
+  - /equipment/1/text: 2 deletions.
+- "symbols-of-bloody-worship" (blooded/equipment/symbols-of-bloody-worship/1)
+  - /equipment/2/text: 2 deletions.
+- "wicked-blades" (blooded/equipment/wicked-blades/1)
+  - /equipment/3/text: 2 deletions.
+  - "seek": flavour. "Ordinary verb, not a targeting-rule grant."
+  - "lethal": flavour. "Descriptive adjective, not a Lethal grant."
+- "OPERATIVE SELECTION" (blooded/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 3 deletions.
+  - "SEEK": reference. "SEEK & DESTROY names an archetype; no Seek weapon rule is granted."
+## brood-brothers
+- "BROOD BROTHER MEDIC" (brood-brothers/datacards/brood-brother-medic/1)
+  - /datacards/5/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Control range governs eligibility and the rescue move, not a Range weapon rule. All rescue, APL and targeting restrictions remain."
+  - /datacards/5/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Healing proximity and action eligibility do not grant a ranged-weapon rule."
+- "BROOD BROTHER SAPPER" (brood-brothers/datacards/brood-brother-sapper/1)
+  - /datacards/6/passive_abilities/1/description: 0 deletions.
+  - "limited": reference. "This exempts shared equipment uses; it neither grants Limited x nor explicitly changes a weapon's Limited parameter."
+  - /datacards/6/unique_actions/0/description: 0 deletions.
+  - "Heavy": reference. "Heavy describes terrain, not the demolition charge's separate Heavy weapon rule."
+  - "range": reference. "Control range is an action restriction, not a Range grant. Preserve placement, damage radius and all movement restrictions."
+- "BROOD BROTHER VOX-OPERATOR" (brood-brothers/datacards/brood-brother-vox-operator/1)
+  - /datacards/10/unique_actions/0/description: 0 deletions.
+  - "range": reference. "The range mention restricts the support action; it grants no Range weapon rule."
+  - /datacards/10/unique_actions/1/description: 0 deletions.
+  - "range": reference. "Action eligibility is unrelated to a Range weapon rule."
+- "MAGUS" (brood-brothers/datacards/magus/1)
+  - /datacards/11/passive_abilities/0/description: 0 deletions; UNCERTAIN.
+  - /datacards/11/passive_abilities/1/description: 0 deletions; UNCERTAIN.
+  - "Piercing": counter. "Defensive negation of the attacker's Piercing, not an offensive grant to the protected team."
+  - /datacards/11/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Control-range action restriction, not a weapon-rule grant."
+  - /datacards/11/unique_actions/1/description: 0 deletions.
+  - "range": reference. "Control range is action eligibility, not Range x; preserve the distance-dependent damage and stopping conditions."
+- "PATRIARCH" (brood-brothers/datacards/patriarch/1)
+  - /datacards/12/passive_abilities/0/description: 0 deletions.
+  - "Piercing": counter. "Negates incoming Piercing; does not add it to claws. The separate two-activation, 9-inch movement and 4AP limits remain."
+  - /datacards/12/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action restriction only, not a Range weapon grant."
+  - /datacards/12/unique_actions/1/description: 0 deletions.
+  - "range": reference. "Control range restricts the action; no Range rule is conferred on the temporarily friendly enemy."
+- "PSYCHIC FAMILIAR" (brood-brothers/datacards/psychic-familiar/1)
+  - /datacards/13/passive_abilities/0/description: 0 deletions.
+  - "Seek": counter. "Seek is a named example of rules overridden by the defensive protection, not a grant. Preserve the mechanically meaningful example and exception."
+  - /datacards/13/passive_abilities/2/description: 0 deletions.
+  - "range": reference. "Control-range exceptions are not a Range weapon-rule grant."
+- "PRIMUS" (brood-brothers/datacards/primus/1)
+  - /datacards/14/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action restriction, not a Range grant."
+- "crossfire" (brood-brothers/faction_rules/crossfire/1)
+  - /faction_rules/0/text: 2 deletions.
+- "pervasive" (brood-brothers/strategy_ploys/pervasive/1)
+  - /strategy_ploys/0/text: 2 deletions.
+- "uprising" (brood-brothers/strategy_ploys/uprising/1)
+  - /strategy_ploys/1/text: 2 deletions.
+  - "range": reference. "Control range is a disqualifying condition for early Crossfire tokens, not a weapon Range grant."
+- "embedded" (brood-brothers/strategy_ploys/embedded/1)
+  - /strategy_ploys/2/text: 2 deletions.
+  - "Heavy": reference. "Heavy is a terrain category enabling an extra cover save, not the weapon rule."
+- "cult-devotion" (brood-brothers/strategy_ploys/cult-devotion/1)
+  - /strategy_ploys/3/text: 2 deletions.
+- "ruthless-coordination" (brood-brothers/firefight_ploys/ruthless-coordination/1)
+  - /firefight_ploys/0/text: 3 deletions.
+  - "range": reference. "Positioning condition for determining cover/obscured; not a Range weapon rule."
+- "unquestioning-loyalty" (brood-brothers/firefight_ploys/unquestioning-loyalty/1)
+  - /firefight_ploys/1/text: 2 deletions.
+  - "Torrent": reference. "Existing attacker's rule excludes this defensive ploy; it is not granted by the ploy."
+  - "Blast": reference. "Blast is an eligibility exclusion, not an offensive grant or negated weapon rule."
+  - "range": reference. "Control-range treatment makes redirection legal; no Range x grant."
+- "idolisation" (brood-brothers/firefight_ploys/idolisation/1)
+  - /firefight_ploys/2/text: 2 deletions.
+- "insidious" (brood-brothers/firefight_ploys/insidious/1)
+  - /firefight_ploys/3/text: 2 deletions.
+- "cult-talisman" (brood-brothers/equipment/cult-talisman/1)
+  - /equipment/0/text: 2 deletions.
+- "covert-guises" (brood-brothers/equipment/covert-guises/1)
+  - /equipment/1/text: 2 deletions.
+- "cult-knives" (brood-brothers/equipment/cult-knives/1)
+  - /equipment/2/text: 2 deletions.
+- "lookout" (brood-brothers/equipment/lookout/1)
+  - /equipment/3/text: 2 deletions.
+- "OPERATIVE SELECTION" (brood-brothers/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 2 deletions.
+## canoptek-circle
+- "GEOMANCER" (canoptek-circle/datacards/geomancer/1)
+  - /datacards/0/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Control range is an action restriction, not Range x."
+  - /datacards/0/unique_actions/1/description: 1 deletions.
+  - "range": reference. "Control range restricts the supporting action; no Range weapon grant."
+  - /datacards/0/unique_actions/2/description: 0 deletions.
+  - "range": reference. "Placement restriction rather than a Range rule; retain close-quarters Wall-terrain example and valid-placement requirement."
+- "CANOPTEK MACROCYTE ACCELERATOR" (canoptek-circle/datacards/canoptek-macrocyte-accelerator/1)
+  - /datacards/1/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Control range is action eligibility, not Range x."
+  - /datacards/1/unique_actions/1/description: 0 deletions.
+  - "range": reference. "Positioning restriction, not a weapon-rule grant."
+- "CANOPTEK MACROCYTE REANIMATOR" (canoptek-circle/datacards/canoptek-macrocyte-reanimator/1)
+  - /datacards/2/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Rescue eligibility and Dash positioning, not a Range weapon rule."
+  - /datacards/2/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action restriction, not Range x."
+- "obelisk-node-matrix" (canoptek-circle/faction_rules/obelisk-node-matrix/1)
+  - /faction_rules/0/text: 3 deletions.
+  - /faction_rules/0/options/0/text: 0 deletions; UNCERTAIN.
+  - "Accurate 1": grant. "Explicit conditional Accurate 1 grant. The adjacent +1 APL to maximum 3 remains a separate effect."
+  - /faction_rules/0/options/1/text: 0 deletions; UNCERTAIN.
+- "hypershielding" (canoptek-circle/strategy_ploys/hypershielding/1)
+  - /strategy_ploys/0/text: 2 deletions.
+- "transdynamic-amplification" (canoptek-circle/strategy_ploys/transdynamic-amplification/1)
+  - /strategy_ploys/1/text: 2 deletions.
+  - "Ceaseless": grant. "Explicit conditional shooting grant; does not extend to melee or require the shooter to be in the matrix."
+- "cryptogravitic-repulsion" (canoptek-circle/strategy_ploys/cryptogravitic-repulsion/1)
+  - /strategy_ploys/2/text: 2 deletions.
+- "souldrain" (canoptek-circle/strategy_ploys/souldrain/1)
+  - /strategy_ploys/3/text: 2 deletions.
+- "shield-flare" (canoptek-circle/firefight_ploys/shield-flare/1)
+  - /firefight_ploys/0/text: 2 deletions.
+- "animate-obelisk-nodes" (canoptek-circle/firefight_ploys/animate-obelisk-nodes/1)
+  - /firefight_ploys/1/text: 2 deletions.
+- "nodal-response" (canoptek-circle/firefight_ploys/nodal-response/1)
+  - /firefight_ploys/2/text: 2 deletions.
+- "sacrificial-thrall" (canoptek-circle/firefight_ploys/sacrificial-thrall/1)
+  - /firefight_ploys/3/text: 2 deletions.
+  - "Torrent": reference. "Existing enemy-weapon exclusion, not a grant or removal of Torrent."
+  - "Blast": reference. "Eligibility restriction, not offensive Blast access."
+  - "range": reference. "Control-range treatment, not Range weapon rule."
+- "matrix-manipulator" (canoptek-circle/equipment/matrix-manipulator/1)
+  - /equipment/0/text: 2 deletions.
+- "awakened-obelisk-nodes" (canoptek-circle/equipment/awakened-obelisk-nodes/1)
+  - /equipment/1/text: 2 deletions.
+- "nanoscarab-caskets" (canoptek-circle/equipment/nanoscarab-caskets/1)
+  - /equipment/2/text: 2 deletions.
+- "phase-shifter" (canoptek-circle/equipment/phase-shifter/1)
+  - /equipment/3/text: 2 deletions.
+  - "Piercing 1": example. "Numerical example of the defensive reduction, not a Piercing 1 grant; preserve it."
+  - "Piercing": counter. "Defensive weakening of another operative's Piercing is a counter, not a friendly offensive grant."
+- "OPERATIVE SELECTION" (canoptek-circle/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 1 deletions.
+## celestian-insidiants
+- "INSIDIANT SUPERIOR" (celestian-insidiants/datacards/insidiant-superior/1)
+  - /datacards/0/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action eligibility, not a Range weapon grant."
+- "INSIDIANT ABJUROR" (celestian-insidiants/datacards/insidiant-abjuror/1)
+  - /datacards/1/passive_abilities/1/description: 0 deletions.
+  - "Torrent": reference. "Existing enemy weapon disqualifies redirection; no Torrent grant."
+  - "Blast": reference. "Eligibility restriction rather than grant or suppression of Blast."
+  - "range": reference. "Control-range treatment is not a Range weapon rule."
+- "INSIDIANT CENSOR" (celestian-insidiants/datacards/insidiant-censor/1)
+  - /datacards/2/passive_abilities/1/description: 0 deletions.
+  - "range": reference. "Null range is an aura radius, not the Range x weapon rule."
+  - /datacards/2/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Both null range and control range refer to aura/action mechanics, not a weapon Range grant."
+- "INSIDIANT CREMATOR" (celestian-insidiants/datacards/insidiant-cremator/1)
+  - /datacards/3/passive_abilities/0/description: 0 deletions.
+  - "Torrent 0\"": reference. "Clarifies an existing profile parameter, rather than conferring Torrent 0 inches through Inspirational Pyre."
+  - "Torrent": reference. "Profile clarification with a useful rules-interaction example; not a new unconditional grant to either profile."
+- "INSIDIANT DENUNCIA" (celestian-insidiants/datacards/insidiant-denuncia/1)
+  - /datacards/4/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action eligibility rather than a Range weapon-rule grant."
+- "martyrdom" (celestian-insidiants/faction_rules/martyrdom/1)
+  - /faction_rules/0/text: 2 deletions.
+- "benedictions" (celestian-insidiants/faction_rules/benedictions/1)
+  - /faction_rules/1/text: 1 deletions.
+  - "Ceaseless": grant. "Explicit enduring but selected-option grant, not automatic Ceaseless on every operative or every benediction."
+- "weapons-of-the-witch-hunters" (celestian-insidiants/faction_rules/weapons-of-the-witch-hunters/1)
+  - /faction_rules/2/text: 3 deletions.
+  - /faction_rules/2/options/0/text: 0 deletions.
+  - "Lethal 5+": grant. "Conditional Lethal 5+ grant defined by a custom profile rule; not access for all team weapons or against non-PSYKER targets."
+- "inspiration" (celestian-insidiants/faction_rules/inspiration/1)
+  - /faction_rules/3/text: 2 deletions.
+  - "Severe": grant. "Explicit status-conditional Severe grant, not unconditional team access."
+- "suspect-eliminate" (celestian-insidiants/strategy_ploys/suspect-eliminate/1)
+  - /strategy_ploys/0/text: 2 deletions.
+  - "Punishing": grant. "Explicit token-conditional Punishing grant; not a blanket grant against all enemies."
+- "wrathful-determination" (celestian-insidiants/strategy_ploys/wrathful-determination/1)
+  - /strategy_ploys/1/text: 2 deletions.
+- "suffering-sacrifice" (celestian-insidiants/strategy_ploys/suffering-sacrifice/1)
+  - /strategy_ploys/2/text: 2 deletions.
+  - "Balanced": grant. "Explicit conditional Balanced grant across all three stated attack contexts."
+- "holy-resilience" (celestian-insidiants/strategy_ploys/holy-resilience/1)
+  - /strategy_ploys/3/text: 2 deletions.
+- "glory-to-the-martyrs" (celestian-insidiants/firefight_ploys/glory-to-the-martyrs/1)
+  - /firefight_ploys/0/text: 2 deletions.
+- "faith-fury" (celestian-insidiants/firefight_ploys/faith-fury/1)
+  - /firefight_ploys/1/text: 2 deletions.
+- "unshakeable-pursuit" (celestian-insidiants/firefight_ploys/unshakeable-pursuit/1)
+  - /firefight_ploys/2/text: 2 deletions.
+- "fervent-hate" (celestian-insidiants/firefight_ploys/fervent-hate/1)
+  - /firefight_ploys/3/text: 2 deletions.
+  - "Relentless": grant. "Explicit conditional replacement grant; IMPERIUM exclusion still applies even to CHAOS/PSYKER enemies."
+  - "Ceaseless": grant. "Temporary keyword-conditional grant with explicit stronger-rule alternative, not persistent team access."
+- "psyk-out-grenades" (celestian-insidiants/equipment/psyk-out-grenades/1)
+  - /equipment/0/text: 2 deletions.
+  - "Stun": reference. "Stun is part of an equipment action/test name; changing its damage effect does not grant the Stun weapon rule."
+- "vocifera-mortis" (celestian-insidiants/equipment/vocifera-mortis/1)
+  - /equipment/1/text: 2 deletions.
+- "saintly-relics" (celestian-insidiants/equipment/saintly-relics/1)
+  - /equipment/2/text: 2 deletions.
+- "auto-flagellator" (celestian-insidiants/equipment/auto-flagellator/1)
+  - /equipment/3/text: 2 deletions.
+- "OPERATIVE SELECTION" (celestian-insidiants/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 1 deletions.
+  - "SEEK": reference. "SEEK is part of SEEK & DESTROY archetype; not the Seek weapon rule and must not become an offensive grant."
+## chaos-cult
+- "CULT DEMAGOGUE" (chaos-cult/datacards/cult-demagogue/1)
+  - /datacards/0/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Support-action restriction, not a Range weapon rule."
+- "BLESSED BLADE" (chaos-cult/datacards/blessed-blade/1)
+  - /datacards/1/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Control range triggers direct damage; no weapon Range grant."
+- "ICONARCH" (chaos-cult/datacards/iconarch/1)
+  - /datacards/2/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action eligibility, not Range x. Preserve separate friendly damage-reduction threshold and enemy damage-increase effects."
+- "MINDWITCH" (chaos-cult/datacards/mindwitch/1)
+  - /datacards/3/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Control-range action restriction, not weapon Range."
+  - /datacards/3/unique_actions/1/description: 0 deletions.
+  - "range": reference. "Action restriction, not Range rule; marker damage and placement remain intact."
+- "accursed-gifts" (chaos-cult/faction_rules/accursed-gifts/1)
+  - /faction_rules/0/text: 2 deletions; UNCERTAIN.
+  - "devastating": flavour. "Ordinary adjective in narrative, not Devastating x or a grant. Its evidence is within the proposed narrative deletion."
+  - /faction_rules/0/options/0/text: 2 deletions.
+  - /faction_rules/0/options/1/text: 1 deletions.
+  - /faction_rules/0/options/2/text: 2 deletions.
+  - /faction_rules/0/options/3/text: 1 deletions.
+  - "range": reference. "Control range selects a direct-damage recipient; no Range weapon rule."
+  - /faction_rules/0/options/4/text: 1 deletions.
+  - "Brutal": grant. "Explicit selected-gift melee grant, not a blanket CHAOS CULT weapon rule. Adjacent injury Hit exception remains separate."
+  - /faction_rules/0/options/5/text: 1 deletions.
+  - "range": reference. "Control-range splash effect is not a Range grant; enemy inability to assist also remains."
+- "mutation" (chaos-cult/faction_rules/mutation/1)
+  - /faction_rules/1/text: 3 deletions.
+  - "range": reference. "Control-range trigger for mutation, not weapon Range."
+  - /faction_rules/1/options/0/text: 0 deletions.
+  - "range": reference. "Replacement-placement requirement, not a Range weapon rule. Lost wounds, same-operative identity, healing option and all caps retained."
+- "exaltation-in-pain" (chaos-cult/strategy_ploys/exaltation-in-pain/1)
+  - /strategy_ploys/0/text: 2 deletions.
+- "fervent-onslaught" (chaos-cult/strategy_ploys/fervent-onslaught/1)
+  - /strategy_ploys/1/text: 2 deletions.
+  - "Accurate 1": grant. "Explicit melee-only Accurate 1 grant with type-dependent alternative, not both values stacked."
+  - "Accurate 2": grant. "Explicit type-restricted Accurate 2 grant; does not give it to DARK COMMUNE or DEVOTEE weapons."
+- "creatures-of-nightmare" (chaos-cult/strategy_ploys/creatures-of-nightmare/1)
+  - /strategy_ploys/2/text: 2 deletions.
+- "sickening-aura" (chaos-cult/strategy_ploys/sickening-aura/1)
+  - /strategy_ploys/3/text: 2 deletions.
+- "faithful-follower" (chaos-cult/firefight_ploys/faithful-follower/1)
+  - /firefight_ploys/0/text: 2 deletions.
+  - "Torrent": reference. "Existing attacker rule is a defensive-ploy exclusion, not an offensive grant."
+  - "Blast": reference. "Eligibility restriction, not grant or negation of Blast."
+  - "range": reference. "Control-range treatment makes the replacement fight valid; no Range weapon grant."
+- "abhorrent-mutation" (chaos-cult/firefight_ploys/abhorrent-mutation/1)
+  - /firefight_ploys/1/text: 2 deletions.
+- "frenzied-demise" (chaos-cult/firefight_ploys/frenzied-demise/1)
+  - /firefight_ploys/2/text: 2 deletions.
+  - "seek": flavour. "Ordinary verb in flavour, not Seek. Actual ploy deals D3 or D6 damage on incapacitation to one visible enemy within 2 inches and remains intact."
+- "unleash-the-daemon" (chaos-cult/firefight_ploys/unleash-the-daemon/1)
+  - /firefight_ploys/3/text: 2 deletions.
+- "baleful-script" (chaos-cult/equipment/baleful-script/1)
+  - /equipment/0/text: 2 deletions.
+- "covert-guises" (chaos-cult/equipment/covert-guises/1)
+  - /equipment/1/text: 2 deletions.
+- "unholy-talisman" (chaos-cult/equipment/unholy-talisman/1)
+  - /equipment/2/text: 2 deletions.
+- "vile-blessing" (chaos-cult/equipment/vile-blessing/1)
+  - /equipment/3/text: 2 deletions.
+- "OPERATIVE SELECTION" (chaos-cult/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 1 deletions.
+  - "SEEK": reference. "SEEK & DESTROY is an archetype, not a Seek weapon-rule grant."
+## corsair-voidscarred
+- "VOIDSCARRED FELARCH" (corsair-voidscarred/datacards/voidscarred-felarch/1)
+  - /datacards/0/passive_abilities/1/description: 0 deletions.
+  - "Blast": reference. "Preserves an exception to target selection; does not give the selected weapon Blast or supply a distance."
+- "VOIDSCARRED FATE DEALER" (corsair-voidscarred/datacards/voidscarred-fate-dealer/1)
+  - /datacards/1/passive_abilities/0/description: 0 deletions.
+  - "Saturate": counter. "Defensive negation of the attacker's rule, not an offensive grant."
+- "VOIDSCARRED KURNITE HUNTER" (corsair-voidscarred/datacards/voidscarred-kurnite-hunter/1)
+  - /datacards/5/passive_abilities/1/description: 0 deletions.
+  - "range": reference. "Control range is a movement/proximity condition, not Range x on a weapon."
+- "VOIDSCARRED SHADE RUNNER" (corsair-voidscarred/datacards/voidscarred-shade-runner/1)
+  - /datacards/6/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Placement restriction, not a weapon Range grant."
+- "VOIDSCARRED SOUL WEAVER" (corsair-voidscarred/datacards/voidscarred-soul-weaver/1)
+  - /datacards/7/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action restriction, not Range x."
+  - /datacards/7/unique_actions/1/description: 0 deletions.
+  - "range": reference. "Action restriction, not Range x."
+- "VOIDSCARRED STARSTORM DUELLIST" (corsair-voidscarred/datacards/voidscarred-starstorm-duellist/1)
+  - /datacards/8/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Exception to engagement/targeting restrictions; pistol profile ranges remain unchanged."
+- "VOIDSCARRED WAY SEEKER" (corsair-voidscarred/datacards/voidscarred-way-seeker/1)
+  - /datacards/10/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Control-range action restriction, not a weapon rule."
+  - /datacards/10/unique_actions/1/description: 0 deletions.
+  - "range": reference. "Action restriction, not a weapon Range grant."
+- "rifles" (corsair-voidscarred/faction_rules/rifles/1)
+  - /faction_rules/0/text: 2 deletions.
+- "aeldari-raiders" (corsair-voidscarred/faction_rules/aeldari-raiders/1)
+  - /faction_rules/1/text: 2 deletions.
+- "plunderers" (corsair-voidscarred/strategy_ploys/plunderers/1)
+  - /strategy_ploys/0/text: 2 deletions.
+- "piratical-profiteers" (corsair-voidscarred/strategy_ploys/piratical-profiteers/1)
+  - /strategy_ploys/1/text: 2 deletions.
+  - "Balanced": grant. "Explicit conditional grant, not unconditional team access."
+- "mobile-engagement" (corsair-voidscarred/strategy_ploys/mobile-engagement/1)
+  - /strategy_ploys/2/text: 2 deletions.
+  - "heavy": flavour. "Adjective in narrative, not the Heavy weapon restriction."
+- "outcasts" (corsair-voidscarred/strategy_ploys/outcasts/1)
+  - /strategy_ploys/3/text: 2 deletions.
+  - "Punishing": grant. "Explicit distance-dependent grant."
+- "opportunistic-fighters" (corsair-voidscarred/firefight_ploys/opportunistic-fighters/1)
+  - /firefight_ploys/0/text: 2 deletions.
+  - "range": reference. "Proximity determines damage multiplicity; not Range x."
+- "light-fingers" (corsair-voidscarred/firefight_ploys/light-fingers/1)
+  - /firefight_ploys/1/text: 2 deletions.
+  - "range": reference. "Engagement restriction exception, not ranged weapon rule."
+- "capricious-flight" (corsair-voidscarred/firefight_ploys/capricious-flight/1)
+  - /firefight_ploys/2/text: 2 deletions.
+- "contemptuous-adventurer" (corsair-voidscarred/firefight_ploys/contemptuous-adventurer/1)
+  - /firefight_ploys/3/text: 2 deletions.
+  - "Relentless": grant. "Explicit single-action grant with activation and isolation restrictions; clarification retained."
+- "diuturnal-mantles" (corsair-voidscarred/equipment/diuturnal-mantles/1)
+  - /equipment/0/text: 2 deletions.
+  - "Devastating": counter. "Negates splash effects, not targeted Devastating or an offensive grant."
+  - "Torrent": counter. "Defensive mitigation triggered by attacker's rule, not granting Torrent."
+  - "Blast": counter. "Defensive mitigation, not an offensive Blast grant."
+- "mistfield" (corsair-voidscarred/equipment/mistfield/1)
+  - /equipment/1/text: 2 deletions.
+  - "Piercing 1": example. "Useful numerical consequence retained."
+  - "Piercing": counter. "Defensive reduction, never a new Piercing grant."
+- "runes-of-guidance" (corsair-voidscarred/equipment/runes-of-guidance/1)
+  - /equipment/2/text: 2 deletions.
+  - "Devastating": example. "Explicit example of excluded weapon effect, neither grant nor modifier to Devastating."
+- "star-charts" (corsair-voidscarred/equipment/star-charts/1)
+  - /equipment/3/text: 2 deletions.
+- "OPERATIVE SELECTION" (corsair-voidscarred/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 2 deletions.
+  - "HEAVY": reference. "Operative title, not a Heavy weapon-rule grant; profile rules remain source facts."
+## death-korps
+- "DEATH KORPS WATCHMASTER" (death-korps/datacards/death-korps-watchmaster/1)
+  - /datacards/0/passive_abilities/1/description: 0 deletions.
+  - "Punishing": grant. "Explicit grant restricted to one marked enemy, not all attacks."
+- "DEATH KORPS MEDIC" (death-korps/datacards/death-korps-medic/1)
+  - /datacards/4/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Control-range requirements for rescue, not a weapon Range grant."
+  - /datacards/4/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Healing distance and engagement restrictions, not Range x."
+- "DEATH KORPS SAPPER" (death-korps/datacards/death-korps-sapper/1)
+  - /datacards/5/passive_abilities/1/description: 0 deletions.
+  - "Lethal 5+": grant. "Explicit environment-dependent grant; existing profile rules untouched."
+  - "Heavy": reference. "Terrain classification, not a grant or modification of profile Heavy (Dash only)."
+- "DEATH KORPS SPOTTER" (death-korps/datacards/death-korps-spotter/1)
+  - /datacards/7/unique_actions/0/description: 0 deletions.
+  - "Seek": grant. "Explicit Seek Light grant, not unrestricted Seek."
+  - "range": reference. "Engagement restriction, not Range x."
+- "DEATH KORPS VOX-OPERATOR" (death-korps/datacards/death-korps-vox-operator/1)
+  - /datacards/10/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Engagement condition for order relay, not ranged weapon rule."
+  - /datacards/10/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Support-action restriction, not Range x."
+- "DEATH KORPS ZEALOT" (death-korps/datacards/death-korps-zealot/1)
+  - /datacards/11/passive_abilities/1/description: 0 deletions.
+  - "Severe": grant. "Explicit proximity-based grant, with no 'other' exclusion added."
+- "guardsmen-orders" (death-korps/faction_rules/guardsmen-orders/1)
+  - /faction_rules/0/text: 3 deletions.
+  - /faction_rules/0/options/0/text: 1 deletions; UNCERTAIN.
+  - "Ceaseless": grant. "Two explicit grants in merged option text; these must not be conflated into both effects of Take Aim!."
+  - /faction_rules/0/options/1/text: 2 deletions; UNCERTAIN.
+- "siege-warfare" (death-korps/strategy_ploys/siege-warfare/1)
+  - /strategy_ploys/0/text: 2 deletions.
+  - "Accurate 1": grant. "Explicit Accurate 1 grant, preserves numerical parameter."
+  - "Saturate": grant. "Explicit grant alongside Accurate 1."
+- "take-cover" (death-korps/strategy_ploys/take-cover/1)
+  - /strategy_ploys/1/text: 2 deletions.
+- "clear-the-line" (death-korps/strategy_ploys/clear-the-line/1)
+  - /strategy_ploys/2/text: 2 deletions.
+  - "Accurate 1": grant. "Explicit Accurate 1 grant distinct from following Severe condition."
+  - "Severe": grant. "Explicit additional conditional grant."
+- "regroup" (death-korps/strategy_ploys/regroup/1)
+  - /strategy_ploys/3/text: 2 deletions.
+  - "accurate": flavour. "Literary adjective, no numerical Accurate parameter or grant."
+  - "range": reference. "Control-range movement prerequisite, not Range x."
+- "inspirational-leadership" (death-korps/firefight_ploys/inspirational-leadership/1)
+  - /firefight_ploys/0/text: 2 deletions.
+- "combined-arms" (death-korps/firefight_ploys/combined-arms/1)
+  - /firefight_ploys/1/text: 2 deletions.
+- "in-life-shame" (death-korps/firefight_ploys/in-life-shame/1)
+  - /firefight_ploys/2/text: 2 deletions.
+- "in-death-atonement" (death-korps/firefight_ploys/in-death-atonement/1)
+  - /firefight_ploys/3/text: 2 deletions.
+  - "range": reference. "Eligibility restriction, not Range x."
+- "chronometer" (death-korps/equipment/chronometer/1)
+  - /equipment/0/text: 2 deletions.
+- "comm-beads" (death-korps/equipment/comm-beads/1)
+  - /equipment/1/text: 2 deletions.
+- "hand-axes" (death-korps/equipment/hand-axes/1)
+  - /equipment/2/text: 2 deletions.
+- "gas-bombardment" (death-korps/equipment/gas-bombardment/1)
+  - /equipment/3/text: 2 deletions.
+- "OPERATIVE SELECTION" (death-korps/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 2 deletions.
+  - "SEEK": reference. "SEEK & DESTROY is an archetype, not Seek weapon rule."
+## deathwatch
+- "DEATHWATCH AEGIS VETERAN" (deathwatch/datacards/deathwatch-aegis-veteran/1)
+  - /datacards/1/passive_abilities/1/description: 0 deletions.
+  - "Piercing 1": example. "Useful numerical example, not offensive grant."
+  - "Piercing": counter. "Defensive reduction, not a grant to Aegis weapons."
+- "DEATHWATCH BLADEMASTER VETERAN" (deathwatch/datacards/deathwatch-blademaster-veteran/1)
+  - /datacards/2/passive_abilities/1/description: 0 deletions.
+  - "range": reference. "Melee target proximity, not a Range x rule."
+- "DEATHWATCH DEMOLISHER VETERAN" (deathwatch/datacards/deathwatch-demolisher-veteran/1)
+  - /datacards/5/passive_abilities/0/description: 0 deletions.
+  - "Ceaseless": grant. "Explicit Charge-triggered grant with stated duration."
+  - "Brutal": grant. "Explicit fighting-only grant."
+  - "heavy": reference. "Part of weapon name, not Heavy movement restriction; raw profile has Shock and Stun, not Heavy."
+- "DEATHWATCH DISRUPTOR VETERAN" (deathwatch/datacards/deathwatch-disruptor-veteran/1)
+  - /datacards/6/passive_abilities/1/description: 0 deletions.
+  - "range": reference. "Engagement condition, not Range x grant."
+- "veteran-astartes" (deathwatch/faction_rules/veteran-astartes/1)
+  - /faction_rules/0/text: 2 deletions.
+  - "heavy": reference. "Weapon names in an AP surcharge list, not grants of Heavy."
+- "special-issue-ammunition" (deathwatch/faction_rules/special-issue-ammunition/1)
+  - /faction_rules/1/text: 2 deletions.
+  - "Piercing Crits 1": grant. "Optional conditional grant of Piercing Crits 1, not always-on access or plain Piercing 1."
+  - "Devastating 1": grant. "Selected grant with damage parameter 1; no splash distance supplied."
+  - "Lethal 5+": grant. "Explicit optional grant retaining 5+ parameter."
+  - "Saturate": grant. "Choice-based grant, not simultaneous with every other option."
+  - "Blast 1\"": grant. "Explicit selectable Blast 1-inch grant with Torrent incompatibility."
+  - "Severe": grant. "Explicit optional grant."
+  - "Piercing": reference. "Overlapping substring candidate; do not invent an additional generic Piercing grant."
+  - "Torrent": reference. "Selection incompatibility, not a grant or counter to Torrent."
+  - "range": flavour. "Ordinary noun meaning variety, not Range x."
+- "mission-tactics" (deathwatch/strategy_ploys/mission-tactics/1)
+  - /strategy_ploys/0/text: 2 deletions.
+  - "Balanced": grant. "Explicit conditional grant, not all enemy orders."
+- "the-long-vigil" (deathwatch/strategy_ploys/the-long-vigil/1)
+  - /strategy_ploys/1/text: 2 deletions.
+- "the-shield-that-slays" (deathwatch/strategy_ploys/the-shield-that-slays/1)
+  - /strategy_ploys/2/text: 2 deletions.
+- "and-they-shall-know-no-fear" (deathwatch/strategy_ploys/and-they-shall-know-no-fear/1)
+  - /strategy_ploys/3/text: 2 deletions.
+- "suffer-not-the-alien" (deathwatch/firefight_ploys/suffer-not-the-alien/1)
+  - /firefight_ploys/0/text: 2 deletions.
+- "auspicator-tracking" (deathwatch/firefight_ploys/auspicator-tracking/1)
+  - /firefight_ploys/1/text: 2 deletions.
+- "advanced-auspex-scan" (deathwatch/firefight_ploys/advanced-auspex-scan/1)
+  - /firefight_ploys/2/text: 2 deletions.
+  - "Saturate": grant. "Explicit timed offensive grant; obscured prevention remains a separate effect."
+- "transhuman-physiology" (deathwatch/firefight_ploys/transhuman-physiology/1)
+  - /firefight_ploys/3/text: 2 deletions.
+- "digital-weapons" (deathwatch/equipment/digital-weapons/1)
+  - /equipment/0/text: 2 deletions.
+  - "range": flavour. "No ranged profile or Range parameter is granted."
+- "scrutavore-servo-thrall" (deathwatch/equipment/scrutavore-servo-thrall/1)
+  - /equipment/1/text: 2 deletions.
+  - "range": reference. "Engagement exception with risk, not Range x."
+- "sanctus-v-bioscryer-cuffs" (deathwatch/equipment/sanctus-v-bioscryer-cuffs/1)
+  - /equipment/2/text: 2 deletions.
+  - "range": reference. "Mechanical occurrence is an engagement restriction; other 'range of bio-threats' occurrence is narrative variety. Neither grants Range x."
+- "ammunition-reserve" (deathwatch/equipment/ammunition-reserve/1)
+  - /equipment/3/text: 2 deletions.
+  - "lethal": flavour. "Literary adjective without a Lethal threshold; ammunition rule-use modifier is retained."
+- "OPERATIVE SELECTION" (deathwatch/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 1 deletions.
+  - "SEEK": reference. "Archetype name, not Seek weapon rule."
+## elucidian-starstriders
+- "ELUCIA VHANE" (elucidian-starstriders/datacards/elucia-vhane/1)
+  - /datacards/0/passive_abilities/1/description: 0 deletions.
+  - "Ceaseless": grant. "Explicit replacement grant, not simultaneous unconditional Ceaseless."
+  - "Balanced": grant. "Explicit wounded-target grant with upgrade exception retained."
+  - /datacards/0/passive_abilities/2/description: 0 deletions.
+  - "Piercing": counter. "Defensive immunity, not offensive grant."
+  - /datacards/0/passive_abilities/3/description: 0 deletions; UNCERTAIN.
+- "CANID" (elucidian-starstriders/datacards/canid/1)
+  - /datacards/1/passive_abilities/1/description: 0 deletions.
+  - "range": reference. "Charge eligibility/end condition, not ranged weapon rule."
+- "DEATH CULT EXECUTIONER" (elucidian-starstriders/datacards/death-cult-executioner/1)
+  - /datacards/2/passive_abilities/0/description: 0 deletions.
+  - "Piercing": counter. "Defensive negation, not weapon grant."
+  - /datacards/2/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action restriction, not Range x."
+- "LECTRO-MAESTER" (elucidian-starstriders/datacards/lectro-maester/1)
+  - /datacards/3/passive_abilities/2/description: 0 deletions; UNCERTAIN.
+  - "Lethal 4+": grant. "Explicit conditional Lethal 4+ grant, not a grant from merely performing Charge movement."
+  - "range": reference. "Engagement restriction, not Range x."
+- "REJUVENAT ADEPT" (elucidian-starstriders/datacards/rejuvenat-adept/1)
+  - /datacards/4/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Rescue proximity, not Range x. Unlike Death Korps Medic, no APL penalty is supplied here."
+  - /datacards/4/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Healing distance and engagement restriction, not weapon Range."
+- "VOIDMASTER" (elucidian-starstriders/datacards/voidmaster/1)
+  - /datacards/5/passive_abilities/0/description: 0 deletions.
+  - "Ceaseless": grant. "Explicit conditional upgrade grant."
+  - "Balanced": grant. "Explicit aura grant with recipient and weapon exclusions."
+  - /datacards/5/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Profile name, not an additional Range rule; raw close-range profile's Range 6 inches is preserved."
+- "warrant-of-trade" (elucidian-starstriders/faction_rules/warrant-of-trade/1)
+  - /faction_rules/0/text: 3 deletions; UNCERTAIN.
+- "warrant-of-trade-2" (elucidian-starstriders/faction_rules/warrant-of-trade-2/1)
+  - /faction_rules/1/text: 3 deletions; UNCERTAIN.
+  - /faction_rules/1/options/0/text: 0 deletions; UNCERTAIN.
+- "privateer-support-assets" (elucidian-starstriders/faction_rules/privateer-support-assets/1)
+  - /faction_rules/2/text: 3 deletions.
+  - /faction_rules/2/options/0/text: 0 deletions.
+  - "Piercing 2": grant. "Direct profile grants Piercing 2, not a narrative inference."
+  - "Silent": grant. "Direct profile rule retained unchanged."
+  - "Heavy": grant. "Explicit profile movement restriction; qualifier preserved."
+  - /faction_rules/2/options/1/text: 0 deletions.
+  - "Piercing 1": grant. "Explicit Piercing 1 profile fact."
+  - "Lethal 5+": grant. "Direct profile rule, not prose mention."
+  - "Silent": grant. "Direct profile rule retained."
+  - "Heavy": grant. "Profile Heavy with explicit movement qualifier."
+  - /faction_rules/2/options/2/text: 0 deletions.
+  - "Piercing Crits 1": grant. "Direct profile fact retaining Crits qualifier and parameter 1."
+  - "Torrent 2\"": grant. "Direct profile fact with exact distance."
+  - "Saturate": grant. "Direct profile rule, not derived from artillery narrative."
+  - "Silent": grant. "Explicit profile rule."
+  - "Heavy": grant. "Direct profile restriction with qualifier preserved."
+  - "Piercing": reference. "Overlapping substring candidate, not an additional unqualified Piercing grant."
+  - /faction_rules/2/options/3/text: 0 deletions.
+  - "Blast 2\"": grant. "Direct profile fact with distance 2 inches."
+  - "Silent": grant. "Explicit profile rule."
+  - "Heavy": grant. "Direct profile rule with movement qualifier intact."
+  - /faction_rules/2/options/4/text: 0 deletions.
+  - "Blast 3\"": grant. "Direct profile fact with distance 3 inches, distinct from Guided shell."
+  - "Silent": grant. "Explicit profile rule."
+  - "Heavy": grant. "Direct profile rule with qualifier preserved."
+- "lethal-proximity" (elucidian-starstriders/strategy_ploys/lethal-proximity/1)
+  - /strategy_ploys/0/text: 2 deletions.
+  - "Balanced": grant. "Explicit conditional Balanced grant."
+  - "LETHAL": reference. "Structural card name with no Lethal parameter or grant."
+- "stake-claim" (elucidian-starstriders/strategy_ploys/stake-claim/1)
+  - /strategy_ploys/1/text: 2 deletions.
+- "undaunted-explorers" (elucidian-starstriders/strategy_ploys/undaunted-explorers/1)
+  - /strategy_ploys/2/text: 2 deletions.
+- "quick-march" (elucidian-starstriders/strategy_ploys/quick-march/1)
+  - /strategy_ploys/3/text: 2 deletions.
+- "combined-arms" (elucidian-starstriders/firefight_ploys/combined-arms/1)
+  - /firefight_ploys/0/text: 2 deletions.
+- "survivalist" (elucidian-starstriders/firefight_ploys/survivalist/1)
+  - /firefight_ploys/1/text: 2 deletions.
+- "great-endurance" (elucidian-starstriders/firefight_ploys/great-endurance/1)
+  - /firefight_ploys/2/text: 2 deletions.
+- "well-drilled" (elucidian-starstriders/firefight_ploys/well-drilled/1)
+  - /firefight_ploys/3/text: 2 deletions.
+- "armoured-undersuit" (elucidian-starstriders/equipment/armoured-undersuit/1)
+  - /equipment/0/text: 2 deletions.
+- "hot-shot-capacitor-packs" (elucidian-starstriders/equipment/hot-shot-capacitor-packs/1)
+  - /equipment/1/text: 2 deletions.
+  - "Piercing Crits 1": grant. "Explicit critical-dependent Piercing 1 grant; do not treat as plain Piercing 1."
+  - "Hot": grant. "Explicit Hot grant (drawback), not inferred from equipment title."
+  - "Piercing": reference. "Overlapping substring candidate; preserve Crits qualifier."
+  - "lethal": flavour. "No Lethal threshold or grant."
+- "improved-coordinates-uplink" (elucidian-starstriders/equipment/improved-coordinates-uplink/1)
+  - /equipment/2/text: 2 deletions.
+  - "Saturate": grant. "Explicit support-asset-only conditional grant, not a grant to all nearby NAVIS weapons."
+- "rapid-gunnery" (elucidian-starstriders/equipment/rapid-gunnery/1)
+  - /equipment/3/text: 2 deletions.
+- "OPERATIVE SELECTION" (elucidian-starstriders/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 1 deletions.
+## exaction-squad
+- "ARBITES PROCTOR-EXACTANT" (exaction-squad/datacards/arbites-proctor-exactant/1)
+  - /datacards/0/passive_abilities/2/description: 0 deletions.
+  - "range": reference. "Control range is an action restriction, not the Range weapon rule."
+- "ARBITES CHIRURGANT" (exaction-squad/datacards/arbites-chirurgant/1)
+  - /datacards/1/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Spatial eligibility for Medic! and its Dash, not a weapon Range grant; all survival, APL and activation restrictions remain."
+  - /datacards/1/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Healing/action proximity requirements do not grant the Range weapon rule."
+- "ARBITES LEASHMASTER" (exaction-squad/datacards/arbites-leashmaster/1)
+  - /datacards/2/passive_abilities/1/description: 0 deletions; UNCERTAIN.
+  - /datacards/2/passive_abilities/2/description: 0 deletions; UNCERTAIN.
+  - /datacards/2/passive_abilities/3/description: 0 deletions.
+  - "Relentless": grant. "Aggressive explicitly grants Relentless to the selected Cyber-Mastiff; the surrounding split heading establishes the beneficiary and duration."
+- "R-VR CYBER-MASTIFF" (exaction-squad/datacards/r-vr-cyber-mastiff/1)
+  - /datacards/3/passive_abilities/1/description: 0 deletions.
+  - "range": reference. "Control range scopes a debuff and action eligibility, not the Range weapon rule."
+- "ARBITES CASTIGATOR" (exaction-squad/datacards/arbites-castigator/1)
+  - /datacards/4/passive_abilities/2/description: 0 deletions.
+  - "range": reference. "Fall Back prohibition uses control range, not a weapon Range rule."
+- "ARBITES MALOCATOR" (exaction-squad/datacards/arbites-malocator/1)
+  - /datacards/6/unique_actions/0/description: 0 deletions.
+  - "Lethal 5+": grant. "Explicit conditional Lethal 5+ grant; not unrestricted access against all enemies."
+  - "Severe": grant. "Severe is explicitly granted alongside Lethal 5+ with the same target and expiry."
+- "ARBITES MARKSMAN" (exaction-squad/datacards/arbites-marksman/1)
+  - /datacards/7/unique_actions/0/description: 0 deletions.
+  - "Lethal 5+": grant. "Explicit profile-specific grant; mobile profile is excluded. Preserve the separate obscuring benefit."
+- "ARBITES REVELATUM" (exaction-squad/datacards/arbites-revelatum/1)
+  - /datacards/8/unique_actions/0/description: 0 deletions.
+  - "Seek": grant. "Explicit Seek Light grant, not unrestricted Seek; also negates obscuring for that enemy."
+- "ARBITES VIGILANT" (exaction-squad/datacards/arbites-vigilant/1)
+  - /datacards/10/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Permission to shoot while engaged is not a weapon Range grant."
+- "ARBITES VOX-SIGNIFIER" (exaction-squad/datacards/arbites-vox-signifier/1)
+  - /datacards/11/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action restriction only, not a ranged weapon rule."
+- "ruthless-efficiency" (exaction-squad/faction_rules/ruthless-efficiency/1)
+  - /faction_rules/0/text: 2 deletions.
+  - "range": reference. "Relaxes friendly-engagement targeting restriction; control range is not Range x."
+- "marked-for-justice" (exaction-squad/faction_rules/marked-for-justice/1)
+  - /faction_rules/1/text: 2 deletions.
+  - "Punishing": grant. "Explicit target-limited Punishing grant, not a universal permanent weapon upgrade."
+- "repress" (exaction-squad/faction_rules/repress/1)
+  - /faction_rules/2/text: 2 deletions.
+- "guilt-reveals-itself" (exaction-squad/strategy_ploys/guilt-reveals-itself/1)
+  - /strategy_ploys/0/text: 2 deletions.
+  - "relentless": flavour. "Adjective describes pursuit; no attack reroll or Relentless grant."
+- "inviolate-jurisdiction" (exaction-squad/strategy_ploys/inviolate-jurisdiction/1)
+  - /strategy_ploys/1/text: 2 deletions.
+- "dispense-justice" (exaction-squad/strategy_ploys/dispense-justice/1)
+  - /strategy_ploys/2/text: 2 deletions.
+  - "Ceaseless": grant. "Explicit conditional melee grant; not ranged or unconditional."
+- "terminal-decree" (exaction-squad/strategy_ploys/terminal-decree/1)
+  - /strategy_ploys/3/text: 2 deletions.
+  - "Balanced": grant. "Explicit grant with alternative proximity or operative-type eligibility."
+- "long-arm-of-the-emperors-law" (exaction-squad/firefight_ploys/long-arm-of-the-emperors-law/1)
+  - /firefight_ploys/0/text: 2 deletions.
+  - "Range": modify. "Changes existing Range parameter temporarily; does not give a new Range rule or fabricate x."
+- "exact-punishment" (exaction-squad/firefight_ploys/exact-punishment/1)
+  - /firefight_ploys/1/text: 2 deletions.
+  - "Blast": reference. "Useful targeting clarification preserves existing Blast secondary targets; does not grant Blast or a radius."
+- "brutal-backup" (exaction-squad/firefight_ploys/brutal-backup/1)
+  - /firefight_ploys/2/text: 2 deletions.
+  - "BRUTAL": reference. "Title is not an explicit Brutal weapon-rule grant."
+  - "range": reference. "Control-range selection constraint, not Range x."
+- "execution-order" (exaction-squad/firefight_ploys/execution-order/1)
+  - /firefight_ploys/3/text: 2 deletions.
+- "reinforced-mirror-visor" (exaction-squad/equipment/reinforced-mirror-visor/1)
+  - /equipment/0/text: 2 deletions.
+  - "Shock": counter. "Explicit immunity to enemy Shock, not Shock granted to friendly weapons."
+- "manacles" (exaction-squad/equipment/manacles/1)
+  - /equipment/1/text: 2 deletions.
+  - "range": reference. "Control range gates a Fall Back counter, not a Range weapon grant."
+- "strobing-phosphor-lumen" (exaction-squad/equipment/strobing-phosphor-lumen/1)
+  - /equipment/2/text: 2 deletions.
+- "special-issue-shells" (exaction-squad/equipment/special-issue-shells/1)
+  - /equipment/3/text: 2 deletions.
+  - "Piercing 1": grant. "Explicit optional grant with target-save restriction, not simultaneous access to all shell effects."
+  - "Torrent 1\"": grant. "Explicit parameterized conditional grant; secondary-target cap must survive."
+  - "Saturate": grant. "Explicit shell option, not permanent or simultaneous with other options."
+  - "piercing": flavour. "Descriptive compound in flavour does not grant unspecified Piercing; mechanical Piercing 1 option is separately reviewed."
+  - "limited": flavour. "Ordinary phrase, not Limited x or a usage count."
+  - "range": flavour. "Range means variety here, not weapon distance."
+## exodite-dragon-masters
+- "DRAGON MASTER CLANBLADE" (exodite-dragon-masters/datacards/dragon-master-clanblade/1)
+  - /datacards/0/passive_abilities/0/description: 0 deletions.
+  - "Piercing 1": example. "Worked consequence of defensive reduction, not a Piercing 1 grant."
+  - "Piercing": counter. "Defensive suppression of incoming Piercing, not an offensive upgrade."
+- "DRAGON MASTER STONESINGER" (exodite-dragon-masters/datacards/dragon-master-stonesinger/1)
+  - /datacards/2/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action restriction, not Range weapon rule. Repeated PSYCHIC labels distinguish alternatives and are retained."
+- "drakesteed-agility" (exodite-dragon-masters/faction_rules/drakesteed-agility/1)
+  - /faction_rules/0/text: 3 deletions.
+  - /faction_rules/0/options/0/text: 0 deletions; UNCERTAIN.
+  - "range": reference. "Control range determines movement-action equivalence and permission, not weapon Range."
+- "pivot-the-active-operative-up-to-45-this" (exodite-dragon-masters/faction_rules/pivot-the-active-operative-up-to-45-this/1)
+  - /faction_rules/1/text: 0 deletions.
+  - "range": reference. "Control range scopes action equivalence; TURN and 1AP are mechanically necessary action header, not cleanup."
+- "draconic-cavalry-tactics" (exodite-dragon-masters/faction_rules/draconic-cavalry-tactics/1)
+  - /faction_rules/2/text: 3 deletions.
+  - "seek": flavour. "Ordinary verb in narrative; no Seek weapon grant."
+  - /faction_rules/2/options/0/text: 0 deletions; UNCERTAIN.
+  - "range": reference. "Modifies control-range geometry, not the named Range x weapon rule."
+- "mercurial-speed" (exodite-dragon-masters/faction_rules/mercurial-speed/1)
+  - /faction_rules/3/text: 2 deletions.
+- "moonsong-cull" (exodite-dragon-masters/faction_rules/moonsong-cull/1)
+  - /faction_rules/5/text: 2 deletions.
+  - "range": reference. "Control range is eligibility for extra movement, not Range weapon rule."
+- "spectral-nimbus" (exodite-dragon-masters/faction_rules/spectral-nimbus/1)
+  - /faction_rules/6/text: 2 deletions.
+  - "Rending": counter. "Rending is an illustrative affected rule within an explicit defensive prohibition, not a friendly grant; does not erase the entire rule."
+  - "Severe": counter. "Severe is named as a source of critical retention being restricted, not granted to Clanblade."
+  - "Lethal": counter. "Defensive counter illustrated by Lethal, with no numerical Lethal parameter invented."
+- "focused-reflection" (exodite-dragon-masters/faction_rules/focused-reflection/1)
+  - /faction_rules/7/text: 2 deletions.
+- "speartip-of-the-clan" (exodite-dragon-masters/faction_rules/speartip-of-the-clan/1)
+  - /faction_rules/8/text: 2 deletions.
+- "bladed-stance" (exodite-dragon-masters/faction_rules/bladed-stance/1)
+  - /faction_rules/9/text: 2 deletions.
+- "nomad-executioner" (exodite-dragon-masters/faction_rules/nomad-executioner/1)
+  - /faction_rules/10/text: 2 deletions.
+- "elusive-phantasm" (exodite-dragon-masters/faction_rules/elusive-phantasm/1)
+  - /faction_rules/11/text: 2 deletions.
+  - "seek": flavour. "Ordinary verb, not Seek weapon grant."
+  - "range": reference. "Control range restricts movement permission; no Range x grant."
+- "fated-shot" (exodite-dragon-masters/faction_rules/fated-shot/1)
+  - /faction_rules/12/text: 2 deletions.
+  - "range": reference. "Control-range targeting exception is not Range x and does not imply both options apply."
+- "nexus-sentinel" (exodite-dragon-masters/faction_rules/nexus-sentinel/1)
+  - /faction_rules/13/text: 2 deletions.
+- "gloaming-mantle" (exodite-dragon-masters/faction_rules/gloaming-mantle/1)
+  - /faction_rules/14/text: 2 deletions.
+- "wails-of-the-world" (exodite-dragon-masters/faction_rules/wails-of-the-world/1)
+  - /faction_rules/15/text: 3 deletions.
+  - /faction_rules/15/options/0/text: 0 deletions; UNCERTAIN.
+  - "range": reference. "Action prohibition, not weapon Range."
+- "cleansing-of-the-pale-moon" (exodite-dragon-masters/faction_rules/cleansing-of-the-pale-moon/1)
+  - /faction_rules/16/text: 2 deletions.
+  - "range": reference. "Control range restricts action use, not a weapon's Range; all exceptions and useful examples remain."
+- "sow-the-seeds" (exodite-dragon-masters/faction_rules/sow-the-seeds/1)
+  - /faction_rules/17/text: 2 deletions.
+  - "range": reference. "Remote marker-control exception, not weapon Range; explanatory mission-action consequence remains."
+- "winds-grace" (exodite-dragon-masters/faction_rules/winds-grace/1)
+  - /faction_rules/18/text: 2 deletions.
+  - "range": reference. "Action restriction only, not Range weapon rule; SPEED transition examples remain."
+- "earthen-wrath" (exodite-dragon-masters/faction_rules/earthen-wrath/1)
+  - /faction_rules/19/text: 2 deletions.
+  - "Devastating 2": grant. "Explicit weapon grant includes Devastating 2; retain as direct profile fact, not team-wide rule."
+  - "Lethal 5+": grant. "Explicit conditional grant; Saturate's cover-save denial does not itself remove cover state."
+  - "Saturate": grant. "Explicit profile fact for this weapon only; no extra target condition on Saturate."
+- "wind-swift-precision" (exodite-dragon-masters/strategy_ploys/wind-swift-precision/1)
+  - /strategy_ploys/0/text: 2 deletions.
+  - "Balanced": grant. "Explicit grant at the named SPEED level only; do not silently extend to SPEED 7+."
+- "draconic-fury" (exodite-dragon-masters/strategy_ploys/draconic-fury/1)
+  - /strategy_ploys/1/text: 2 deletions.
+  - "Ceaseless": grant. "Explicit grant at SPEED 7+, distinct from Balanced at SPEED 4+."
+  - "Balanced": grant. "Explicit conditional grant; SPEED 7+ separately grants Ceaseless, not both."
+- "sinuous-flux" (exodite-dragon-masters/strategy_ploys/sinuous-flux/1)
+  - /strategy_ploys/2/text: 2 deletions.
+- "ride-them-down" (exodite-dragon-masters/strategy_ploys/ride-them-down/1)
+  - /strategy_ploys/3/text: 2 deletions.
+  - "rending": flavour. "Descriptive adjective; action inflicts direct damage without granting Rending."
+  - "range": reference. "Control range determines direct-damage recipient; not Range x."
+- "riding-mastery" (exodite-dragon-masters/firefight_ploys/riding-mastery/1)
+  - /firefight_ploys/0/text: 2 deletions.
+- "survivalist-spirit" (exodite-dragon-masters/firefight_ploys/survivalist-spirit/1)
+  - /firefight_ploys/1/text: 2 deletions.
+- "leap" (exodite-dragon-masters/firefight_ploys/leap/1)
+  - /firefight_ploys/2/text: 2 deletions.
+- "feral-hunger" (exodite-dragon-masters/firefight_ploys/feral-hunger/1)
+  - /firefight_ploys/3/text: 2 deletions.
+- "spirit-stones" (exodite-dragon-masters/equipment/spirit-stones/1)
+  - /equipment/0/text: 2 deletions.
+- "dragonscale-mesh" (exodite-dragon-masters/equipment/dragonscale-mesh/1)
+  - /equipment/1/text: 2 deletions.
+- "clan-talismans" (exodite-dragon-masters/equipment/clan-talismans/1)
+  - /equipment/2/text: 2 deletions.
+- "lileathan-crystal-matrices" (exodite-dragon-masters/equipment/lileathan-crystal-matrices/1)
+  - /equipment/3/text: 2 deletions.
+  - "Piercing 1": grant. "Explicit parameterized grant to eligible selected weapon; activation expiry is preserved."
+- "OPERATIVE SELECTION" (exodite-dragon-masters/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 0 deletions; UNCERTAIN.
+  - "SEEK": reference. "Seek & Destroy is an archetype, not Seek weapon access; preserve selection information."
+## farstalker-kinband
+- "KROOT KILL-BROKER" (farstalker-kinband/datacards/kroot-kill-broker/1)
+  - /datacards/0/passive_abilities/0/description: 0 deletions.
+  - "Balanced": grant. "Explicit mark-limited grant with shooting, fighting and retaliation scope."
+  - /datacards/0/passive_abilities/1/description: 0 deletions.
+  - "Balanced": grant. "Explicit lasting grant from Victory Shriek, distinct from Call The Kill's mark-limited grant."
+- "KROOT BOW-HUNTER" (farstalker-kinband/datacards/kroot-bow-hunter/1)
+  - /datacards/1/unique_actions/0/description: 0 deletions.
+  - "Lethal 5+": grant. "Explicit temporary all-profile grant; not permanent and not other weapons."
+  - "range": reference. "Action eligibility, not Range weapon rule."
+- "KROOT COLD-BLOOD" (farstalker-kinband/datacards/kroot-cold-blood/1)
+  - /datacards/2/passive_abilities/1/description: 0 deletions.
+  - "Lethal 5+": grant. "Explicit grant against wounded targets; injury is not additionally required for Lethal 5+."
+  - "Rending": grant. "Additional explicit Rending grant with stricter condition than Lethal 5+."
+- "KROOT HOUND" (farstalker-kinband/datacards/kroot-hound/1)
+  - /datacards/5/passive_abilities/1/description: 0 deletions.
+  - "range": reference. "Engagement geometry for reactive Charge, not Range weapon rule; separate Fight redirection permission remains."
+- "KROOT LONG-SIGHT" (farstalker-kinband/datacards/kroot-long-sight/1)
+  - /datacards/6/unique_actions/0/description: 0 deletions.
+  - "Lethal 5+": grant. "Explicit profile-specific temporary grant; not all rifle profiles."
+  - "range": reference. "Action restriction only, not Range x."
+- "KROOT PISTOLIER" (farstalker-kinband/datacards/kroot-pistolier/1)
+  - /datacards/7/passive_abilities/0/description: 0 deletions.
+  - "Blast": reference. "Trigger references enemy Blast exposure, not friendly Blast grant."
+  - /datacards/7/passive_abilities/1/description: 0 deletions.
+  - "range": reference. "Control-range exclusion for Salvo target selection; profile's direct Range 8 inches remains separate."
+- "KROOT STALKER" (farstalker-kinband/datacards/kroot-stalker/1)
+  - /datacards/8/unique_actions/0/description: 0 deletions.
+  - "Heavy": reference. "Heavy is terrain category, not weapon movement restriction."
+  - "range": reference. "Control range gates action use, not Range x weapon access."
+- "KROOT TRACKER" (farstalker-kinband/datacards/kroot-tracker/1)
+  - /datacards/9/unique_actions/0/description: 0 deletions.
+  - "Seek": grant. "Explicit marker-conditioned Seek Light grant, not full Seek or blanket friendly access."
+  - "range": reference. "Both uses concern control-range proximity, not the named Range weapon rule."
+  - /datacards/9/unique_actions/1/description: 0 deletions.
+  - "range": reference. "Control-range action restriction, not weapon Range."
+- "KROOT WARRIOR" (farstalker-kinband/datacards/kroot-warrior/1)
+  - /datacards/10/passive_abilities/0/description: 0 deletions.
+  - "Piercing": reference. "Names Piercing Shot ability, not an unspecified direct Piercing x grant. Referenced equipment supplies parameter 1, eligible weapons and same-action exclusion."
+- "farstalker" (farstalker-kinband/faction_rules/farstalker/1)
+  - /faction_rules/0/text: 2 deletions.
+  - "range": reference. "Control range is eligibility for order changes, not weapon Range."
+- "cut-throats" (farstalker-kinband/strategy_ploys/cut-throats/1)
+  - /strategy_ploys/0/text: 2 deletions.
+  - "lethal": flavour. "Descriptive adjective without Lethal parameter or weapon-rule grant."
+- "rogue" (farstalker-kinband/strategy_ploys/rogue/1)
+  - /strategy_ploys/1/text: 2 deletions.
+  - "Saturate": counter. "Explicit negation of incoming Saturate, not friendly offensive grant."
+- "prey" (farstalker-kinband/strategy_ploys/prey/1)
+  - /strategy_ploys/2/text: 2 deletions.
+  - "Ceaseless": grant. "Explicit conditional replacement branch, not universal Ceaseless."
+  - "Balanced": grant. "Explicit primary grant, not cumulative stacking of Balanced and replacement Ceaseless."
+  - "Severe": grant. "Explicit grant shared by both branches with movement-before-shooting condition."
+- "bound" (farstalker-kinband/strategy_ploys/bound/1)
+  - /strategy_ploys/3/text: 2 deletions.
+- "savage-ambush" (farstalker-kinband/firefight_ploys/savage-ambush/1)
+  - /firefight_ploys/0/text: 2 deletions.
+  - "Heavy": reference. "Heavy terrain category, not Heavy weapon rule."
+  - "range": reference. "Spatial eligibility, not weapon Range."
+- "slip-away" (farstalker-kinband/firefight_ploys/slip-away/1)
+  - /firefight_ploys/1/text: 2 deletions.
+- "poach" (farstalker-kinband/firefight_ploys/poach/1)
+  - /firefight_ploys/2/text: 2 deletions.
+- "vengeance-for-the-kinband" (farstalker-kinband/firefight_ploys/vengeance-for-the-kinband/1)
+  - /firefight_ploys/3/text: 2 deletions.
+  - "Relentless": grant. "Explicit enemy-specific grant; neither blanket team Relentless nor a one-action effect."
+- "piercing-shot" (farstalker-kinband/equipment/piercing-shot/1)
+  - /equipment/0/text: 2 deletions.
+  - "Piercing 1": grant. "Explicit parameterized temporary grant to named eligible weapons."
+  - "PIERCING": reference. "Bare candidate arises from ability name, not a second unparameterized weapon grant; actual Piercing 1 is classified separately."
+- "toxin-shot" (farstalker-kinband/equipment/toxin-shot/1)
+  - /equipment/1/text: 2 deletions.
+  - "Lethal 5+": grant. "Explicit Lethal 5+ grant, not unspecified lethality from narrative."
+  - "Stun": grant. "Explicit Stun weapon-rule grant alongside Lethal 5+."
+  - "Piercing": reference. "Restriction references another ability; does not grant Piercing to toxin ammunition."
+  - "lethal": flavour. "Descriptive lethality, distinct from explicit mechanical Lethal 5+ later in text."
+- "meat" (farstalker-kinband/equipment/meat/1)
+  - /equipment/2/text: 2 deletions.
+  - "range": reference. "Healing eligibility uses control range, not weapon Range."
+- "trophy" (farstalker-kinband/equipment/trophy/1)
+  - /equipment/3/text: 2 deletions.
+  - "seek": flavour. "Ordinary verb, not Seek weapon rule."
+  - "range": reference. "Proximity restriction on APL bonus, not weapon Range."
+- "OPERATIVE SELECTION" (farstalker-kinband/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 1 deletions.
+  - "HEAVY": reference. "Operative type label, not a Heavy weapon-rule grant; direct Heavy rules on its profiles remain source facts."
+## fellgor-ravagers
+- "FELLGOR FLUXBRAY" (fellgor-ravagers/datacards/fellgor-fluxbray/1)
+  - /datacards/2/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Movement/direct-damage geometry, not Range weapon rule."
+- "FELLGOR GNARLSCAR" (fellgor-ravagers/datacards/fellgor-gnarlscar/1)
+  - /datacards/3/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Engagement targeting permission and restriction, not a new Range rule; autopistol's Range 8 inches remains direct profile fact."
+- "FELLGOR HERD-GOAD" (fellgor-ravagers/datacards/fellgor-herd-goad/1)
+  - /datacards/5/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Control range is prerequisite for a debuff aura, not weapon Range grant."
+- "FELLGOR SHAMAN" (fellgor-ravagers/datacards/fellgor-shaman/1)
+  - /datacards/7/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action prohibition, not Range weapon rule."
+  - /datacards/7/unique_actions/1/description: 0 deletions.
+  - "Seek": counter. "Explicit targeting protection overrides Seek, named as an example; does not grant Seek or absolute untargetability."
+  - "range": reference. "Action restriction, not weapon Range; protected operatives' visibility, 3-inch, cover and Conceal requirements remain."
+- "FELLGOR TOXHORN" (fellgor-ravagers/datacards/fellgor-toxhorn/1)
+  - /datacards/8/passive_abilities/0/description: 0 deletions.
+  - "Shock": counter. "Explicit enemy-rule immunity, not friendly Shock grant."
+  - /datacards/8/passive_abilities/1/description: 0 deletions.
+  - "Stun": reference. "Grants grenade/action access and modifies its test outcome, not the Stun weapon rule on Toxhorn's weapons."
+  - "limited": reference. "Usage-accounting exemption, not Limited x weapon rule; no numerical Limited parameter supplied."
+- "FELLGOR VANDAL" (fellgor-ravagers/datacards/fellgor-vandal/1)
+  - /datacards/9/passive_abilities/0/description: 0 deletions.
+  - "Ceaseless": grant. "Explicit fight-only grant tied to this weapon's starred ability, distinct from its direct Brutal rule."
+- "frenzy" (fellgor-ravagers/faction_rules/frenzy/1)
+  - /faction_rules/0/text: 3 deletions; UNCERTAIN.
+  - /faction_rules/0/options/0/text: 0 deletions; UNCERTAIN.
+- "violent-temperament" (fellgor-ravagers/strategy_ploys/violent-temperament/1)
+  - /strategy_ploys/0/text: 2 deletions.
+- "ambush" (fellgor-ravagers/strategy_ploys/ambush/1)
+  - /strategy_ploys/1/text: 2 deletions.
+- "pelting-firepower" (fellgor-ravagers/strategy_ploys/pelting-firepower/1)
+  - /strategy_ploys/2/text: 2 deletions.
+  - "Relentless": grant. "Explicit replacement branch based on distinct other shooters, not repeated attacks by one operative."
+  - "Ceaseless": grant. "Explicit conditional grant; preserve prior-shot requirement and replacement branch."
+  - "lethal": flavour. "Descriptive lethality without Lethal parameter; mechanical grants are Ceaseless/Relentless."
+- "reckless-determination" (fellgor-ravagers/strategy_ploys/reckless-determination/1)
+  - /strategy_ploys/3/text: 2 deletions.
+- "ruthless-rampage" (fellgor-ravagers/firefight_ploys/ruthless-rampage/1)
+  - /firefight_ploys/0/text: 2 deletions.
+  - "range": reference. "Eligibility for additional movement, not Range weapon rule; narrative kill wording does not add a mechanical kill requirement."
+- "wild-rage" (fellgor-ravagers/firefight_ploys/wild-rage/1)
+  - /firefight_ploys/1/text: 2 deletions.
+- "animalistic-fury" (fellgor-ravagers/firefight_ploys/animalistic-fury/1)
+  - /firefight_ploys/2/text: 2 deletions.
+- "bloodsense" (fellgor-ravagers/firefight_ploys/bloodsense/1)
+  - /firefight_ploys/3/text: 2 deletions.
+  - "range": reference. "Trigger proximity, not Range weapon grant."
+- "brass-adornments" (fellgor-ravagers/equipment/brass-adornments/1)
+  - /equipment/0/text: 2 deletions.
+- "gore-marks" (fellgor-ravagers/equipment/gore-marks/1)
+  - /equipment/1/text: 2 deletions.
+- "chaos-sigil" (fellgor-ravagers/equipment/chaos-sigil/1)
+  - /equipment/2/text: 2 deletions.
+  - "Piercing 1": example. "Clarifying example of defensive reduction to zero, not a grant."
+  - "Piercing": counter. "Defensive counter to incoming Piercing, not friendly offensive access."
+- "war-paint" (fellgor-ravagers/equipment/war-paint/1)
+  - /equipment/3/text: 2 deletions.
+- "OPERATIVE SELECTION" (fellgor-ravagers/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 0 deletions.
+  - "SEEK": reference. "Seek & Destroy is an archetype, not a weapon-rule grant. Roster options and one-per-specialist restriction remain."
+## gellerpox-infected
+- "VULGRAR THRICE-CURSED" (gellerpox-infected/datacards/vulgrar-thrice-cursed/1)
+  - /datacards/0/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Control range is a positional condition, not the Range weapon rule."
+  - /datacards/0/passive_abilities/2/description: 0 deletions; UNCERTAIN.
+  - "Lethal 5+": grant. "Explicit optional grant, not automatic possession of every listed improvement."
+  - "Balanced": grant. "The selectable upgrade explicitly grants Balanced if chosen."
+  - "Rending": grant. "Explicit optional grant with the shared two-choice limit."
+  - "Brutal": grant. "Explicit selectable grant, not an unconditional rule."
+- "BLOATSPAWN" (gellerpox-infected/datacards/bloatspawn/1)
+  - /datacards/1/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "The rule limits repeated Fight targets by control range; it does not grant ranged targeting."
+  - /datacards/1/passive_abilities/1/description: 0 deletions.
+  - "range": reference. "Control range supplies the trigger for a movement restriction, not a weapon-rule grant."
+- "LUMBERGHAST" (gellerpox-infected/datacards/lumberghast/1)
+  - /datacards/3/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "This is positional ability damage, not the Range weapon rule."
+- "GLITCHLING" (gellerpox-infected/datacards/glitchling/1)
+  - /datacards/5/passive_abilities/0/description: 0 deletions.
+  - "Piercing": counter. "Defensive negation of the attacker's rule, not a grant to Glitchling weapons; no parameter is supplied or invented."
+  - /datacards/5/passive_abilities/1/description: 0 deletions.
+  - "Seek": counter. "Seek is an example of a rule overridden by the explicit defensive precedence; it is not granted."
+- "CURSEMITE" (gellerpox-infected/datacards/cursemite/1)
+  - /datacards/6/passive_abilities/0/description: 0 deletions.
+  - "Lethal 5+": grant. "Explicit conditional grant of Lethal 5+, with the wounded-target restriction preserved."
+- "techno-curse" (gellerpox-infected/faction_rules/techno-curse/1)
+  - /faction_rules/0/text: 3 deletions.
+  - "range": reference. "Infection range is a faction aura measurement, not a Range weapon grant."
+  - /faction_rules/0/options/0/text: 2 deletions; UNCERTAIN.
+  - "Range": reference. "Infection Range labels aura scope rather than a weapon's Range rule."
+  - /faction_rules/0/options/1/text: 0 deletions; UNCERTAIN.
+- "techno-curse-2" (gellerpox-infected/faction_rules/techno-curse-2/1)
+  - /faction_rules/1/text: 3 deletions.
+  - "range": reference. "Faction aura scope does not grant a Range weapon rule."
+  - /faction_rules/1/options/0/text: 1 deletions.
+  - "piercing": flavour. "Literary compound describing screams does not grant Piercing."
+  - "Range": reference. "This is infection-aura scope, not a ranged weapon grant."
+- "mutoid-vermin" (gellerpox-infected/faction_rules/mutoid-vermin/1)
+  - /faction_rules/2/text: 3 deletions.
+  - /faction_rules/2/options/0/text: 0 deletions.
+  - "range": reference. "Control-range movement exceptions do not grant the Range weapon rule."
+- "nightmare-hulks" (gellerpox-infected/faction_rules/nightmare-hulks/1)
+  - /faction_rules/3/text: 2 deletions.
+- "revoltingly-resilient" (gellerpox-infected/faction_rules/revoltingly-resilient/1)
+  - /faction_rules/4/text: 2 deletions.
+- "plagueridden-determination" (gellerpox-infected/strategy_ploys/plagueridden-determination/1)
+  - /strategy_ploys/0/text: 2 deletions.
+- "blessings-of-infection" (gellerpox-infected/strategy_ploys/blessings-of-infection/1)
+  - /strategy_ploys/1/text: 2 deletions.
+  - "brutal": flavour. "Literary brutal does not grant the Brutal weapon rule; preserve both three-fail and three-success thresholds."
+- "drawn-to-the-hum" (gellerpox-infected/strategy_ploys/drawn-to-the-hum/1)
+  - /strategy_ploys/2/text: 2 deletions.
+- "rust-emanations" (gellerpox-infected/strategy_ploys/rust-emanations/1)
+  - /strategy_ploys/3/text: 2 deletions.
+- "revolting-technology" (gellerpox-infected/firefight_ploys/revolting-technology/1)
+  - /firefight_ploys/0/text: 2 deletions.
+  - "Hot": grant. "Explicit enemy-targeted Hot grant, with an alternative modifier for existing Hot. Neither branch is a friendly offensive grant."
+- "barge" (gellerpox-infected/firefight_ploys/barge/1)
+  - /firefight_ploys/1/text: 2 deletions.
+  - "range": reference. "Control range describes movement permissions, not a weapon Range grant."
+- "putrescent-demise" (gellerpox-infected/firefight_ploys/putrescent-demise/1)
+  - /firefight_ploys/2/text: 2 deletions.
+  - "blast": flavour. "Literary blast does not grant Blast or change the ploy into a weapon profile."
+- "frightening-onslaught" (gellerpox-infected/firefight_ploys/frightening-onslaught/1)
+  - /firefight_ploys/3/text: 2 deletions.
+- "mutoid-vermin" (gellerpox-infected/equipment/mutoid-vermin/1)
+  - /equipment/0/text: 2 deletions.
+- "polluted-stockpile" (gellerpox-infected/equipment/polluted-stockpile/1)
+  - /equipment/1/text: 2 deletions.
+- "mutated-symptoms" (gellerpox-infected/equipment/mutated-symptoms/1)
+  - /equipment/2/text: 2 deletions.
+- "plague-bellows" (gellerpox-infected/equipment/plague-bellows/1)
+  - /equipment/3/text: 2 deletions.
+- "OPERATIVE SELECTION" (gellerpox-infected/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 0 deletions.
+  - "heavy": reference. "Weapon name in roster, not the Heavy weapon rule; preserve loadout and quantities."
+  - "SEEK": reference. "Seek & Destroy is an archetype, not a grant of Seek to weapons."
+## goremongers
+- "GOREMONGER ASPIRANT" (goremongers/datacards/goremonger-aspirant/1)
+  - /datacards/1/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Control-range eligibility for a movement ability, not Range on a weapon."
+- "GOREMONGER BLOODTAKER" (goremongers/datacards/goremonger-bloodtaker/1)
+  - /datacards/2/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Positional trigger for resource gain, not the Range weapon rule; keep cumulative example."
+  - /datacards/2/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Control-range action restriction is not a weapon-range grant."
+- "GOREMONGER IMPALER" (goremongers/datacards/goremonger-impaler/1)
+  - /datacards/3/unique_actions/0/description: 0 deletions.
+  - "Severe": grant. "Explicit resource-gated grant with a next-use endpoint rather than a battle-long effect."
+  - "range": reference. "Control range is an action restriction, not Range on fleshskewer."
+- "GOREMONGER INCITER" (goremongers/datacards/goremonger-inciter/1)
+  - /datacards/4/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Control-range restriction, not a weapon Range grant."
+- "GOREMONGER STALKER" (goremongers/datacards/goremonger-stalker/1)
+  - /datacards/6/passive_abilities/1/description: 0 deletions.
+  - "Relentless": grant. "Explicit melee grant gated by either specified terrain circumstance; not blanket Relentless or retaliation permission."
+- "runes-of-khorne" (goremongers/faction_rules/runes-of-khorne/1)
+  - /faction_rules/0/text: 2 deletions.
+- "gore-tanks" (goremongers/faction_rules/gore-tanks/1)
+  - /faction_rules/1/text: 3 deletions; UNCERTAIN.
+  - /faction_rules/1/options/0/text: 0 deletions; UNCERTAIN.
+  - "range": reference. "Control range determines resource-gain eligibility, not the Range weapon rule."
+- "sanguavitae" (goremongers/faction_rules/sanguavitae/1)
+  - /faction_rules/2/text: 2 deletions; UNCERTAIN.
+  - /faction_rules/2/options/0/text: 0 deletions; UNCERTAIN.
+  - /faction_rules/2/options/1/text: 0 deletions; UNCERTAIN.
+  - /faction_rules/2/options/2/text: 0 deletions; UNCERTAIN.
+  - /faction_rules/2/options/3/text: 0 deletions; UNCERTAIN.
+  - "range": reference. "Control range selects an ability-damage victim, not a Range weapon grant."
+  - /faction_rules/2/options/4/text: 0 deletions; UNCERTAIN.
+  - /faction_rules/2/options/5/text: 0 deletions; UNCERTAIN.
+- "enhanced-violence" (goremongers/strategy_ploys/enhanced-violence/1)
+  - /strategy_ploys/0/text: 2 deletions.
+  - "Relentless": grant. "Explicit full-tank grant; alternative half-tank effect must not be conflated."
+  - "Balanced": grant. "Explicit half-tank grant, not unconditional possession."
+- "augmented-endurance" (goremongers/strategy_ploys/augmented-endurance/1)
+  - /strategy_ploys/1/text: 2 deletions.
+- "gory-tenacity" (goremongers/strategy_ploys/gory-tenacity/1)
+  - /strategy_ploys/2/text: 2 deletions.
+- "hunt-for-blood" (goremongers/strategy_ploys/hunt-for-blood/1)
+  - /strategy_ploys/3/text: 2 deletions.
+- "unbridled-aggression" (goremongers/firefight_ploys/unbridled-aggression/1)
+  - /firefight_ploys/0/text: 2 deletions.
+  - "Severe": grant. "Explicit timed melee grant, not for all fights or retaliation."
+- "gorethirst" (goremongers/firefight_ploys/gorethirst/1)
+  - /firefight_ploys/1/text: 2 deletions.
+- "destructive-demise" (goremongers/firefight_ploys/destructive-demise/1)
+  - /firefight_ploys/2/text: 2 deletions.
+  - "range": reference. "Control range limits ability-damage selection, not a Range weapon rule."
+- "lacerate-flesh" (goremongers/firefight_ploys/lacerate-flesh/1)
+  - /firefight_ploys/3/text: 2 deletions.
+- "gory-totem" (goremongers/equipment/gory-totem/1)
+  - /equipment/0/text: 2 deletions.
+- "bloody-cadaver" (goremongers/equipment/bloody-cadaver/1)
+  - /equipment/1/text: 2 deletions.
+  - "range": reference. "Control-range exclusion for resource gain, not a weapon Range grant."
+- "chaos-sigil" (goremongers/equipment/chaos-sigil/1)
+  - /equipment/2/text: 2 deletions.
+  - "Piercing 1": example. "Worked numeric consequence of defensive reduction, not a new Piercing 1 grant; preserve clarification."
+  - "Piercing": counter. "Defensive restriction of an opposing weapon rule, not friendly offensive access."
+- "wrist-chains" (goremongers/equipment/wrist-chains/1)
+  - /equipment/3/text: 2 deletions.
+  - "Relentless": modify. "Preserves an existing conditional rule through weapon-type conversion; does not independently grant Relentless."
+  - "Balanced": modify. "Conditional carry-over of an existing ploy rule, not an unconditional new grant."
+  - "Range 2\"": grant. "Explicit temporary Range 2-inch grant to a restricted weapon list."
+  - "Brutal": counter. "Explicit suppression of existing Brutal, not a new grant; the raw profile stays unchanged."
+- "OPERATIVE SELECTION" (goremongers/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 0 deletions.
+  - "SEEK": reference. "Seek & Destroy is an archetype, not the Seek weapon rule; preserve roster counts and uniqueness restriction."
+## hand-of-the-archon
+- "KABALITE DISCIPLE OF YAELINDRA" (hand-of-the-archon/datacards/kabalite-disciple-of-yaelindra/1)
+  - /datacards/0/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Control range bars the action, not a Range weapon grant; numerical ability targeting does not create a weapon profile."
+- "KABALITE CRIMSON DUELLIST" (hand-of-the-archon/datacards/kabalite-crimson-duellist/1)
+  - /datacards/2/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Control-range trigger for a marker/action denial ability; not a Range weapon grant."
+- "KABALITE ELIXICANT" (hand-of-the-archon/datacards/kabalite-elixicant/1)
+  - /datacards/3/passive_abilities/0/description: 0 deletions; UNCERTAIN.
+  - /datacards/3/passive_abilities/1/description: 0 deletions; UNCERTAIN.
+  - /datacards/3/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action restriction uses control range, not a Range weapon rule; replacement and healing alternatives remain intact."
+- "KABALITE SKYSPLINTER ASSASSIN" (hand-of-the-archon/datacards/kabalite-skysplinter-assassin/1)
+  - /datacards/4/unique_actions/0/description: 0 deletions.
+  - "Seek": grant. "Explicit target-specific Seek Light grant; candidate label Seek must not erase the Light qualifier or marked-enemy restriction."
+  - "range": reference. "Control-range action prohibition is not the Range weapon rule."
+- "power-from-pain" (hand-of-the-archon/faction_rules/power-from-pain/1)
+  - /faction_rules/0/text: 3 deletions.
+- "rifles" (hand-of-the-archon/faction_rules/rifles/1)
+  - /faction_rules/1/text: 2 deletions.
+  - "Accurate 1": grant. "Explicit Accurate 1 grant with prior-movement condition, not an activation-wide movement prohibition."
+  - "accurate": flavour. "Unparameterised adjective is literary, not an additional Accurate instance; do not double count."
+- "blade-artists" (hand-of-the-archon/strategy_ploys/blade-artists/1)
+  - /strategy_ploys/0/text: 2 deletions.
+  - "Rending": grant. "Direct explicit melee grant; not extended to ranged weapons."
+  - "piercing": flavour. "Literary compound does not grant Piercing or supply a numeric parameter."
+- "merciless-sadists" (hand-of-the-archon/strategy_ploys/merciless-sadists/1)
+  - /strategy_ploys/1/text: 2 deletions.
+  - "Balanced": grant. "Explicit conditional grant; target becoming wounded later in the action does not satisfy the stated test, and retaliation is not listed."
+- "from-darkness-death" (hand-of-the-archon/strategy_ploys/from-darkness-death/1)
+  - /strategy_ploys/2/text: 2 deletions.
+- "denizens-of-night" (hand-of-the-archon/strategy_ploys/denizens-of-night/1)
+  - /strategy_ploys/3/text: 2 deletions.
+  - "Heavy": reference. "Heavy is a terrain category, not the Heavy weapon movement restriction."
+- "cruel-deception" (hand-of-the-archon/firefight_ploys/cruel-deception/1)
+  - /firefight_ploys/0/text: 2 deletions.
+- "devious-scheme" (hand-of-the-archon/firefight_ploys/devious-scheme/1)
+  - /firefight_ploys/1/text: 2 deletions.
+- "heinous-arrogance" (hand-of-the-archon/firefight_ploys/heinous-arrogance/1)
+  - /firefight_ploys/2/text: 2 deletions.
+- "prey-on-the-wounded" (hand-of-the-archon/firefight_ploys/prey-on-the-wounded/1)
+  - /firefight_ploys/3/text: 2 deletions.
+- "chain-snare" (hand-of-the-archon/equipment/chain-snare/1)
+  - /equipment/0/text: 2 deletions.
+  - "range": reference. "Control range defines a movement-denial trigger; no weapon Range rule is granted."
+- "wicked-blades" (hand-of-the-archon/equipment/wicked-blades/1)
+  - /equipment/1/text: 2 deletions.
+- "toxin-coating" (hand-of-the-archon/equipment/toxin-coating/1)
+  - /equipment/2/text: 2 deletions.
+  - "Lethal 5+": grant. "Explicit optional grant with numeric threshold, usage cap, timing and duration supplied."
+- "refined-poison" (hand-of-the-archon/equipment/refined-poison/1)
+  - /equipment/3/text: 2 deletions.
+  - "lethal": flavour. "Adjective does not grant or change Lethal threshold; existing direct weapon-profile Lethal rules remain untouched."
+- "OPERATIVE SELECTION" (hand-of-the-archon/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 1 deletions.
+  - "HEAVY": reference. "Operative role name is not a Heavy weapon-rule grant; raw weapon profiles independently state their actual rules."
+  - "SEEK": reference. "Seek & Destroy archetype does not give weapons Seek."
+  - "Blast": reference. "Weapon name in roster, not the Blast weapon rule; no Blast parameter supplied."
+## hearthkyn-salvagers
+- "HEARTHKYN DÔZR" (hearthkyn-salvagers/datacards/hearthkyn-dozr/1)
+  - /datacards/1/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Control range scopes a unique-action target, not a weapon Range grant."
+- "HEARTHKYN FIELD MEDIC" (hearthkyn-salvagers/datacards/hearthkyn-field-medic/1)
+  - /datacards/2/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Control range restricts rescue eligibility and Dash endpoint, not a weapon rule; full rescue timing and exceptions remain."
+  - /datacards/2/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Healing proximity and action restriction, not a Range weapon grant."
+- "HEARTHKYN GRENADIER" (hearthkyn-salvagers/datacards/hearthkyn-grenadier/1)
+  - /datacards/3/passive_abilities/0/description: 0 deletions.
+  - "stun": reference. "Names an equipment item, not an explicit Stun weapon-rule grant to the operative's weapons. Universal equipment text is referenced, not supplied as a new profile here."
+  - "limited": reference. "Generic limited uses and its clarification refer to equipment availability; no Limited x weapon rule or numeric x is assigned."
+  - /datacards/3/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Control-range action prohibition is not Range on a weapon; preserve placement alternatives and marker lifetime."
+- "HEARTHKYN GUNNER" (hearthkyn-salvagers/datacards/hearthkyn-gunner/1)
+  - /datacards/4/passive_abilities/0/description: 0 deletions.
+  - "Heavy": reference. "Heavy is a terrain category restricting beam geometry, not a grant of the Heavy weapon rule. Preserve the A/B/C/D mechanical example in full."
+- "HEARTHKYN JUMP PACK WARRIOR" (hearthkyn-salvagers/datacards/hearthkyn-jump-pack-warrior/1)
+  - /datacards/5/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Control range is a destination restriction, not Range for weapons; preserve the close-quarters example and hatchway clarification."
+  - /datacards/5/passive_abilities/1/description: 0 deletions.
+  - "Brutal": grant. "Explicit charge-dependent weapon grant; not unconditional Brutal or a grant while retaliating."
+- "HEARTHKYN KINLYNK" (hearthkyn-salvagers/datacards/hearthkyn-kinlynk/1)
+  - /datacards/6/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Control-range action restriction is not a Range weapon rule; no distance limit to supported friendly is invented."
+  - /datacards/6/unique_actions/1/description: 0 deletions.
+  - "range": reference. "Control-range restriction on the action, not weapon Range; preserve token and activation-order conditions."
+- "HEARTHKYN KOGNITÂAR" (hearthkyn-salvagers/datacards/hearthkyn-kognitaar/1)
+  - /datacards/7/passive_abilities/0/description: 0 deletions.
+  - "Balanced": grant. "Explicit conditional marker-scoped grant; Defence marker instead provides defence re-roll, not Balanced."
+  - /datacards/7/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Control range restricts marker-placement action, not a weapon's Range rule."
+- "HEARTHKYN LOKÂTR" (hearthkyn-salvagers/datacards/hearthkyn-lokatr/1)
+  - /datacards/8/unique_actions/0/description: 0 deletions.
+  - "Seek": grant. "Explicit support grant with spatial, target and duration restrictions; do not broaden Seek Light to unrestricted Seek."
+  - "range": reference. "Control-range action restriction, not weapon Range."
+  - /datacards/8/unique_actions/1/description: 0 deletions.
+  - "Accurate 1": grant. "Explicit numeric grant scoped to the marked area and marker lifetime, not all friendly shooting."
+  - "Saturate": grant. "Explicit marker-scoped grant sharing the same restrictions as Accurate 1."
+  - "range": reference. "Control-range prohibition does not grant Range to affected weapons."
+- "grudge" (hearthkyn-salvagers/faction_rules/grudge/1)
+  - /faction_rules/0/text: 2 deletions.
+  - "Accurate": reference. "Compatibility clarification for existing Accurate successes; neither grants Accurate nor invents x. Keep the entire parenthetical as useful mechanical evidence."
+- "need-keeps" (hearthkyn-salvagers/strategy_ploys/need-keeps/1)
+  - /strategy_ploys/0/text: 2 deletions.
+  - "Balanced": grant. "Explicit conditional alternative grant; reaching Atk 4 through this increase is not stated to grant Balanced."
+- "toil-earns" (hearthkyn-salvagers/strategy_ploys/toil-earns/1)
+  - /strategy_ploys/1/text: 2 deletions.
+- "wrought-defence" (hearthkyn-salvagers/strategy_ploys/wrought-defence/1)
+  - /strategy_ploys/2/text: 2 deletions.
+- "proximate-firepower" (hearthkyn-salvagers/strategy_ploys/proximate-firepower/1)
+  - /strategy_ploys/3/text: 2 deletions.
+- "the-ancestors-are-watching" (hearthkyn-salvagers/firefight_ploys/the-ancestors-are-watching/1)
+  - /firefight_ploys/0/text: 2 deletions.
+- "worth-it" (hearthkyn-salvagers/firefight_ploys/worth-it/1)
+  - /firefight_ploys/1/text: 2 deletions.
+- "sturdy" (hearthkyn-salvagers/firefight_ploys/sturdy/1)
+  - /firefight_ploys/2/text: 2 deletions.
+  - "Piercing Crits": example. "Explicit clarification example preserves previously resolved Piercing Crits, rather than granting or countering it; no parameter invented."
+  - "Piercing": example. "Shorter candidate matches the same mechanical example; no separate generic Piercing grant or suppression is stated."
+- "engage-to-acquire" (hearthkyn-salvagers/firefight_ploys/engage-to-acquire/1)
+  - /firefight_ploys/3/text: 2 deletions.
+- "plasma-knives" (hearthkyn-salvagers/equipment/plasma-knives/1)
+  - /equipment/0/text: 2 deletions.
+  - "Lethal 5+": grant. "Explicit weapon grant includes Lethal 5+ as embedded profile fact. Preserve that profile and the Field Medic exception rather than spreading this rule to other weapons."
+- "climbing-rigs" (hearthkyn-salvagers/equipment/climbing-rigs/1)
+  - /equipment/1/text: 2 deletions.
+- "excavation-tools" (hearthkyn-salvagers/equipment/excavation-tools/1)
+  - /equipment/2/text: 2 deletions.
+- "writ-of-claim" (hearthkyn-salvagers/equipment/writ-of-claim/1)
+  - /equipment/3/text: 2 deletions.
+- "OPERATIVE SELECTION" (hearthkyn-salvagers/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 1 deletions; UNCERTAIN.
+## hernkyn-yaegirs
+- "YAEGIR THEYN" (hernkyn-yaegirs/datacards/yaegir-theyn/1)
+  - /datacards/0/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Control range is a positional condition, not the Range weapon rule."
+- "YAEGIR GUNNER" (hernkyn-yaegirs/datacards/yaegir-gunner/1)
+  - /datacards/3/passive_abilities/0/description: 0 deletions.
+  - "Ceaseless": grant. "Bipod explicitly grants Ceaseless only under these shooting conditions."
+- "YAEGIR IRONBRAEK" (hernkyn-yaegirs/datacards/yaegir-ironbraek/1)
+  - /datacards/4/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "This is a marker-reset proximity condition, not a weapon Range grant; all mine placement restrictions remain."
+  - /datacards/4/passive_abilities/1/description: 0 deletions.
+  - "range": reference. "Control range triggers a mine, not a Range weapon rule; damage, forced action ending and marker retention remain unchanged."
+- "YAEGIR RIFLEKYN" (hernkyn-yaegirs/datacards/yaegir-riflekyn/1)
+  - /datacards/5/passive_abilities/1/description: 0 deletions.
+  - "Saturate": counter. "The cloak negates the attacker's rule, not grants it to friendly weapons; cover-save benefits and their non-cumulative restriction are preserved."
+- "YAEGIR TRACKER" (hernkyn-yaegirs/datacards/yaegir-tracker/1)
+  - /datacards/6/passive_abilities/0/description: 0 deletions.
+  - "Seek": grant. "Explicitly grants Seek Light, not unrestricted Seek; the additional obscured restriction survives."
+  - /datacards/6/passive_abilities/1/description: 0 deletions.
+  - "Punishing": grant. "Explicit conditional grant; does not extend to other targets or retaliation."
+- "resourceful" (hernkyn-yaegirs/faction_rules/resourceful/1)
+  - /faction_rules/0/text: 3 deletions.
+  - "range": reference. "Control range qualifies resource generation, not a weapon rule; 5+ gives 2 points and 1-4 gives 1 point."
+  - /faction_rules/0/options/0/text: 0 deletions.
+  - "range": reference. "Positional restriction on the two resource expenditures, not a Range grant."
+- "dauntless-explorers" (hernkyn-yaegirs/faction_rules/dauntless-explorers/1)
+  - /faction_rules/1/text: 2 deletions.
+- "hidden-engagement" (hernkyn-yaegirs/strategy_ploys/hidden-engagement/1)
+  - /strategy_ploys/0/text: 2 deletions.
+  - "Balanced": grant. "Explicit cover-dependent shooting grant; targeting-line clarification is retained."
+- "masterful-bladework" (hernkyn-yaegirs/strategy_ploys/masterful-bladework/1)
+  - /strategy_ploys/1/text: 2 deletions.
+  - "Ceaseless": grant. "Conditional replacement grant, not simultaneous unconditional access to both rules."
+  - "Balanced": grant. "Explicit conditional grant alongside +1 Atk capped at 4; replacement exception retained."
+- "tough-survivalists" (hernkyn-yaegirs/strategy_ploys/tough-survivalists/1)
+  - /strategy_ploys/2/text: 2 deletions.
+- "in-position" (hernkyn-yaegirs/strategy_ploys/in-position/1)
+  - /strategy_ploys/3/text: 2 deletions.
+  - "Seek": counter. "Seek is an example of a rule overridden by this protection, not a friendly weapon grant."
+- "sturdy" (hernkyn-yaegirs/firefight_ploys/sturdy/1)
+  - /firefight_ploys/0/text: 2 deletions.
+  - "Piercing Crits": example. "Useful example explaining non-retroactivity; no weapon rule is granted or cancelled here."
+  - "Piercing": example. "Substring of the preserved Piercing Crits example, not a separate Piercing grant."
+- "bonds-that-bind" (hernkyn-yaegirs/firefight_ploys/bonds-that-bind/1)
+  - /firefight_ploys/1/text: 2 deletions.
+- "no-kin-left-behind" (hernkyn-yaegirs/firefight_ploys/no-kin-left-behind/1)
+  - /firefight_ploys/2/text: 2 deletions.
+  - "range": reference. "Marker placement uses control range; the separate 3-inch attack benefit is retained and is not named Punishing or another weapon grant."
+- "stalwart-defence" (hernkyn-yaegirs/firefight_ploys/stalwart-defence/1)
+  - /firefight_ploys/3/text: 2 deletions.
+  - "punishing": flavour. "Descriptive adjective, not a Punishing weapon-rule grant."
+  - "Devastating": reference. "Weapon-selection exclusion, not a grant; non-distance Devastating is not excluded by this clause."
+  - "accurate": flavour. "Describes fire in prose without granting Accurate or any parameter."
+  - "Blast": reference. "Explicit selection prohibition, not friendly Blast access."
+  - "range": reference. "Control-range trigger and targeting exception do not grant the Range weapon rule; Guard interruption exclusion remains."
+- "plasma-knives" (hernkyn-yaegirs/equipment/plasma-knives/1)
+  - /equipment/0/text: 2 deletions.
+  - "Lethal 5+": grant. "Direct equipment weapon profile grants Lethal 5+; preserve the complete 3 Atk, 4+ Hit, 3/5 Dmg profile."
+  - "Balanced": grant. "Balanced is granted only to the better existing version, not every equipment knife."
+- "stabilised-bolt-shells" (hernkyn-yaegirs/equipment/stabilised-bolt-shells/1)
+  - /equipment/1/text: 2 deletions.
+  - "Accurate 1": grant. "Explicit Accurate 1 grant accompanies improved Hit and +1 to both damage stats."
+  - "range": reference. "Range identifies a profile, not a Range x rule; introductory extreme range is narrative."
+- "firestorm-bolt-shells" (hernkyn-yaegirs/equipment/firestorm-bolt-shells/1)
+  - /equipment/2/text: 2 deletions.
+  - "Blast 1\"": grant. "Explicitly grants Blast with a 1-inch radius to the short-range profile only."
+  - "lethal": flavour. "Adjective does not grant Lethal or specify a threshold."
+  - "range": reference. "Profile name, not a new Range weapon-rule grant."
+- "kv-ceramide-undersuit" (hernkyn-yaegirs/equipment/kv-ceramide-undersuit/1)
+  - /equipment/3/text: 2 deletions.
+  - "Devastating": counter. "Negates splash effects, not direct-target Devastating or a friendly offensive grant."
+  - "Torrent": counter. "Defensive mitigation conditioned on an attacking rule, not a grant."
+  - "Blast": counter. "Defensive benefit against the rule, not permission to use Blast."
+- "OPERATIVE SELECTION" (hernkyn-yaegirs/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 1 deletions.
+  - "SEEK": reference. "Seek & Destroy is an archetype, not a Seek weapon-rule grant."
+## hierotek-circle
+- "CHRONOMANCER" (hierotek-circle/datacards/chronomancer/1)
+  - /datacards/0/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action restriction, not a weapon Range grant; 1AP action, 2-inch movement cap and repetition restrictions remain."
+  - /datacards/0/unique_actions/1/description: 1 deletions.
+  - "range": reference. "Action eligibility, not Range; both 5-inch distances and Comms Device limitation remain."
+  - /datacards/0/unique_actions/2/description: 0 deletions.
+  - "range": reference. "Action prohibition, not Range; 8-inch placement, 4-inch aura, -2-inch Move and marker expiry all remain."
+  - /datacards/0/unique_actions/3/description: 0 deletions.
+  - "range": reference. "Support-action restriction, not a Range grant; -1 attacking Atk and all three expiry triggers remain."
+- "PSYCHOMANCER" (hierotek-circle/datacards/psychomancer/1)
+  - /datacards/1/unique_actions/1/description: 1 deletions.
+  - /datacards/1/unique_actions/2/description: 0 deletions.
+  - "Rending": counter. "Explicit enemy critical-retention restriction with Rending as a useful example; not a friendly grant."
+  - "Severe": counter. "Severe is among the enemy effects restricted, not granted to the caster."
+  - "Lethal": counter. "Counters sub-6 critical retention; does not invent a Lethal threshold or remove natural sixes."
+  - "range": reference. "Action restriction is unrelated to the Range weapon rule."
+  - /datacards/1/unique_actions/3/description: 1 deletions.
+  - "range": reference. "Action restriction, not a Range grant; D6 versus APL, activation fallback and token expiry remain."
+- "TECHNOMANCER" (hierotek-circle/datacards/technomancer/1)
+  - /datacards/2/unique_actions/1/description: 1 deletions.
+  - "range": reference. "Support-action eligibility, not a Range grant; 2D3 healing remains."
+  - /datacards/2/unique_actions/2/description: 0 deletions.
+  - "Lethal 5+": grant. "Selectable conditional grant, not automatic access to all four listed rules."
+  - "Saturate": grant. "Explicit option granting Saturate only when selected."
+  - "Rending": grant. "Explicit selectable grant rather than a universal rule."
+  - "Severe": grant. "Explicit selectable grant; all selection and duration restrictions survive."
+  - "range": reference. "Action prohibition, not a weapon Range rule."
+  - /datacards/2/unique_actions/3/description: 1 deletions.
+  - "range": reference. "Support-action restriction; damage of 3+ reduced by 1 and all three expiry triggers remain, without granting Range."
+- "PLASMACYTE ACCELERATOR" (hierotek-circle/datacards/plasmacyte-accelerator/1)
+  - /datacards/3/passive_abilities/0/description: 0 deletions.
+  - "Seek": counter. "Overrides Seek as a targeting counter; does not grant it. Fall Back discount and weapon/action restrictions remain."
+  - /datacards/3/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action restriction, not Range; +1 APL lasts through recipient's next activation."
+- "PLASMACYTE REANIMATOR" (hierotek-circle/datacards/plasmacyte-reanimator/1)
+  - /datacards/4/passive_abilities/0/description: 0 deletions.
+  - "Seek": counter. "Targeting protection overrides attacking rules; other Scuttler restrictions remain."
+  - /datacards/4/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action restriction, not weapon Range; 3+ roll, optional extra AP for automatic reanimation and expended-state exception remain."
+- "DEATHMARK" (hierotek-circle/datacards/deathmark/1)
+  - /datacards/6/passive_abilities/0/description: 0 deletions.
+  - "Seek": grant. "Explicit token-dependent grant of full Seek, not only Seek Light."
+  - /datacards/6/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action restriction, not Range; anti-obscured effect until next activation is preserved."
+- "IMMORTAL DESPOTEK" (hierotek-circle/datacards/immortal-despotek/1)
+  - /datacards/7/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action restriction; free 1AP action excludes Accelerate, caps movement at 2 inches and prohibits repeated actions. No Range grant."
+- "reanimation-protocols" (hierotek-circle/faction_rules/reanimation-protocols/1)
+  - /faction_rules/0/text: 3 deletions.
+  - "range": reference. "Control-range marker placement, not Range. Useful examples of removed effects and dice procedure remain."
+  - /faction_rules/0/options/0/text: 0 deletions.
+  - "range": reference. "Placement restriction, not a weapon rule; once-per-marker selection, stopping on 3+, 1 wound, ready/order choice and VP clarification remain."
+- "magnify" (hierotek-circle/faction_rules/magnify/1)
+  - /faction_rules/1/text: 2 deletions.
+  - "Ceaseless": grant. "Conditional grant when Magnify is used, not a permanent addition to every weapon."
+  - "range": reference. "Eligibility condition for relay operative, not Range x; direct Magnify profile facts remain unchanged."
+- "living-metal" (hierotek-circle/faction_rules/living-metal/1)
+  - /faction_rules/2/text: 2 deletions.
+  - "devastating": flavour. "Describes damage, not a Devastating weapon rule. Ready-step D3+1 healing before other faction rules remains."
+- "relentless-onslaught" (hierotek-circle/strategy_ploys/relentless-onslaught/1)
+  - /strategy_ploys/0/text: 2 deletions.
+  - "relentless": flavour. "Relentless describes Necrons and names the ploy; the mechanical grant is Balanced."
+  - "Balanced": grant. "Explicit range-conditioned Balanced grant; Magnify clarification remains intact."
+- "undying-androids" (hierotek-circle/strategy_ploys/undying-androids/1)
+  - /strategy_ploys/1/text: 2 deletions.
+- "methodical-elimination" (hierotek-circle/strategy_ploys/methodical-elimination/1)
+  - /strategy_ploys/2/text: 2 deletions.
+  - "Accurate 1": grant. "Explicit base Accurate 1 grant, displaced rather than stacked with the conditional Accurate 2."
+  - "Accurate 2": grant. "Explicit conditional replacement grant; melee scope and movement condition are preserved."
+- "command-underlings" (hierotek-circle/strategy_ploys/command-underlings/1)
+  - /strategy_ploys/3/text: 2 deletions.
+- "cortical-control" (hierotek-circle/firefight_ploys/cortical-control/1)
+  - /firefight_ploys/0/text: 2 deletions.
+- "reanimated-function" (hierotek-circle/firefight_ploys/reanimated-function/1)
+  - /firefight_ploys/1/text: 2 deletions.
+- "living-lightning" (hierotek-circle/firefight_ploys/living-lightning/1)
+  - /firefight_ploys/2/text: 2 deletions.
+  - "Blast 2\"": grant. "Explicit Blast 2-inch grant paired with removal of Devastating's distance component."
+  - "Devastating": modify. "Removes only the 2-inch distance, preserving Devastating 1 from the direct profile; not a fresh grant or total removal."
+- "dimensional-ambush" (hierotek-circle/firefight_ploys/dimensional-ambush/1)
+  - /firefight_ploys/3/text: 2 deletions.
+- "magnification-conduits" (hierotek-circle/equipment/magnification-conduits/1)
+  - /equipment/0/text: 2 deletions.
+  - "range": reference. "Changes who may serve as Magnify relay, not a direct Range or standalone Ceaseless grant."
+- "phase-shifter" (hierotek-circle/equipment/phase-shifter/1)
+  - /equipment/1/text: 2 deletions.
+  - "Piercing 1": example. "Useful example of reducing x to zero; not a grant."
+  - "Piercing": counter. "Defensively reduces attacking Piercing x by 1, rather than adding friendly Piercing."
+- "tesseract-cube" (hierotek-circle/equipment/tesseract-cube/1)
+  - /equipment/2/text: 2 deletions.
+  - "range": reference. "Resource-generation eligibility, not Range; D6 1 disables, 4+ gains 1CP, and 2CP total cap remain."
+- "tesla-weave" (hierotek-circle/equipment/tesla-weave/1)
+  - /equipment/3/text: 2 deletions.
+  - "range": reference. "Control-range trigger for damage, not a weapon Range grant."
+- "OPERATIVE SELECTION" (hierotek-circle/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 2 deletions.
+## hunter-clade
+- "SICARIAN INFILTRATOR PRINCEPS" (hunter-clade/datacards/sicarian-infiltrator-princeps/1)
+  - /datacards/1/passive_abilities/0/description: 0 deletions.
+  - "Seek": counter. "Shroudpsalm overrides Seek, not grants it to friendly weapons."
+- "SKITARII RANGER ALPHA" (hunter-clade/datacards/skitarii-ranger-alpha/1)
+  - /datacards/2/passive_abilities/0/description: 0 deletions.
+  - "Punishing": grant. "Explicit aura grant to Rangers' ranged weapons, not melee or all Hunter Clade operatives."
+  - /datacards/2/passive_abilities/1/description: 0 deletions.
+  - "Lethal 5+": grant. "Explicit conditional grant; does not extend to off-datacard weapons."
+- "SKITARII RANGER DIKTAT" (hunter-clade/datacards/skitarii-ranger-diktat/1)
+  - /datacards/6/passive_abilities/0/description: 0 deletions.
+  - "Lethal 5+": grant. "Explicit Targeting Protocol grant to datacard ranged weapons only."
+  - /datacards/6/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action restriction, not Range; +1 APL until recipient's next activation ends remains."
+- "SKITARII RANGER GUNNER" (hunter-clade/datacards/skitarii-ranger-gunner/1)
+  - /datacards/7/passive_abilities/0/description: 0 deletions; UNCERTAIN.
+  - "Lethal 5+": grant. "Clear conditional Targeting Protocol grant independently of malformed profile metadata."
+- "SKITARII RANGER SURVEYOR" (hunter-clade/datacards/skitarii-ranger-surveyor/1)
+  - /datacards/8/passive_abilities/0/description: 0 deletions; UNCERTAIN.
+  - "Lethal 5+": grant. "Targeting Protocol is complete and explicit; appended SPOT fragment must not be stripped as flavour."
+  - /datacards/8/passive_abilities/1/description: 0 deletions; UNCERTAIN.
+  - "Seek": grant. "Explicit Seek Light grant, not full Seek; target and timing reconstructed only from supplied adjacent text/name, with malformed extraction flagged."
+- "SKITARII RANGER WARRIOR" (hunter-clade/datacards/skitarii-ranger-warrior/1)
+  - /datacards/9/passive_abilities/0/description: 0 deletions.
+  - "Lethal 5+": grant. "Explicit conditional grant, not a change to the direct galvanic-rifle profile."
+- "SKITARII VANGUARD DIKTAT" (hunter-clade/datacards/skitarii-vanguard-diktat/1)
+  - /datacards/10/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Support-action prohibition, not Range; APL bonus and duration remain intact."
+- "SKITARII VANGUARD GUNNER" (hunter-clade/datacards/skitarii-vanguard-gunner/1)
+  - /datacards/11/passive_abilities/0/description: 0 deletions; UNCERTAIN.
+- "SKITARII VANGUARD SURVEYOR" (hunter-clade/datacards/skitarii-vanguard-surveyor/1)
+  - /datacards/12/passive_abilities/0/description: 0 deletions; UNCERTAIN.
+  - /datacards/12/passive_abilities/1/description: 0 deletions; UNCERTAIN.
+  - "Seek": grant. "Explicit conditional Seek Light grant; full Seek or passive unconditional access would misrepresent the supplied context."
+- "doctrina-imperatives" (hunter-clade/faction_rules/doctrina-imperatives/1)
+  - /faction_rules/0/text: 2 deletions.
+  - "Ceaseless": grant. "Explicit mode-dependent grants, not simultaneous ranged-and-melee Ceaseless. All deprecations, Bulwark and activation context remain."
+- "doctrina-imperatives-2" (hunter-clade/faction_rules/doctrina-imperatives-2/1)
+  - /faction_rules/1/text: 2 deletions.
+- "debilitating-irradiation" (hunter-clade/strategy_ploys/debilitating-irradiation/1)
+  - /strategy_ploys/0/text: 2 deletions.
+  - "lethal": flavour. "Lethal is descriptive, not a critical threshold grant. Enemy under Rad-Saturation loses 1 Normal Dmg, minimum 3, against friendly Vanguard; preserved."
+- "neurostatic-interference" (hunter-clade/strategy_ploys/neurostatic-interference/1)
+  - /strategy_ploys/1/text: 2 deletions.
+- "scouting-protocol" (hunter-clade/strategy_ploys/scouting-protocol/1)
+  - /strategy_ploys/2/text: 2 deletions.
+- "accelerant-agents" (hunter-clade/strategy_ploys/accelerant-agents/1)
+  - /strategy_ploys/3/text: 2 deletions.
+- "control-edict" (hunter-clade/firefight_ploys/control-edict/1)
+  - /firefight_ploys/0/text: 2 deletions.
+- "scrapcode-overload" (hunter-clade/firefight_ploys/scrapcode-overload/1)
+  - /firefight_ploys/1/text: 2 deletions.
+- "command-override" (hunter-clade/firefight_ploys/command-override/1)
+  - /firefight_ploys/2/text: 2 deletions.
+- "omnissiahs-imperative" (hunter-clade/firefight_ploys/omnissiahs-imperative/1)
+  - /firefight_ploys/3/text: 3 deletions.
+  - "Severe": grant. "Mode-dependent Severe grant, not granted by every Doctrina. Other options and before/after dice clarification are preserved."
+- "rad-bombardment" (hunter-clade/equipment/rad-bombardment/1)
+  - /equipment/0/text: 2 deletions.
+  - "range": reference. "Area selection using control range, not a Range weapon rule; duration until enemy's next activation ends remains."
+- "redundancy-systems" (hunter-clade/equipment/redundancy-systems/1)
+  - /equipment/1/text: 2 deletions.
+  - "range": reference. "Healing eligibility condition, not a weapon Range grant."
+- "refractor-field" (hunter-clade/equipment/refractor-field/1)
+  - /equipment/2/text: 2 deletions.
+  - "Piercing 1": example. "Clarifying example of zero Piercing after reduction; keep this useful example."
+  - "Piercing": counter. "Defensive reduction of enemy rule, not friendly offensive access."
+- "extremis-mind-link" (hunter-clade/equipment/extremis-mind-link/1)
+  - /equipment/3/text: 2 deletions.
+- "OPERATIVE SELECTION" (hunter-clade/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 1 deletions; UNCERTAIN.
+  - "SEEK": reference. "Seek & Destroy is an archetype, not a weapon rule."
+  - "blast": reference. "Weapon name in selection list, not a prose Blast grant; direct profiles remain source facts."
+## imperial-navy-breachers
+- "NAVIS SERGEANT-AT-ARMS" (imperial-navy-breachers/datacards/navis-sergeant-at-arms/1)
+  - /datacards/0/passive_abilities/0/description: 1 deletions; UNCERTAIN.
+- "NAVIS AXEJACK" (imperial-navy-breachers/datacards/navis-axejack/1)
+  - /datacards/2/passive_abilities/0/description: 0 deletions; UNCERTAIN.
+  - /datacards/2/passive_abilities/1/description: 0 deletions; UNCERTAIN.
+- "NAVIS C.A.T. UNIT" (imperial-navy-breachers/datacards/navis-cat-unit/1)
+  - /datacards/3/passive_abilities/0/description: 0 deletions.
+  - "Seek": counter. "Defensive targeting override, not friendly Seek. All Machine limitations, APL-control adjustment and visibility origin remain."
+  - "range": reference. "Control-range restriction, not a weapon Range grant."
+  - /datacards/3/unique_actions/0/description: 0 deletions.
+  - "Seek": grant. "Explicit conditional Seek Light grant, not full Seek; target cannot be obscured and all expiry conditions remain."
+  - "range": reference. "Action restriction, not the Range weapon rule."
+- "NAVIS GHEISTSKULL" (imperial-navy-breachers/datacards/navis-gheistskull/1)
+  - /datacards/5/passive_abilities/0/description: 0 deletions.
+  - "Seek": counter. "Defensive override, not a grant. Action whitelist, inability to retaliate/assist and marker-control APL adjustment remain."
+- "NAVIS GRENADIER" (imperial-navy-breachers/datacards/navis-grenadier/1)
+  - /datacards/6/passive_abilities/0/description: 0 deletions.
+  - "stun": reference. "Stun grenade is an equipment/action reference, not a Stun weapon-rule grant; do not infer unspecified weapon properties."
+  - "limited": reference. "Ordinary limited-use accounting, not an assignment or removal of a numbered Limited x weapon rule. Demolition charge's direct Limited 1 remains intact."
+- "NAVIS HATCHCUTTER" (imperial-navy-breachers/datacards/navis-hatchcutter/1)
+  - /datacards/8/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Terrain/action proximity, not a Range weapon rule; +1AP for others' opening action remains."
+  - /datacards/8/unique_actions/1/description: 0 deletions.
+  - "range": reference. "Control-range marker placement and action eligibility, not Range x; terrain thickness and access distance remain."
+- "NAVIS SURVEYOR" (imperial-navy-breachers/datacards/navis-surveyor/1)
+  - /datacards/9/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Support-action restriction, not Range; +1 APL until recipient's next activation ends and Comms Device origin-control requirement remain."
+  - /datacards/9/unique_actions/1/description: 0 deletions.
+  - "range": reference. "Action eligibility, not a Range grant; one immediate free action with maximum 3-inch movement remains."
+- "NAVIS VOID-JAMMER" (imperial-navy-breachers/datacards/navis-void-jammer/1)
+  - /datacards/10/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action eligibility, not Range; D6 +1 for valid target, 3+ APL reduction through next activation end remain."
+- "void-armour" (imperial-navy-breachers/faction_rules/void-armour/1)
+  - /faction_rules/0/text: 2 deletions.
+  - "Devastating": counter. "Counters splash only, not a grant and not immunity to direct-target Devastating."
+  - "Torrent": counter. "Defensive mitigation conditioned on attacking rule; sweeping-profile exclusion is important and retained."
+  - "Blast": counter. "Defensive effect against Blast, not friendly Blast access."
+- "breach-and-clear" (imperial-navy-breachers/faction_rules/breach-and-clear/1)
+  - /faction_rules/1/text: 2 deletions.
+- "attack-order" (imperial-navy-breachers/strategy_ploys/attack-order/1)
+  - /strategy_ploys/0/text: 2 deletions.
+  - "Ceaseless": grant. "Explicit marker-proximity grant with expiry and mutual exclusion, not permanent team-wide Ceaseless."
+- "defence-order" (imperial-navy-breachers/strategy_ploys/defence-order/1)
+  - /strategy_ploys/1/text: 2 deletions.
+- "close-assault" (imperial-navy-breachers/strategy_ploys/close-assault/1)
+  - /strategy_ploys/2/text: 2 deletions.
+  - "heavy": reference. "Heavy is part of a weapon name, not a Heavy weapon-rule grant or restriction. Damage and fail-conversion mechanics remain."
+  - "range": flavour. "Descriptive proximity phrase, not Range x; actual effect uses an explicit 3-inch condition."
+- "brace-for-counterattack" (imperial-navy-breachers/strategy_ploys/brace-for-counterattack/1)
+  - /strategy_ploys/3/text: 2 deletions.
+- "overwhelm-target" (imperial-navy-breachers/firefight_ploys/overwhelm-target/1)
+  - /firefight_ploys/0/text: 2 deletions.
+- "blitz" (imperial-navy-breachers/firefight_ploys/blitz/1)
+  - /firefight_ploys/1/text: 2 deletions.
+  - "Accurate 1": grant. "Explicit Accurate 1 grant conditioned on action ordering, not merely being the first activated operative."
+  - "Severe": grant. "Distinct activation-order condition is retained, not conflated with Accurate 1's action-order condition."
+- "lock-it-down" (imperial-navy-breachers/firefight_ploys/lock-it-down/1)
+  - /firefight_ploys/2/text: 2 deletions.
+- "deck-hand" (imperial-navy-breachers/firefight_ploys/deck-hand/1)
+  - /firefight_ploys/3/text: 2 deletions.
+- "rebreathers" (imperial-navy-breachers/equipment/rebreathers/1)
+  - /equipment/0/text: 2 deletions.
+  - "Shock": counter. "Explicit immunity to enemy Shock, not granting Shock to friendly weapons."
+- "slugs" (imperial-navy-breachers/equipment/slugs/1)
+  - /equipment/1/text: 2 deletions; UNCERTAIN.
+  - "heavy": flavour. "Projectile adjective, not a Heavy weapon rule."
+  - "range": reference. "Profile name, not a Range x grant; narrative increased range is also not a rule."
+- "combat-stimms" (imperial-navy-breachers/equipment/combat-stimms/1)
+  - /equipment/2/text: 2 deletions.
+- "system-override-device" (imperial-navy-breachers/equipment/system-override-device/1)
+  - /equipment/3/text: 2 deletions.
+- "OPERATIVE SELECTION" (imperial-navy-breachers/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 2 deletions; UNCERTAIN.
+  - "SEEK": reference. "Seek & Destroy is an archetype, not a Seek weapon-rule grant."
+## inquisitorial-agents
+- "TOME-SKULL" (inquisitorial-agents/datacards/tome-skull/1)
+  - /datacards/1/passive_abilities/1/description: 0 deletions.
+  - "Seek": counter. "Explicit defensive precedence overrides Seek, not an offensive grant; keep the useful example."
+  - /datacards/1/passive_abilities/3/description: 0 deletions; UNCERTAIN.
+- "ENLIGHTENER AGENT" (inquisitorial-agents/datacards/enlightener-agent/1)
+  - /datacards/4/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Control range is a proximity condition, not a Range weapon rule."
+  - /datacards/4/passive_abilities/1/description: 0 deletions.
+  - "range": reference. "Proximity for CP gain, not a weapon-range grant."
+- "HEXORCIST AGENT" (inquisitorial-agents/datacards/hexorcist-agent/1)
+  - /datacards/5/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action restriction, not a weapon rule; weapon rules and kill/elimination exemptions cannot be suppressed."
+- "MYSTIC AGENT" (inquisitorial-agents/datacards/mystic-agent/1)
+  - /datacards/6/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Control range restricts the psychic action; both dice-conversion options remain mechanical, not Range grants."
+- "PENAL LEGIONNAIRE AGENT" (inquisitorial-agents/datacards/penal-legionnaire-agent/1)
+  - /datacards/7/passive_abilities/0/description: 0 deletions.
+  - "Shock": counter. "Immunity, not a Shock grant."
+  - "Stun": counter. "Immunity, not a Stun grant; preserve accompanying APL and injury protections."
+  - /datacards/7/passive_abilities/1/description: 0 deletions.
+  - "Relentless": grant. "Explicit conditional weapon-rule grant, not unconditional access."
+- "TEMPESTUS SCION MEDIC" (inquisitorial-agents/datacards/tempestus-scion-medic/1)
+  - /datacards/15/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Control range governs rescue eligibility and Dash endpoint, not weapon range. Preserve activation end and medic/primary/secondary-target exclusions."
+  - /datacards/15/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Healing distance and action prohibition, not Range; retain up to 2D3 healing."
+- "TEMPESTUS SCION TROOPER" (inquisitorial-agents/datacards/tempestus-scion-trooper/1)
+  - /datacards/16/passive_abilities/0/description: 0 deletions.
+  - "Stun": reference. "Grants access to the named grenade action, not the Stun weapon rule; retain universal-equipment reference."
+- "TEMPESTUS SCION VOX-OPERATOR" (inquisitorial-agents/datacards/tempestus-scion-vox-operator/1)
+  - /datacards/17/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Support-action restriction, not weapon Range."
+- "inquisitorial-requisition" (inquisitorial-agents/faction_rules/inquisitorial-requisition/1)
+  - /faction_rules/0/text: 3 deletions; UNCERTAIN.
+  - /faction_rules/0/options/0/text: 0 deletions; UNCERTAIN.
+- "death-korps" (inquisitorial-agents/faction_rules/death-korps/1)
+  - /faction_rules/1/text: 2 deletions; UNCERTAIN.
+  - /faction_rules/1/options/0/text: 0 deletions; UNCERTAIN.
+- "exaction-squad" (inquisitorial-agents/faction_rules/exaction-squad/1)
+  - /faction_rules/2/text: 2 deletions; UNCERTAIN.
+  - "Heavy": reference. "Heavy is part of a weapon name in a selection list, not a weapon-rule grant."
+- "imperial-navy-breachers" (inquisitorial-agents/faction_rules/imperial-navy-breachers/1)
+  - /faction_rules/3/text: 2 deletions.
+  - /faction_rules/3/options/0/text: 0 deletions; UNCERTAIN.
+- "kasrkin" (inquisitorial-agents/faction_rules/kasrkin/1)
+  - /faction_rules/4/text: 1 deletions; UNCERTAIN.
+  - "hot": reference. "Hot-shot is the weapon name, not Hot."
+- "sisters-of-silence" (inquisitorial-agents/faction_rules/sisters-of-silence/1)
+  - /faction_rules/5/text: 1 deletions.
+- "tempestus-scions" (inquisitorial-agents/faction_rules/tempestus-scions/1)
+  - /faction_rules/6/text: 1 deletions.
+  - "hot": reference. "Weapon name, not Hot weapon-rule permission."
+- "denounce" (inquisitorial-agents/strategy_ploys/denounce/1)
+  - /strategy_ploys/0/text: 2 deletions.
+- "intense-scrutiny" (inquisitorial-agents/strategy_ploys/intense-scrutiny/1)
+  - /strategy_ploys/1/text: 2 deletions.
+- "quarry" (inquisitorial-agents/strategy_ploys/quarry/1)
+  - /strategy_ploys/2/text: 2 deletions.
+  - "Ceaseless": grant. "Explicit grant limited to attacking or retaliating against the designated quarry."
+- "irrefutable-jurisdiction" (inquisitorial-agents/strategy_ploys/irrefutable-jurisdiction/1)
+  - /strategy_ploys/3/text: 2 deletions.
+- "absolute-authority" (inquisitorial-agents/firefight_ploys/absolute-authority/1)
+  - /firefight_ploys/0/text: 2 deletions.
+- "relentless-in-pursuit" (inquisitorial-agents/firefight_ploys/relentless-in-pursuit/1)
+  - /firefight_ploys/1/text: 2 deletions.
+  - "relentless": flavour. "Describes determination, not Relentless weapon-rule access."
+  - "range": reference. "Movement endpoint, not Range weapon rule."
+- "the-emperors-will" (inquisitorial-agents/firefight_ploys/the-emperors-will/1)
+  - /firefight_ploys/2/text: 2 deletions.
+- "intimidating-presence" (inquisitorial-agents/firefight_ploys/intimidating-presence/1)
+  - /firefight_ploys/3/text: 2 deletions.
+- "inquisitorial-rosette" (inquisitorial-agents/equipment/inquisitorial-rosette/1)
+  - /equipment/0/text: 2 deletions.
+- "combat-daggers" (inquisitorial-agents/equipment/combat-daggers/1)
+  - /equipment/1/text: 2 deletions.
+- "armoured-bodysuits" (inquisitorial-agents/equipment/armoured-bodysuits/1)
+  - /equipment/2/text: 2 deletions.
+- "servo-skull" (inquisitorial-agents/equipment/servo-skull/1)
+  - /equipment/3/text: 2 deletions.
+  - "range": flavour. "Ordinary breadth of tasks, not weapon Range."
+- "OPERATIVE SELECTION" (inquisitorial-agents/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 2 deletions.
+  - "Piercing 2": reference. "Roster restriction, not a grant or in-sequence counter."
+  - "Heavy": reference. "Part of weapon name, not Heavy rule."
+  - "Piercing Crits": reference. "Clarifying exception to selection cap; no grant."
+  - "Piercing": reference. "Roster limit, not permission to add Piercing or invent X."
+## kasrkin
+- "KASRKIN SERGEANT" (kasrkin/datacards/kasrkin-sergeant/1)
+  - /datacards/0/passive_abilities/0/description: 0 deletions; UNCERTAIN.
+  - "range": reference. "Action restriction, not Range; retain Veteran Leadership's additional distinct strategic-gambit skill."
+- "KASRKIN COMBAT MEDIC" (kasrkin/datacards/kasrkin-combat-medic/1)
+  - /datacards/1/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Proximity restrictions, not Range weapon rule. Keep optional Dash endpoint, activation ending and incapacitated/primary/secondary-target medic exclusions."
+  - /datacards/1/passive_abilities/1/description: 0 deletions; UNCERTAIN.
+  - "range": reference. "Healing/action distance, not weapon Range; retain up to 2D3 healing."
+- "KASRKIN DEMO-TROOPER" (kasrkin/datacards/kasrkin-demo-trooper/1)
+  - /datacards/2/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Marker-placement restriction, not a weapon Range grant; retain incapacitation/removal exception."
+  - /datacards/2/passive_abilities/1/description: 0 deletions.
+  - "range": reference. "Mine trigger, not a Range weapon rule."
+  - /datacards/2/passive_abilities/2/description: 0 deletions; UNCERTAIN.
+  - "Devastating": counter. "Defensive exemption with explicit target exception; do not grant Devastating or invent either x."
+  - "Torrent": counter. "Defensive response to incoming Torrent, not grant."
+  - "Blast": counter. "Defensive response, not an offensive Blast grant."
+- "KASRKIN RECON-TROOPER" (kasrkin/datacards/kasrkin-recon-trooper/1)
+  - /datacards/4/unique_actions/0/description: 0 deletions; UNCERTAIN.
+  - "range": reference. "Action restriction, not Range grant."
+- "KASRKIN SHARPSHOOTER" (kasrkin/datacards/kasrkin-sharpshooter/1)
+  - /datacards/5/passive_abilities/0/description: 0 deletions; UNCERTAIN.
+  - "Saturate": counter. "Defensive cancellation, not granting Saturate to rifle."
+- "KASRKIN TROOPER" (kasrkin/datacards/kasrkin-trooper/1)
+  - /datacards/6/passive_abilities/0/description: 0 deletions.
+  - "Stun": reference. "Access to a named action under universal equipment, not Stun weapon-rule grant."
+- "KASRKIN VOX-TROOPER" (kasrkin/datacards/kasrkin-vox-trooper/1)
+  - /datacards/7/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action prohibition, not Range weapon rule."
+- "skill-at-arms" (kasrkin/faction_rules/skill-at-arms/1)
+  - /faction_rules/0/text: 2 deletions; UNCERTAIN.
+  - /faction_rules/0/options/0/text: 1 deletions.
+  - "Severe": grant. "Explicit option-dependent Severe grant, not always-on access to every skill."
+  - "lethal": flavour. "Ordinary lethal adjective, no Lethal parameter or grant."
+  - /faction_rules/0/options/1/text: 1 deletions.
+  - "heavy": flavour. "Describes gear weight, not Heavy movement restrictions."
+  - /faction_rules/0/options/2/text: 1 deletions.
+  - /faction_rules/0/options/3/text: 1 deletions.
+- "rapid-fire" (kasrkin/faction_rules/rapid-fire/1)
+  - /faction_rules/1/text: 2 deletions.
+  - "hot": reference. "Hot-shot weapon names, not Hot rule grant."
+- "elimination-pattern" (kasrkin/strategy_ploys/elimination-pattern/1)
+  - /strategy_ploys/0/text: 2 deletions.
+  - "Piercing Crits 1": grant. "Explicit Piercing Crits 1 grant; volley gun takes Piercing 1 instead."
+  - "Piercing 1": grant. "Explicit parameter-1 replacement grant for the named weapon only."
+  - "hot": reference. "Weapon family name, not Hot rule."
+  - "Piercing": grant. "Generic candidate overlaps the two explicit parameterized grants; no additional unparameterized rule or stacking."
+- "engage-from-cover" (kasrkin/strategy_ploys/engage-from-cover/1)
+  - /strategy_ploys/1/text: 2 deletions.
+- "clearance-sweep" (kasrkin/strategy_ploys/clearance-sweep/1)
+  - /strategy_ploys/2/text: 2 deletions.
+  - "Ceaseless": grant. "Explicit spatially limited grant during shooting; do not extend it to fighting."
+- "relocate" (kasrkin/strategy_ploys/relocate/1)
+  - /strategy_ploys/3/text: 2 deletions.
+- "seize-the-initiative" (kasrkin/firefight_ploys/seize-the-initiative/1)
+  - /firefight_ploys/0/text: 2 deletions.
+- "cover-retreat" (kasrkin/firefight_ploys/cover-retreat/1)
+  - /firefight_ploys/1/text: 2 deletions.
+  - "range": reference. "Eligibility restriction, not Range weapon rule."
+- "neutralise-target" (kasrkin/firefight_ploys/neutralise-target/1)
+  - /firefight_ploys/2/text: 2 deletions.
+- "give-no-ground" (kasrkin/firefight_ploys/give-no-ground/1)
+  - /firefight_ploys/3/text: 2 deletions.
+- "foregrip" (kasrkin/equipment/foregrip/1)
+  - /equipment/0/text: 2 deletions.
+  - "Accurate 1": grant. "Explicit Accurate 1 grant; excluded pistol examples are mechanical and retained."
+  - "hot": example. "Hot-shot laspistol illustrates exclusion, not Hot rule access."
+  - "range": flavour. "Ordinary description; actual distance is supplied separately and no Range weapon rule is granted."
+- "long-range-scope" (kasrkin/equipment/long-range-scope/1)
+  - /equipment/1/text: 2 deletions.
+  - "Saturate": grant. "Explicit distance-limited Saturate grant."
+  - "hot": reference. "Weapon name qualifier, not Hot weapon-rule grant."
+  - "RANGE": flavour. "Title describes equipment purpose; no Range x rule supplied."
+- "relics-of-cadia" (kasrkin/equipment/relics-of-cadia/1)
+  - /equipment/2/text: 2 deletions.
+- "combat-daggers" (kasrkin/equipment/combat-daggers/1)
+  - /equipment/3/text: 2 deletions.
+- "OPERATIVE SELECTION" (kasrkin/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 2 deletions; UNCERTAIN.
+  - "SEEK": reference. "Seek & Destroy is an archetype, not Seek weapon rule."
+  - "hot": reference. "Mechanical definition and examples must remain; not a Hot grant."
+## kommandos
+- "KOMMANDO BOSS NOB" (kommandos/datacards/kommando-boss-nob/1)
+  - /datacards/0/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Support-action restriction, not a Range weapon rule."
+- "KOMMANDO BOMB SQUIG" (kommandos/datacards/kommando-bomb-squig/1)
+  - /datacards/1/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Exception to shooting restriction, not Range grant; preserve self-targeting semantics."
+- "KOMMANDO BOY" (kommandos/datacards/kommando-boy/1)
+  - /datacards/2/passive_abilities/0/description: 0 deletions.
+  - "Stun": reference. "Named universal-equipment action permission, not Stun weapon-rule grant."
+- "KOMMANDO BREACHA BOY" (kommandos/datacards/kommando-breacha-boy/1)
+  - /datacards/3/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Terrain/marker distances, not weapon Range; retain action integration and cost exception."
+- "KOMMANDO COMMS BOY" (kommandos/datacards/kommando-comms-boy/1)
+  - /datacards/5/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Support-action restriction, not Range weapon rule."
+- "KOMMANDO DAKKA BOY" (kommandos/datacards/kommando-dakka-boy/1)
+  - /datacards/6/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action restriction, not weapon Range."
+- "KOMMANDO GROT" (kommandos/datacards/kommando-grot/1)
+  - /datacards/7/passive_abilities/0/description: 0 deletions.
+  - "Seek": counter. "Defensive precedence against Seek, not access to it; keep the useful example."
+  - /datacards/7/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Movement-placement/action limits, not weapon Range."
+- "throat-slittas" (kommandos/faction_rules/throat-slittas/1)
+  - /faction_rules/0/text: 2 deletions.
+- "dakka-dakka-dakka" (kommandos/strategy_ploys/dakka-dakka-dakka/1)
+  - /strategy_ploys/0/text: 2 deletions.
+  - "Punishing": grant. "Explicit ranged-weapon grant, not melee access."
+- "waaagh" (kommandos/strategy_ploys/waaagh/1)
+  - /strategy_ploys/1/text: 2 deletions.
+  - "Balanced": grant. "Explicit melee-only rule grant."
+- "skulk-about" (kommandos/strategy_ploys/skulk-about/1)
+  - /strategy_ploys/2/text: 2 deletions.
+- "sssshhhh" (kommandos/strategy_ploys/sssshhhh/1)
+  - /strategy_ploys/3/text: 2 deletions.
+- "just-a-scratch" (kommandos/firefight_ploys/just-a-scratch/1)
+  - /firefight_ploys/0/text: 2 deletions.
+- "krump-em" (kommandos/firefight_ploys/krump-em/1)
+  - /firefight_ploys/1/text: 2 deletions.
+- "kunnin-but-brutal" (kommandos/firefight_ploys/kunnin-but-brutal/1)
+  - /firefight_ploys/2/text: 2 deletions.
+  - "brutal": flavour. "Not the Brutal weapon rule; mechanic changes a normal strike to critical."
+  - "range": flavour. "Ordinary description without a Range x rule; does not replace charge and strike conditions."
+- "shake-it-off" (kommandos/firefight_ploys/shake-it-off/1)
+  - /firefight_ploys/3/text: 2 deletions.
+- "choppas" (kommandos/equipment/choppas/1)
+  - /equipment/0/text: 2 deletions.
+- "dynamite" (kommandos/equipment/dynamite/1)
+  - /equipment/1/text: 2 deletions.
+  - "Saturate": grant. "Direct equipment-profile Saturate; not a grant to all weapons."
+  - "Blast 1\"": grant. "Direct profile grants Blast exactly 1 inch."
+  - "Range 4\"": grant. "Direct profile restricts weapon range to 4 inches."
+  - "Heavy": grant. "Direct profile rule with explicit permitted movement, not unqualified Heavy."
+- "harpoon" (kommandos/equipment/harpoon/1)
+  - /equipment/2/text: 2 deletions.
+  - "Lethal 5+": grant. "Direct equipment-profile Lethal with exact 5+ threshold."
+  - "Range 8\"": grant. "Direct profile restricts range to 8 inches."
+  - "Stun": grant. "Direct profile grants Stun, not the narrative's stronger unconditional immobility claim."
+- "collapsible-stocks" (kommandos/equipment/collapsible-stocks/1)
+  - /equipment/3/text: 2 deletions.
+  - "Range": modify. "Removes an existing range restriction, not a new Range grant and not a change to other weapons."
+- "OPERATIVE SELECTION" (kommandos/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 1 deletions; UNCERTAIN.
+  - "SEEK": reference. "Archetype name, not Seek weapon-rule access."
+## legionaries
+- "LEGIONARY CHOSEN" (legionaries/datacards/legionary-chosen/1)
+  - /datacards/1/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Proximity trigger, not Range weapon rule; unlike Enlightener this rule refunds AP."
+- "LEGIONARY ANOINTED" (legionaries/datacards/legionary-anointed/1)
+  - /datacards/2/passive_abilities/0/description: 0 deletions.
+  - "Ceaseless": grant. "Explicit conditional grant; retain marker/mission-action restrictions, immediate 0AP Place Marker, damage reduction and noncumulative Disgusting Vigour clarification."
+  - "Lethal 5+": grant. "Explicit 5+ threshold; not an unconditional profile replacement; original Rending remains a direct fact."
+- "LEGIONARY BUTCHER" (legionaries/datacards/legionary-butcher/1)
+  - /datacards/4/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Charge endpoint, not Range weapon rule; keep separate no-enemy-assists restriction."
+- "LEGIONARY SHRIVETALON" (legionaries/datacards/legionary-shrivetalon/1)
+  - /datacards/8/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Placement/action distance, not Range; preserve distinction between total contesting APL adjustment and actual APL stat changes."
+- "marks-of-chaos" (legionaries/faction_rules/marks-of-chaos/1)
+  - /faction_rules/0/text: 3 deletions; UNCERTAIN.
+  - /faction_rules/0/options/0/text: 0 deletions; UNCERTAIN.
+  - "Severe": grant. "Explicit option-dependent melee grant; do not extend every mark option to all operatives."
+  - /faction_rules/0/options/1/text: 0 deletions; UNCERTAIN.
+  - /faction_rules/0/options/2/text: 0 deletions; UNCERTAIN.
+  - /faction_rules/0/options/3/text: 0 deletions; UNCERTAIN.
+  - "Severe": grant. "Explicit option-dependent ranged grant, not melee access or a universal grant."
+  - /faction_rules/0/options/4/text: 0 deletions; UNCERTAIN.
+  - "Ceaseless": grant. "Explicit proximity-limited grant through this option only."
+- "astartes" (legionaries/faction_rules/astartes/1)
+  - /faction_rules/1/text: 2 deletions.
+- "blood-for-the-blood-god" (legionaries/strategy_ploys/blood-for-the-blood-god/1)
+  - /strategy_ploys/0/text: 2 deletions.
+- "implacable" (legionaries/strategy_ploys/implacable/1)
+  - /strategy_ploys/1/text: 2 deletions.
+  - "Piercing Crits 1": modify. "Defensive replacement on the attacking weapon, not a new offensive rule for friendly LEGIONARY weapons."
+  - "Piercing 1": counter. "Restricts existing incoming Piercing, not granting friendly Piercing 1."
+  - "Piercing": modify. "Generic candidate overlaps exact replacement; does not change all Piercing parameters or grant unspecified X."
+- "quicksilver-speed" (legionaries/strategy_ploys/quicksilver-speed/1)
+  - /strategy_ploys/2/text: 2 deletions.
+- "fickle-fates" (legionaries/strategy_ploys/fickle-fates/1)
+  - /strategy_ploys/3/text: 2 deletions.
+  - "Balanced": grant. "Explicit conditional grant, not limited to TZEENTCH; the following TZEENTCH benefit is separate and defensive."
+  - "devastating": flavour. "Adjective, not Devastating weapon rule; no damage parameter supplied."
+- "unending-bloodshed" (legionaries/firefight_ploys/unending-bloodshed/1)
+  - /firefight_ploys/0/text: 2 deletions.
+- "mutability-and-change" (legionaries/firefight_ploys/mutability-and-change/1)
+  - /firefight_ploys/1/text: 2 deletions.
+- "malignant-aura" (legionaries/firefight_ploys/malignant-aura/1)
+  - /firefight_ploys/2/text: 2 deletions.
+  - "Piercing 1": grant. "Explicit action- and distance-limited Piercing 1 grant; do not apply to farther secondary targets or all NURGLE weapons permanently."
+- "sickening-captivation" (legionaries/firefight_ploys/sickening-captivation/1)
+  - /firefight_ploys/3/text: 2 deletions.
+- "warded-armour" (legionaries/equipment/warded-armour/1)
+  - /equipment/0/text: 2 deletions.
+- "tainted-rounds" (legionaries/equipment/tainted-rounds/1)
+  - /equipment/1/text: 2 deletions.
+  - "Rending": grant. "Explicit temporary named-weapon grant, not all weapons or permanently active."
+- "chaos-talismans" (legionaries/equipment/chaos-talismans/1)
+  - /equipment/2/text: 2 deletions.
+- "malefic-blades" (legionaries/equipment/malefic-blades/1)
+  - /equipment/3/text: 2 deletions.
+- "OPERATIVE SELECTION" (legionaries/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 2 deletions.
+  - "heavy": reference. "Weapon/operative name, not an instruction granting Heavy."
+  - "SEEK": reference. "Seek & Destroy archetype does not grant Seek."
+## mandrakes
+- "MANDRAKE ABYSSAL" (mandrakes/datacards/mandrake-abyssal/1)
+  - /datacards/1/passive_abilities/0/description: 0 deletions.
+  - "Saturate": grant. "Explicit conditional weapon grant, alongside +1 to both Dmg stats. The separate damage reduction when shooting a friendly token bearer is not an offensive grant."
+  - /datacards/1/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Control range is an action restriction, not the Range weapon rule."
+- "MANDRAKE CHOOSER OF THE FLESH" (mandrakes/datacards/mandrake-chooser-of-the-flesh/1)
+  - /datacards/2/passive_abilities/1/description: 0 deletions.
+  - "range": reference. "Spatial trigger for Part Collector, not a weapon Range grant."
+- "MANDRAKE DIRGEMAW" (mandrakes/datacards/mandrake-dirgemaw/1)
+  - /datacards/3/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action eligibility and exception, not the Range weapon rule."
+- "MANDRAKE SHADEWEAVER" (mandrakes/datacards/mandrake-shadeweaver/1)
+  - /datacards/4/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Marker proximity controls movement permission, not a ranged weapon rule."
+  - /datacards/4/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action restriction; smoke persistence and marker removal remain unchanged."
+- "soulstrike" (mandrakes/faction_rules/soulstrike/1)
+  - /faction_rules/0/text: 2 deletions.
+- "shadow-passage" (mandrakes/faction_rules/shadow-passage/1)
+  - /faction_rules/1/text: 2 deletions.
+  - "range": reference. "Setup prohibition is not the Range weapon rule."
+- "umbral-entities" (mandrakes/faction_rules/umbral-entities/1)
+  - /faction_rules/2/text: 2 deletions.
+  - "Piercing": counter. "Defensive negation, not a grant to friendly weapons; no Piercing parameter is invented."
+- "within-shadow" (mandrakes/faction_rules/within-shadow/1)
+  - /faction_rules/3/text: 2 deletions.
+  - "Heavy": reference. "Heavy is a terrain category here, not a weapon movement restriction."
+  - "range": reference. "Marker proximity, not a weapon Range grant."
+- "creeping-horror" (mandrakes/strategy_ploys/creeping-horror/1)
+  - /strategy_ploys/0/text: 2 deletions.
+- "gloaming-shroud" (mandrakes/strategy_ploys/gloaming-shroud/1)
+  - /strategy_ploys/1/text: 2 deletions.
+  - "range": flavour. "Ordinary description of ranged attacks, without a Range weapon rule or parameter; this narrative evidence is intentionally removed, not mechanical evidence."
+- "blade-in-the-dark" (mandrakes/strategy_ploys/blade-in-the-dark/1)
+  - /strategy_ploys/2/text: 2 deletions.
+- "inescapable-nightmare" (mandrakes/strategy_ploys/inescapable-nightmare/1)
+  - /strategy_ploys/3/text: 2 deletions.
+- "slither-out-of-sight" (mandrakes/firefight_ploys/slither-out-of-sight/1)
+  - /firefight_ploys/0/text: 2 deletions.
+- "soul-feast" (mandrakes/firefight_ploys/soul-feast/1)
+  - /firefight_ploys/1/text: 2 deletions.
+- "nowhere-to-hide" (mandrakes/firefight_ploys/nowhere-to-hide/1)
+  - /firefight_ploys/2/text: 2 deletions.
+- "shadows-bite" (mandrakes/firefight_ploys/shadows-bite/1)
+  - /firefight_ploys/3/text: 2 deletions.
+- "chain-snare" (mandrakes/equipment/chain-snare/1)
+  - /equipment/0/text: 2 deletions.
+  - "range": reference. "Control-range trigger for preventing movement, not a Range weapon grant."
+- "shadow-glyph" (mandrakes/equipment/shadow-glyph/1)
+  - /equipment/1/text: 2 deletions.
+  - "Seek": counter. "Explicit defensive precedence counters Seek; the example does not grant Seek to any friendly weapon."
+- "soul-gem" (mandrakes/equipment/soul-gem/1)
+  - /equipment/2/text: 2 deletions.
+  - "Blast 1\"": grant. "Explicit Blast 1-inch grant to this weapon only, not to all ranged weapons."
+- "bone-darts" (mandrakes/equipment/bone-darts/1)
+  - /equipment/3/text: 2 deletions.
+  - "Range 6\"": grant. "Direct profile fact: Range 6 inches belongs to the bone dart, not its user's other weapons."
+  - "Rending": grant. "Direct weapon-profile rule retained as a structured source fact."
+  - "Silent": grant. "Direct weapon-profile rule; no Silent grant to other weapons."
+## murderwings
+- "MURDERWING CHAOS LORD" (murderwings/datacards/murderwing-chaos-lord/1)
+  - /datacards/0/passive_abilities/0/description: 0 deletions; UNCERTAIN.
+- "MURDERWING CHAMPION" (murderwings/datacards/murderwing-champion/1)
+  - /datacards/1/passive_abilities/0/description: 0 deletions.
+  - "Punishing": grant. "Explicit optional alternative, not simultaneous access to all five rules."
+  - "Balanced": grant. "One-of-five conditional weapon grant."
+  - "Brutal": grant. "One-of-five conditional weapon grant; a power fist's existing Brutal remains a direct fact independently."
+  - "Severe": grant. "One-of-five conditional weapon grant."
+  - "Shock": grant. "One-of-five conditional weapon grant; not an unconditional offensive grant to every team member."
+- "MURDERWING CURSECLAW" (murderwings/datacards/murderwing-curseclaw/1)
+  - /datacards/2/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Control-range placement and action-end exception, not the Range weapon rule."
+- "MURDERWING HUNTMASTER" (murderwings/datacards/murderwing-huntmaster/1)
+  - /datacards/4/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Proximity condition for Pinned Prey, not Range on a weapon."
+- "MURDERWING SHRIEKER" (murderwings/datacards/murderwing-shrieker/1)
+  - /datacards/6/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action target restriction, not a weapon Range grant; D3 damage and -1 APL until end of next activation remain intact."
+- "jump-pack" (murderwings/faction_rules/jump-pack/1)
+  - /faction_rules/0/text: 3 deletions.
+  - /faction_rules/0/options/0/text: 0 deletions.
+  - "range": reference. "Movement setup restriction, not the Range weapon rule. The option name begins a mechanical sentence and must be preserved."
+- "jump-pack-example" (murderwings/faction_rules/jump-pack-example/1)
+  - /faction_rules/1/text: 1 deletions.
+- "boost-actions" (murderwings/faction_rules/boost-actions/1)
+  - /faction_rules/2/text: 2 deletions.
+- "boost-actions-example" (murderwings/faction_rules/boost-actions-example/1)
+  - /faction_rules/3/text: 1 deletions.
+- "astartes" (murderwings/faction_rules/astartes/1)
+  - /faction_rules/4/text: 2 deletions.
+- "predators-above" (murderwings/strategy_ploys/predators-above/1)
+  - /strategy_ploys/0/text: 2 deletions.
+  - "Balanced": grant. "Two explicit alternative conditional grants, with the BOOST duration preserved."
+- "cull-the-weak" (murderwings/strategy_ploys/cull-the-weak/1)
+  - /strategy_ploys/1/text: 2 deletions.
+  - "Punishing": grant. "Explicit conditional grant, not general access against every target."
+  - "seek": flavour. "Ordinary verb in narrative; not Seek or Seek Light. Only this inert narrative evidence is removed."
+- "nightmare-on-high" (murderwings/strategy_ploys/nightmare-on-high/1)
+  - /strategy_ploys/2/text: 2 deletions.
+- "instil-fear" (murderwings/strategy_ploys/instil-fear/1)
+  - /strategy_ploys/3/text: 2 deletions.
+- "malicious-narcissism" (murderwings/firefight_ploys/malicious-narcissism/1)
+  - /firefight_ploys/0/text: 2 deletions.
+- "murderous-descent" (murderwings/firefight_ploys/murderous-descent/1)
+  - /firefight_ploys/1/text: 2 deletions.
+  - "range": reference. "Mandatory movement endpoint, not a weapon Range grant."
+- "long-forgotten-honour" (murderwings/firefight_ploys/long-forgotten-honour/1)
+  - /firefight_ploys/2/text: 2 deletions.
+- "wings-of-darkness" (murderwings/firefight_ploys/wings-of-darkness/1)
+  - /firefight_ploys/3/text: 2 deletions.
+- "bladefins" (murderwings/equipment/bladefins/1)
+  - /equipment/0/text: 2 deletions.
+- "clawed-armour" (murderwings/equipment/clawed-armour/1)
+  - /equipment/1/text: 2 deletions.
+  - "range": reference. "Action target proximity, not a weapon Range rule."
+- "warp-fuel" (murderwings/equipment/warp-fuel/1)
+  - /equipment/2/text: 2 deletions.
+  - "range": reference. "Prior proximity defines movement eligibility, not a weapon Range grant."
+- "vox-casters" (murderwings/equipment/vox-casters/1)
+  - /equipment/3/text: 2 deletions.
+  - "stun": reference. "A defined action test, not the critical-success-triggered Stun weapon rule; retain all mechanical text."
+- "OPERATIVE SELECTION" (murderwings/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 1 deletions; UNCERTAIN.
+  - "SEEK": reference. "SEEK & DESTROY is an archetype, not a Seek weapon grant."
+## nemesis-claw
+- "NIGHT LORD FEARMONGER" (nemesis-claw/datacards/night-lord-fearmonger/1)
+  - /datacards/1/passive_abilities/0/description: 0 deletions.
+  - "Devastating": reference. "Clarifies a token trigger, not a Devastating grant. Terrorchem vial's direct Devastating 3 profile remains a fact; tainted blade does not gain it through this prose."
+  - /datacards/1/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Objective/action eligibility, not a Range weapon rule. First eligible enemy contesting it receives the token and 2D3 damage, delayed to action end if applicable."
+- "NIGHT LORD SCREECHER" (nemesis-claw/datacards/night-lord-screecher/1)
+  - /datacards/4/passive_abilities/1/description: 0 deletions.
+  - "Lethal 4+": grant. "Explicit conditional Lethal 4+ grant, distinct from the profile's direct Lethal 5+."
+- "NIGHT LORD SKINTHIEF" (nemesis-claw/datacards/night-lord-skinthief/1)
+  - /datacards/5/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Trigger proximity, not a weapon Range grant."
+- "NIGHT LORD WARRIOR" (nemesis-claw/datacards/night-lord-warrior/1)
+  - /datacards/7/passive_abilities/0/description: 0 deletions.
+  - "Lethal 5+": grant. "Explicit conditional grant; preserve injured versus stat-based alternatives."
+- "astartes" (nemesis-claw/faction_rules/astartes/1)
+  - /faction_rules/0/text: 2 deletions.
+- "in-midnight-clad" (nemesis-claw/faction_rules/in-midnight-clad/1)
+  - /faction_rules/1/text: 2 deletions.
+  - "Heavy": reference. "Heavy is terrain, not a weapon rule; conjunction and terrain alternatives remain intact."
+- "we-have-come-for-you" (nemesis-claw/strategy_ploys/we-have-come-for-you/1)
+  - /strategy_ploys/0/text: 2 deletions.
+  - "shock": flavour. "Shock is ordinary narrative language; actual rule inflicts D3 damage after a qualifying Charge, not Shock on a weapon."
+  - "range": reference. "Damage target proximity, not a Range weapon grant."
+- "the-black-hunt" (nemesis-claw/strategy_ploys/the-black-hunt/1)
+  - /strategy_ploys/1/text: 2 deletions.
+- "preysight" (nemesis-claw/strategy_ploys/preysight/1)
+  - /strategy_ploys/2/text: 2 deletions.
+  - "Range 6\"": grant. "Explicit Range 6-inch grant bundled with Seek Light, including its targeting restriction."
+  - "Seek": grant. "Candidate label is generic but actual grant is specifically Seek Light, not unrestricted Seek."
+- "return-to-darkness" (nemesis-claw/strategy_ploys/return-to-darkness/1)
+  - /strategy_ploys/3/text: 2 deletions.
+  - "Heavy": reference. "Terrain category constrains movement, not a weapon Heavy grant."
+  - "range": reference. "Control-range proximity to terrain, not weapon Range."
+- "vox-scream" (nemesis-claw/firefight_ploys/vox-scream/1)
+  - /firefight_ploys/0/text: 2 deletions.
+  - "stun": flavour. "Narrative verb, not Stun on a weapon; no critical-success or APL-reduction grant."
+- "death-to-the-false-emperor" (nemesis-claw/firefight_ploys/death-to-the-false-emperor/1)
+  - /firefight_ploys/1/text: 2 deletions.
+  - "Relentless": grant. "Explicit keyword-dependent replacement grant, not simultaneous Ceaseless and Relentless."
+  - "Ceaseless": grant. "Explicit temporary grant with the replacement exception preserved."
+- "proclivity-for-murder" (nemesis-claw/firefight_ploys/proclivity-for-murder/1)
+  - /firefight_ploys/2/text: 2 deletions.
+  - "brutal": flavour. "Adjective describing a kill, not the Brutal weapon rule."
+  - "range": reference. "Kill proximity is a movement trigger, not a Range weapon grant."
+- "dirty-fighter" (nemesis-claw/firefight_ploys/dirty-fighter/1)
+  - /firefight_ploys/3/text: 2 deletions.
+- "flayed-skin" (nemesis-claw/equipment/flayed-skin/1)
+  - /equipment/0/text: 2 deletions.
+- "chain-snare" (nemesis-claw/equipment/chain-snare/1)
+  - /equipment/1/text: 2 deletions.
+  - "range": reference. "Control-range movement trigger, not Range on a weapon."
+- "grisly-trophy" (nemesis-claw/equipment/grisly-trophy/1)
+  - /equipment/2/text: 2 deletions.
+- "comms-jammers" (nemesis-claw/equipment/comms-jammers/1)
+  - /equipment/3/text: 2 deletions.
+- "OPERATIVE SELECTION" (nemesis-claw/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 1 deletions.
+  - "heavy": reference. "Role/weapon names in selection instructions do not grant Heavy. Existing profile Heavy (Reposition only) facts remain independent."
+  - "SEEK": reference. "SEEK & DESTROY is an archetype, not a weapon rule grant."
+## novitiates
+- "NOVITIATE CONDEMNOR" (novitiates/datacards/novitiate-condemnor/1)
+  - /datacards/1/passive_abilities/1/description: 0 deletions.
+  - "Lethal 5+": grant. "Explicit keyword-dependent grant via the weapon's custom rule; not Lethal 5+ against every target or on unrelated weapons."
+- "NOVITIATE DIALOGUS" (novitiates/datacards/novitiate-dialogus/1)
+  - /datacards/2/passive_abilities/0/description: 0 deletions; UNCERTAIN.
+  - "range": reference. "Action restriction, not a weapon Range grant; the classification is clear despite uncertain action structure."
+  - /datacards/2/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Control-range action restriction, not Range on a weapon."
+- "NOVITIATE EXACTOR" (novitiates/datacards/novitiate-exactor/1)
+  - /datacards/4/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action restriction, not a weapon Range grant."
+- "NOVITIATE HOSPITALLER" (novitiates/datacards/novitiate-hospitaller/1)
+  - /datacards/5/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Control-range eligibility and Dash endpoint, not the Range weapon rule."
+  - /datacards/5/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Healing distance and action prohibition, not Range on a weapon."
+- "NOVITIATE PENITENT" (novitiates/datacards/novitiate-penitent/1)
+  - /datacards/7/passive_abilities/0/description: 0 deletions.
+  - "Ceaseless": grant. "Explicit weapon-specific conditional grant through Zealous Rage, not Ceaseless for the autopistol or entire team."
+- "NOVITIATE PRECEPTOR" (novitiates/datacards/novitiate-preceptor/1)
+  - /datacards/8/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Resource trigger proximity, not a weapon Range rule."
+  - /datacards/8/passive_abilities/1/description: 0 deletions.
+  - "Severe": grant. "Explicit proximity-dependent grant, not unconditional team-wide access."
+- "NOVITIATE PURGATUS" (novitiates/datacards/novitiate-purgatus/1)
+  - /datacards/10/passive_abilities/0/description: 0 deletions; UNCERTAIN.
+- "NOVITIATE RELIQUARIUS" (novitiates/datacards/novitiate-reliquarius/1)
+  - /datacards/11/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action restriction, not a weapon Range grant."
+- "acts-of-faith" (novitiates/faction_rules/acts-of-faith/1)
+  - /faction_rules/0/text: 3 deletions.
+- "ardent-vengeance" (novitiates/strategy_ploys/ardent-vengeance/1)
+  - /strategy_ploys/0/text: 2 deletions.
+  - "Punishing": grant. "Explicit expended-target-dependent grant, not general access against ready enemies."
+- "defenders-of-the-faith" (novitiates/strategy_ploys/defenders-of-the-faith/1)
+  - /strategy_ploys/1/text: 2 deletions.
+- "blessed-rejuvenation" (novitiates/strategy_ploys/blessed-rejuvenation/1)
+  - /strategy_ploys/2/text: 2 deletions.
+- "righteous-advance" (novitiates/strategy_ploys/righteous-advance/1)
+  - /strategy_ploys/3/text: 2 deletions.
+- "glorious-martyrdom" (novitiates/firefight_ploys/glorious-martyrdom/1)
+  - /firefight_ploys/0/text: 2 deletions.
+- "blazing-inferno" (novitiates/firefight_ploys/blazing-inferno/1)
+  - /firefight_ploys/1/text: 2 deletions.
+- "blinding-aura" (novitiates/firefight_ploys/blinding-aura/1)
+  - /firefight_ploys/2/text: 2 deletions.
+  - "Blast": example. "Mechanical example limits defensive protection; no friendly Blast grant and no negation of the attacker's Blast rule."
+- "guided-by-faith" (novitiates/firefight_ploys/guided-by-faith/1)
+  - /firefight_ploys/3/text: 2 deletions.
+  - "Seek": grant. "Explicit conditional Seek Light grant; generic candidate label does not justify unrestricted Seek or a Range 6-inch grant."
+- "icon-of-faith" (novitiates/equipment/icon-of-faith/1)
+  - /equipment/0/text: 2 deletions.
+- "sanctified-rounds" (novitiates/equipment/sanctified-rounds/1)
+  - /equipment/1/text: 2 deletions.
+  - "Piercing Crits 1": grant. "Explicit temporary qualified grant with parameter 1; not ordinary Piercing 1 or a grant to flamers/plasma."
+  - "Piercing": reference. "Overlapping family-name candidate inside the explicit Piercing Crits 1 grant. Preserve the qualified grant above without inventing a second unrestricted Piercing rule or parameter."
+- "auto-chastisers" (novitiates/equipment/auto-chastisers/1)
+  - /equipment/2/text: 2 deletions.
+- "holy-embrocations" (novitiates/equipment/holy-embrocations/1)
+  - /equipment/3/text: 2 deletions.
+## pathfinders
+- "ASSAULT GRENADIER PATHFINDER" (pathfinders/datacards/assault-grenadier-pathfinder/1)
+  - /datacards/1/passive_abilities/0/description: 0 deletions.
+  - "limited": reference. "An equipment-use exemption, not a grant of a parameterized Limited weapon rule. The fusion grenade's direct Limited 1 profile remains a separate source fact."
+- "COMMS SPECIALIST PATHFINDER" (pathfinders/datacards/comms-specialist-pathfinder/1)
+  - /datacards/3/unique_actions/1/description: 0 deletions.
+  - "range": reference. "Control range is an action restriction, not the Range weapon rule."
+- "DRONE CONTROLLER PATHFINDER" (pathfinders/datacards/drone-controller-pathfinder/1)
+  - /datacards/4/unique_actions/1/description: 0 deletions.
+  - "range": reference. "Enemy control range restricts the controller's action; it does not grant weapon Range."
+- "MEDICAL TECHNICIAN PATHFINDER" (pathfinders/datacards/medical-technician-pathfinder/1)
+  - /datacards/6/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Control range governs rescue and movement, not a weapon rule. Preserve 1 wound, action-long survival, both -1 APL durations, activation ending and incapacitation/target exclusions."
+  - /datacards/6/unique_actions/1/description: 0 deletions.
+  - "range": reference. "Healing proximity and action restriction, not Range x."
+- "SHAS’LA PATHFINDER" (pathfinders/datacards/shasla-pathfinder/1)
+  - /datacards/7/passive_abilities/1/description: 0 deletions.
+  - "range": reference. "An action permission, not an offensive Range grant."
+- "TRANSPECTRAL INTERFERENCE PATHFINDER" (pathfinders/datacards/transpectral-interference-pathfinder/1)
+  - /datacards/8/unique_actions/0/description: 0 deletions.
+  - "range": reference. "An action restriction, not weapon Range. The appended Multi-Dimensional Vision shooting ability remains mechanical text."
+- "MB3 RECON DRONE" (pathfinders/datacards/mb3-recon-drone/1)
+  - /datacards/10/passive_abilities/0/description: 0 deletions; UNCERTAIN.
+- "MV4 SHIELD DRONE" (pathfinders/datacards/mv4-shield-drone/1)
+  - /datacards/12/passive_abilities/1/description: 0 deletions.
+  - "Piercing": counter. "Defensive immunity, not Piercing on friendly weapons. Keep separate once-per-turning-point Normal Dmg cancellation and specified-drone Saviour Protocols 0CP benefit."
+- "MV31 PULSE ACCELERATOR DRONE" (pathfinders/datacards/mv31-pulse-accelerator-drone/1)
+  - /datacards/14/unique_actions/0/description: 0 deletions.
+  - "Lethal 5+": grant. "Explicit conditional Lethal 5+ grant; pulse weapon definition is supplied in operative selection."
+  - "Severe": grant. "Explicit Severe grant, limited to other friendly pulse-weapon shooters in the aura."
+- "markerlights" (pathfinders/faction_rules/markerlights/1)
+  - /faction_rules/0/text: 3 deletions.
+  - "range": reference. "Control range restricts an action, not weapon Range."
+- "markerlights-2" (pathfinders/faction_rules/markerlights-2/1)
+  - /faction_rules/1/text: 3 deletions.
+  - "range": reference. "Action restriction, not Range weapon rule."
+  - /faction_rules/1/options/0/text: 0 deletions; UNCERTAIN.
+  - "Balanced": uncertain. "The numbered benefits suggest a Markerlight grant but neither this card nor supplied faction context states how they attach to a shot. Do not invent the missing grant condition."
+  - "Saturate": uncertain. "An incomplete numbered option cannot establish the exact conditional grant."
+  - "Seek": uncertain. "Preserve both variants, but do not assert unconditional Seek or guess how the numbered benefits operate."
+- "recon-sweep" (pathfinders/strategy_ploys/recon-sweep/1)
+  - /strategy_ploys/0/text: 2 deletions.
+- "suppressing-fire" (pathfinders/strategy_ploys/suppressing-fire/1)
+  - /strategy_ploys/1/text: 2 deletions.
+  - "punishing": flavour. "Describes suppressive fire, not the Punishing weapon rule."
+  - "Torrent": reference. "Clarifies the target used by the anti-reroll restriction; grants no Torrent."
+  - "Blast": reference. "Existing-rule clarification, not a friendly Blast grant."
+- "bonded" (pathfinders/strategy_ploys/bonded/1)
+  - /strategy_ploys/2/text: 2 deletions.
+  - "Accurate 1": grant. "Explicit Accurate 1 grant with both operative exclusions and ranged-retaliation interaction preserved; no permanent duration asserted."
+- "take-cover" (pathfinders/strategy_ploys/take-cover/1)
+  - /strategy_ploys/3/text: 2 deletions.
+- "a-worthy-cause" (pathfinders/firefight_ploys/a-worthy-cause/1)
+  - /firefight_ploys/0/text: 2 deletions.
+- "supporting-fire" (pathfinders/firefight_ploys/supporting-fire/1)
+  - /firefight_ploys/1/text: 2 deletions.
+  - "range": reference. "Targeting exception involving control range, not a Range weapon-rule grant."
+- "saviour-protocols" (pathfinders/firefight_ploys/saviour-protocols/1)
+  - /firefight_ploys/2/text: 2 deletions.
+  - "Torrent": reference. "Excludes this ploy against Torrent; neither grants nor negates Torrent."
+  - "Blast": reference. "A ploy exclusion for an existing enemy rule, not friendly Blast access."
+- "point-blank-fusillade" (pathfinders/firefight_ploys/point-blank-fusillade/1)
+  - /firefight_ploys/3/text: 2 deletions.
+  - "Devastating": modify. "Suspends existing friendly Devastating effects; does not grant them. Ready Engage pulse-weapon defender may resolve first dice."
+  - "Piercing": modify. "Disables existing Piercing in this mode rather than granting offensive Piercing."
+  - "Torrent": modify. "Disables existing Torrent for this sequence, not a grant."
+  - "range": reference. "Control-range timing test, not weapon Range."
+- "target-analysis-optic" (pathfinders/equipment/target-analysis-optic/1)
+  - /equipment/0/text: 2 deletions.
+  - "Torrent": reference. "Limits the token-count effect to the primary target; grants no Torrent."
+  - "Blast": reference. "Existing-rule scope clarification, not Blast access."
+- "high-intensity-markerlight" (pathfinders/equipment/high-intensity-markerlight/1)
+  - /equipment/1/text: 2 deletions.
+- "photon-grenade" (pathfinders/equipment/photon-grenade/1)
+  - /equipment/2/text: 2 deletions.
+  - "shock": flavour. "The actual action rolls a D6 for Move reduction; it grants no Shock weapon rule."
+  - "blast": flavour. "No Blast radius or secondary-target sequence is granted."
+  - "range": reference. "Action restriction involving control range, not Range x."
+- "orbital-survey-uplink" (pathfinders/equipment/orbital-survey-uplink/1)
+  - /equipment/3/text: 2 deletions.
+- "OPERATIVE SELECTION" (pathfinders/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 1 deletions.
+## phobos-strike-team
+- "INFILTRATOR SERGEANT" (phobos-strike-team/datacards/infiltrator-sergeant/1)
+  - /datacards/0/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Control range gates a CP benefit, not a weapon rule."
+- "INFILTRATOR COMMSMAN" (phobos-strike-team/datacards/infiltrator-commsman/1)
+  - /datacards/1/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "A CP eligibility condition, not Range x."
+- "INFILTRATOR HELIX ADEPT" (phobos-strike-team/datacards/infiltrator-helix-adept/1)
+  - /datacards/2/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Rescue proximity, not a Range grant. Preserve D3 remaining wounds, action-long survival, both -1 APL durations, activation ending and incapacitation/target exclusions."
+  - /datacards/2/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Healing proximity and action restriction, not weapon Range."
+- "INFILTRATOR SABOTEUR" (phobos-strike-team/datacards/infiltrator-saboteur/1)
+  - /datacards/3/passive_abilities/1/description: 0 deletions.
+  - "Lethal 5+": grant. "Explicit conditional Lethal 5+ grant. All-operatives 2-inch detonation, Heavy-terrain exclusion, no cover/obscured and separate sequence order remain intact."
+  - "Heavy": reference. "Heavy terrain is not the Heavy weapon rule; direct remote detonator Heavy (Dash only) remains independently preserved."
+- "INFILTRATOR VETERAN" (phobos-strike-team/datacards/infiltrator-veteran/1)
+  - /datacards/4/passive_abilities/0/description: 0 deletions.
+  - "Piercing Crits 1": grant. "Optional conditional grant of Piercing Crits 1, not automatic access to all choices."
+  - "Lethal 5+": grant. "Explicit selectable Lethal 5+ grant."
+  - "Balanced": grant. "Explicit selectable Balanced grant."
+  - "Saturate": grant. "Explicit selectable Saturate grant."
+  - "Rending": grant. "Explicit selectable Rending grant."
+  - "Piercing": reference. "Overlapping generic candidate refers to the exact parameterized variant already classified; do not add ordinary Piercing or invent a second grant."
+- "INFILTRATOR VOXBREAKER" (phobos-strike-team/datacards/infiltrator-voxbreaker/1)
+  - /datacards/5/unique_actions/0/description: 0 deletions.
+  - "Seek": grant. "Explicit Seek Light grant only to INCURSOR shooters, not unrestricted Seek or every PHOBOS operative."
+  - "range": reference. "An action restriction, not weapon Range."
+- "INCURSOR SERGEANT" (phobos-strike-team/datacards/incursor-sergeant/1)
+  - /datacards/7/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Control-range CP eligibility, not weapon Range."
+- "INCURSOR MINELAYER" (phobos-strike-team/datacards/incursor-minelayer/1)
+  - /datacards/9/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Marker-placement restriction, not weapon Range."
+  - /datacards/9/passive_abilities/1/description: 0 deletions.
+  - "range": reference. "Control range triggers a mine; it grants no ranged weapon rule."
+- "REIVER SERGEANT" (phobos-strike-team/datacards/reiver-sergeant/1)
+  - /datacards/11/passive_abilities/1/description: 0 deletions.
+  - "range": reference. "A proximity restriction on a CP benefit, not weapon Range."
+- "omni-scrambler" (phobos-strike-team/faction_rules/omni-scrambler/1)
+  - /faction_rules/0/text: 2 deletions.
+- "terror" (phobos-strike-team/faction_rules/terror/1)
+  - /faction_rules/1/text: 2 deletions.
+  - "shock": flavour. "Names shock grenades in narrative, not Shock weapon-rule access. Retain the 3-inch enemy AP surcharge and total contesting APL reduction mechanics."
+- "astartes" (phobos-strike-team/faction_rules/astartes/1)
+  - /faction_rules/2/text: 2 deletions.
+- "multi-spectrum-array" (phobos-strike-team/faction_rules/multi-spectrum-array/1)
+  - /faction_rules/3/text: 2 deletions.
+- "guerrilla-warfare" (phobos-strike-team/strategy_ploys/guerrilla-warfare/1)
+  - /strategy_ploys/0/text: 2 deletions.
+  - "range": reference. "An action eligibility restriction, not Range x."
+- "and-they-shall-know-no-fear" (phobos-strike-team/strategy_ploys/and-they-shall-know-no-fear/1)
+  - /strategy_ploys/1/text: 2 deletions.
+- "deadly-shots" (phobos-strike-team/strategy_ploys/deadly-shots/1)
+  - /strategy_ploys/2/text: 2 deletions.
+  - "Balanced": grant. "Explicit conditional Balanced grant with alternative conditions, not a blanket movement ban."
+- "lethal-assaults" (phobos-strike-team/strategy_ploys/lethal-assaults/1)
+  - /strategy_ploys/3/text: 2 deletions.
+  - "Lethal 5+": grant. "Explicit Lethal 5+ grant requires Charge; not granted merely by title or retaliation."
+  - "Balanced": grant. "Explicit Balanced grant; distinct from the narrower charged-activation Lethal 5+ benefit."
+  - "LETHAL": reference. "Title match is not a second unparameterized Lethal grant."
+- "patient-ambush" (phobos-strike-team/firefight_ploys/patient-ambush/1)
+  - /firefight_ploys/0/text: 2 deletions.
+- "critical-shot" (phobos-strike-team/firefight_ploys/critical-shot/1)
+  - /firefight_ploys/1/text: 2 deletions.
+- "transhuman-physiology" (phobos-strike-team/firefight_ploys/transhuman-physiology/1)
+  - /firefight_ploys/2/text: 2 deletions.
+- "stealth-assault" (phobos-strike-team/firefight_ploys/stealth-assault/1)
+  - /firefight_ploys/3/text: 2 deletions.
+- "purity-seals" (phobos-strike-team/equipment/purity-seals/1)
+  - /equipment/0/text: 2 deletions.
+- "additional-utility-grenades" (phobos-strike-team/equipment/additional-utility-grenades/1)
+  - /equipment/1/text: 2 deletions.
+  - "shock": flavour. "A grenade name is not Shock weapon-rule access. Preserve prohibition on also selecting normal utility equipment to obtain six."
+- "combat-blades" (phobos-strike-team/equipment/combat-blades/1)
+  - /equipment/2/text: 2 deletions.
+- "special-issue-ammunition" (phobos-strike-team/equipment/special-issue-ammunition/1)
+  - /equipment/3/text: 2 deletions.
+  - "Piercing 1": grant. "Explicit Piercing 1 grant with enumerated weapon eligibility and duration, not all bolt weapons."
+- "OPERATIVE SELECTION" (phobos-strike-team/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 1 deletions.
+## plague-marines
+- "PLAGUE MARINE BOMBARDIER" (plague-marines/datacards/plague-marine-bombardier/1)
+  - /datacards/1/passive_abilities/0/description: 0 deletions.
+  - "limited": reference. "Equipment-use exemption, not Limited x granted to a weapon. Toxic grant and its Poison-at-action-start damage condition remain intact."
+- "MALIGNANT PLAGUECASTER" (plague-marines/datacards/malignant-plaguecaster/1)
+  - /datacards/5/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Control-range action restriction, not weapon Range."
+  - /datacards/5/unique_actions/1/description: 0 deletions.
+  - "range": reference. "Action and healing proximity, not Range x."
+- "astartes" (plague-marines/faction_rules/astartes/1)
+  - /faction_rules/0/text: 2 deletions.
+- "poison" (plague-marines/faction_rules/poison/1)
+  - /faction_rules/1/text: 2 deletions.
+- "disgustingly-resilient" (plague-marines/faction_rules/disgustingly-resilient/1)
+  - /faction_rules/2/text: 2 deletions.
+- "contagion" (plague-marines/strategy_ploys/contagion/1)
+  - /strategy_ploys/0/text: 2 deletions.
+- "lumbering-death" (plague-marines/strategy_ploys/lumbering-death/1)
+  - /strategy_ploys/1/text: 2 deletions.
+  - "Ceaseless": grant. "Explicit conditional Ceaseless grant; retaliation alternative does not require the activation movement test."
+- "cloud-of-flies" (plague-marines/strategy_ploys/cloud-of-flies/1)
+  - /strategy_ploys/2/text: 2 deletions.
+- "nurglings" (plague-marines/strategy_ploys/nurglings/1)
+  - /strategy_ploys/3/text: 2 deletions.
+- "virulent-poison" (plague-marines/firefight_ploys/virulent-poison/1)
+  - /firefight_ploys/0/text: 2 deletions.
+- "poisonous-demise" (plague-marines/firefight_ploys/poisonous-demise/1)
+  - /firefight_ploys/1/text: 2 deletions.
+- "sickening-resilience" (plague-marines/firefight_ploys/sickening-resilience/1)
+  - /firefight_ploys/2/text: 2 deletions.
+- "curse-of-rot" (plague-marines/firefight_ploys/curse-of-rot/1)
+  - /firefight_ploys/3/text: 2 deletions.
+- "plague-bells" (plague-marines/equipment/plague-bells/1)
+  - /equipment/0/text: 2 deletions.
+- "blight-grenades" (plague-marines/equipment/blight-grenades/1)
+  - /equipment/1/text: 2 deletions.
+  - "Saturate": grant. "Explicit equipment weapon profile includes Saturate. Preserve Poison and all other profile facts."
+  - "Blast 2\"": grant. "Parameterized Blast 2-inch rule is a direct equipment profile fact, not inferred from narrative blast."
+  - "Range 6\"": grant. "Direct parameterized Range 6-inch profile rule."
+  - "Severe": grant. "Direct equipment-profile Severe grant."
+  - "blast": flavour. "Lowercase narrative match is distinct from the exact Blast 2-inch profile candidate; not an extra unparameterized grant."
+- "plague-rounds" (plague-marines/equipment/plague-rounds/1)
+  - /equipment/2/text: 2 deletions.
+  - "Severe": grant. "Explicit Severe grant to those weapons only; Poison grant remains in preserved text."
+- "poison-vents" (plague-marines/equipment/poison-vents/1)
+  - /equipment/3/text: 2 deletions.
+- "OPERATIVE SELECTION" (plague-marines/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 1 deletions.
+  - "HEAVY": reference. "Operative title, not a Heavy weapon-rule grant. Direct plague spewer profile remains a source fact."
+  - "SEEK": reference. "SEEK & DESTROY is an archetype, not Seek weapon-rule access."
+## ratlings
+- "RATLING FIXER" (ratlings/datacards/ratling-fixer/1)
+  - /datacards/0/passive_abilities/1/description: 0 deletions.
+  - "Lethal 5+": grant. "Explicit Lethal 5+ grant tied to target and rifle; rifle definition supplied by selection context includes all named rifle profiles."
+- "OGRYN" (ratlings/datacards/ogryn/1)
+  - /datacards/3/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Charge damage proximity, not weapon Range."
+- "RATLING BOMBER" (ratlings/datacards/ratling-bomber/1)
+  - /datacards/5/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Marker trigger proximity, not weapon Range; preserve direct explosive arsenal profile separately."
+- "RATLING HARDBIT" (ratlings/datacards/ratling-hardbit/1)
+  - /datacards/6/passive_abilities/0/description: 0 deletions.
+  - "Brutal": grant. "Explicit conditional Brutal grant, not every Charge or retaliation. Existing knife Balanced stays a direct profile fact."
+  - /datacards/6/passive_abilities/1/description: 0 deletions.
+  - "Heavy": reference. "Heavy is terrain classification, not the Heavy weapon rule; preserve explanatory parenthesis."
+  - "range": reference. "Control range governs terrain proximity, not weapon Range."
+- "RATLING RAIDER" (ratlings/datacards/ratling-raider/1)
+  - /datacards/7/unique_actions/0/description: 0 deletions; UNCERTAIN.
+  - "range": reference. "Movement placement and action restrictions, not Range weapon access. Grappling Hook's 2-inch climbing treatment is separate mechanical prose and retained."
+- "RATLING SNEAK" (ratlings/datacards/ratling-sneak/1)
+  - /datacards/8/unique_actions/0/description: 0 deletions.
+  - "Lethal 5+": grant. "Explicit Lethal 5+ grant limited to stationary profile; cannot-be-obscured effect and independent Evade/Scarper replacement remain unchanged."
+- "RATLING SPOTTER" (ratlings/datacards/ratling-spotter/1)
+  - /datacards/10/unique_actions/0/description: 0 deletions.
+  - "Seek": grant. "Explicit Seek Light grant, not unrestricted Seek; keep paired cannot-be-obscured benefit and selected-target restriction."
+- "RATLING VOX-THIEF" (ratlings/datacards/ratling-vox-thief/1)
+  - /datacards/12/unique_actions/0/description: 0 deletions.
+  - "range": reference. "A support-action restriction, not Range x."
+- "scarper" (ratlings/faction_rules/scarper/1)
+  - /faction_rules/0/text: 2 deletions.
+- "sniper-positions" (ratlings/strategy_ploys/sniper-positions/1)
+  - /strategy_ploys/0/text: 2 deletions.
+  - "Silent": grant. "Explicit Silent grant with both positional conditions, not mobile rifle profiles."
+  - "Heavy": reference. "Heavy terrain does not grant the Heavy weapon rule; stationary rifle profile Heavy remains independently preserved."
+- "crack-shots" (ratlings/strategy_ploys/crack-shots/1)
+  - /strategy_ploys/1/text: 2 deletions.
+  - "Balanced": grant. "Explicit conditional Balanced grant; preserve distance requirement and counteraction alternative."
+- "shifty" (ratlings/strategy_ploys/shifty/1)
+  - /strategy_ploys/2/text: 2 deletions.
+  - "Seek": counter. "Explicitly overrides Seek targeting; illustrative Seek mention is part of a mechanical defensive counter, not a friendly offensive grant. Preserve useful example and exception."
+- "frontline-assault" (ratlings/strategy_ploys/frontline-assault/1)
+  - /strategy_ploys/3/text: 2 deletions.
+  - "Balanced": grant. "Explicit Balanced grant to those two operative types, with alternative positional tests."
+- "survival-instincts" (ratlings/firefight_ploys/survival-instincts/1)
+  - /firefight_ploys/0/text: 2 deletions.
+- "sharpshot" (ratlings/firefight_ploys/sharpshot/1)
+  - /firefight_ploys/1/text: 2 deletions.
+  - "range": reference. "Target-selection exception, not weapon Range."
+- "larcenous" (ratlings/firefight_ploys/larcenous/1)
+  - /firefight_ploys/2/text: 2 deletions.
+  - "range": reference. "Action-eligibility override, not weapon Range. Keep explicit contest-marker condition and precedence clause."
+- "shoot-and-hide" (ratlings/firefight_ploys/shoot-and-hide/1)
+  - /firefight_ploys/3/text: 2 deletions.
+- "purloined-rations" (ratlings/equipment/purloined-rations/1)
+  - /equipment/0/text: 2 deletions.
+- "lucky-round" (ratlings/equipment/lucky-round/1)
+  - /equipment/1/text: 2 deletions.
+  - "Severe": grant. "Explicit temporary Severe grant; no target-size or personal-grievance condition inferred from flavour."
+- "stolen-goods" (ratlings/equipment/stolen-goods/1)
+  - /equipment/2/text: 2 deletions.
+- "improvised-armour" (ratlings/equipment/improvised-armour/1)
+  - /equipment/3/text: 2 deletions.
+- "OPERATIVE SELECTION" (ratlings/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 1 deletions; UNCERTAIN.
+## raveners
+- "RAVENER FELLTALON" (raveners/datacards/ravener-felltalon/1)
+  - /datacards/1/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Control range restricts action targeting, not the Range weapon rule. Preserve D3+2 damage, Poison token and underground permission."
+- "RAVENER VENOMSPITTER" (raveners/datacards/ravener-venomspitter/1)
+  - /datacards/3/unique_actions/0/description: 0 deletions.
+  - "Lethal 5+": grant. "Explicit temporary Lethal 5+ grant; also retains the separate +1 Atk effect."
+  - "Range 8\"": modify. "Removes the existing Range 8-inch restriction; does not grant Range 8 inches."
+- "RAVENER WARRIOR" (raveners/datacards/ravener-warrior/1)
+  - /datacards/4/passive_abilities/0/description: 0 deletions.
+  - "Lethal 5+": grant. "Explicit conditional Lethal 5+ grant, not unconditional access."
+- "burrow" (raveners/faction_rules/burrow/1)
+  - /faction_rules/0/text: 3 deletions.
+  - /faction_rules/0/options/0/text: 0 deletions.
+  - "range": reference. "Control-range placement permission, not a weapon Range grant. The option name supplies the sentence beginning and must remain."
+- "tunnel" (raveners/faction_rules/tunnel/1)
+  - /faction_rules/1/text: 3 deletions.
+- "predatory-instincts" (raveners/faction_rules/predatory-instincts/1)
+  - /faction_rules/2/text: 2 deletions.
+- "death-from-below" (raveners/strategy_ploys/death-from-below/1)
+  - /strategy_ploys/0/text: 2 deletions.
+  - "Ceaseless": grant. "Explicit grant conditional on location; distinct from the Burrow condition."
+  - "Balanced": grant. "Explicit grant; does not require the separate Ceaseless condition."
+- "whipcord-emergence" (raveners/strategy_ploys/whipcord-emergence/1)
+  - /strategy_ploys/1/text: 2 deletions.
+- "writhe-out-of-sight" (raveners/strategy_ploys/writhe-out-of-sight/1)
+  - /strategy_ploys/2/text: 2 deletions.
+- "tunnel-lurkers" (raveners/strategy_ploys/tunnel-lurkers/1)
+  - /strategy_ploys/3/text: 2 deletions.
+  - "Seek": example. "Seek Light illustrates rules that can defeat the supplied cover; no friendly weapon receives Seek. Keep this useful example."
+- "slithering-evasion" (raveners/firefight_ploys/slithering-evasion/1)
+  - /firefight_ploys/0/text: 2 deletions.
+  - "range": reference. "Control-range movement permission, not weapon Range."
+- "subterranean-horror" (raveners/firefight_ploys/subterranean-horror/1)
+  - /firefight_ploys/1/text: 2 deletions.
+- "burrowing-strike" (raveners/firefight_ploys/burrowing-strike/1)
+  - /firefight_ploys/2/text: 2 deletions.
+  - "range": reference. "Area damage uses control range; it does not grant weapon Range."
+- "death-frenzy" (raveners/firefight_ploys/death-frenzy/1)
+  - /firefight_ploys/3/text: 2 deletions.
+  - "range": reference. "Control-range damage radius is not a weapon Range rule."
+- "chromatospore-camouflage" (raveners/equipment/chromatospore-camouflage/1)
+  - /equipment/0/text: 2 deletions.
+- "acid-blood" (raveners/equipment/acid-blood/1)
+  - /equipment/1/text: 2 deletions.
+- "metamorphic-flesh" (raveners/equipment/metamorphic-flesh/1)
+  - /equipment/2/text: 2 deletions.
+- "heightened-senses" (raveners/equipment/heightened-senses/1)
+  - /equipment/3/text: 2 deletions.
+- "OPERATIVE SELECTION" (raveners/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 1 deletions.
+  - "SEEK": reference. "Seek & Destroy is an archetype, not a weapon Seek grant."
+## sanctifiers
+- "SANCTIFIER CHERUB" (sanctifiers/datacards/sanctifier-cherub/1)
+  - /datacards/1/passive_abilities/0/description: 0 deletions.
+  - "Seek": counter. "Explicit protection takes precedence over Seek, not a grant to Cherub weapons. The example is mechanically useful."
+  - /datacards/1/passive_abilities/1/description: 0 deletions.
+  - "range": reference. "Control-range placement restriction, not a weapon rule."
+  - /datacards/1/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Control range prevents this action; does not grant Range."
+- "SANCTIFIER CONFLAGRATOR" (sanctifiers/datacards/sanctifier-conflagrator/1)
+  - /datacards/2/passive_abilities/0/description: 0 deletions.
+  - "Torrent 0\"": reference. "Explains the existing Torrent 0-inch profile rule rather than newly granting it. Keep the clarification and terrain example."
+  - "Torrent": reference. "Affirms an existing profile fact, not unrestricted Torrent access or an invented radius."
+  - "range": reference. "Control-range targeting exclusion, not Range."
+- "SANCTIFIER DEATH CULT ASSASSIN" (sanctifiers/datacards/sanctifier-death-cult-assassin/1)
+  - /datacards/3/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action restriction only, not a weapon Range rule."
+- "SANCTIFIER MIRACULIST" (sanctifiers/datacards/sanctifier-miraculist/1)
+  - /datacards/6/passive_abilities/0/description: 0 deletions.
+  - "Blast": modify. "Changes origin and target resolution of existing Blast, not a new unparameterised Blast grant."
+  - "range": reference. "Control-range action permission, not Range."
+- "SANCTIFIER MISSIONARY" (sanctifiers/datacards/sanctifier-missionary/1)
+  - /datacards/7/passive_abilities/1/description: 0 deletions.
+  - "Severe": grant. "Explicit conditional weapon-rule grant; not dependent on holy relic or Sermon."
+- "SANCTIFIER SALVATIONIST" (sanctifiers/datacards/sanctifier-salvationist/1)
+  - /datacards/10/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Healing proximity and action restriction, not weapon Range."
+- "blaze" (sanctifiers/faction_rules/blaze/1)
+  - /faction_rules/0/text: 2 deletions.
+- "ministorum-sermon" (sanctifiers/faction_rules/ministorum-sermon/1)
+  - /faction_rules/1/text: 3 deletions.
+- "the-emperor-protects" (sanctifiers/strategy_ploys/the-emperor-protects/1)
+  - /strategy_ploys/0/text: 2 deletions.
+- "fervent-brawl" (sanctifiers/strategy_ploys/fervent-brawl/1)
+  - /strategy_ploys/1/text: 2 deletions.
+  - "Ceaseless": grant. "Explicit conditional Ceaseless grant, including retaliation, not ranged attacks."
+- "zealous-persecution" (sanctifiers/strategy_ploys/zealous-persecution/1)
+  - /strategy_ploys/2/text: 2 deletions.
+  - "Lethal 5+": grant. "Explicit Lethal 5+ grant; do not broaden to retaliation or counteraction."
+- "rally-the-flock" (sanctifiers/strategy_ploys/rally-the-flock/1)
+  - /strategy_ploys/3/text: 2 deletions.
+- "rosarius" (sanctifiers/firefight_ploys/rosarius/1)
+  - /firefight_ploys/0/text: 2 deletions.
+- "ardent-eradication" (sanctifiers/firefight_ploys/ardent-eradication/1)
+  - /firefight_ploys/1/text: 2 deletions.
+- "redeemed-through-fire" (sanctifiers/firefight_ploys/redeemed-through-fire/1)
+  - /firefight_ploys/2/text: 2 deletions.
+- "unwavering-devotion" (sanctifiers/firefight_ploys/unwavering-devotion/1)
+  - /firefight_ploys/3/text: 2 deletions.
+  - "Torrent": reference. "Existing attacker rule is an eligibility exclusion; neither grants nor negates Torrent itself."
+  - "Blast": reference. "Restriction on redirection, not a Blast grant or counter that cancels Blast."
+  - "range": reference. "Fight proximity treatment, not weapon Range. Shoot cover/obscuring follows original target."
+- "sanctification-orbs" (sanctifiers/equipment/sanctification-orbs/1)
+  - /equipment/0/text: 3 deletions.
+  - "Seek": grant. "Explicit conditional Seek grant, not blanket access to all SANCTIFIER weapons."
+  - "range": reference. "Control-range action prohibition, not Range."
+- "purity-seals" (sanctifiers/equipment/purity-seals/1)
+  - /equipment/1/text: 2 deletions; UNCERTAIN.
+- "ecclesiarchy-texts" (sanctifiers/equipment/ecclesiarchy-texts/1)
+  - /equipment/2/text: 3 deletions.
+- "imperial-cult-symbols" (sanctifiers/equipment/imperial-cult-symbols/1)
+  - /equipment/3/text: 3 deletions.
+  - "Piercing Crits": example. "Useful example explaining that prior weapon effects survive the downgrade; no friendly grant or cancellation."
+  - "Piercing": example. "Overlapping name match within the Piercing Crits example; no separate Piercing grant or parameter."
+- "OPERATIVE SELECTION" (sanctifiers/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 2 deletions.
+  - "SEEK": reference. "Seek & Destroy archetype does not grant Seek. Full Missionary loadouts, four-Preacher cap and brazier restriction remain."
+## scout-squad
+- "SCOUT HEAVY GUNNER" (scout-squad/datacards/scout-heavy-gunner/1)
+  - /datacards/1/passive_abilities/0/description: 0 deletions.
+  - "Relentless": grant. "Explicit conditional replacement grant; not unconditional Relentless or removal of profile Heavy."
+  - "Ceaseless": grant. "Explicit conditional Ceaseless grant with an alternative for existing Ceaseless, not a narrative mention."
+- "SCOUT HUNTER" (scout-squad/datacards/scout-hunter/1)
+  - /datacards/2/passive_abilities/1/description: 0 deletions.
+  - "Lethal 3+": grant. "Explicit Lethal 3+ grant; preserve exact threshold and activation duration."
+- "SCOUT SNIPER" (scout-squad/datacards/scout-sniper/1)
+  - /datacards/3/passive_abilities/0/description: 0 deletions.
+  - "Saturate": counter. "Defensive negation of the attacker’s rule, not a grant to Sniper weapons. Cover-save choices and Vantage noncumulative restriction remain."
+  - /datacards/3/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action restriction, not Range."
+- "SCOUT TRACKER" (scout-squad/datacards/scout-tracker/1)
+  - /datacards/4/unique_actions/0/description: 0 deletions.
+  - "Seek": grant. "Explicit Seek Light grant, not full Seek or blanket access against other enemies."
+  - "range": reference. "Action eligibility, not weapon Range."
+  - /datacards/4/unique_actions/1/description: 0 deletions.
+  - "Seek": grant. "Seek Light is conditional on Sniper plus Optics; other friendly shooting only receives the stated anti-obscuring effect."
+  - "range": reference. "Control-range action restriction, not weapon Range."
+- "SCOUT WARRIOR" (scout-squad/datacards/scout-warrior/1)
+  - /datacards/5/passive_abilities/0/description: 0 deletions.
+  - "Stun": reference. "Permission to perform Stun Grenade is not a Stun weapon-rule grant to Warrior weapons."
+- "forward-scouting" (scout-squad/faction_rules/forward-scouting/1)
+  - /faction_rules/0/text: 3 deletions.
+  - /faction_rules/0/options/0/text: 0 deletions.
+  - "Seek": grant. "Explicit conditional Seek grant from Trip Alarm, not from Redeploy/Reposition or other options."
+  - /faction_rules/0/options/1/text: 0 deletions.
+  - "range": reference. "Marker trigger uses control range, not a weapon Range rule. Preserve action-ending and minimum-placement clauses and separate Tactical Manoeuvre."
+- "guerrilla-engagement" (scout-squad/strategy_ploys/guerrilla-engagement/1)
+  - /strategy_ploys/0/text: 2 deletions.
+  - "range": flavour. "Ordinary killing-range phrasing, not a Range weapon rule."
+- "ambush" (scout-squad/strategy_ploys/ambush/1)
+  - /strategy_ploys/1/text: 2 deletions.
+  - "Ceaseless": grant. "Explicit conditional alternative grant."
+  - "Balanced": grant. "Explicit grant preserving the alternative and timing, not an unconditional reroll."
+  - "devastating": flavour. "Descriptive adjective; no Devastating rule or numerical parameter is granted."
+  - "range": flavour. "Ordinary proximity language, not Range."
+- "adaptable-training" (scout-squad/strategy_ploys/adaptable-training/1)
+  - /strategy_ploys/2/text: 2 deletions.
+- "stealth-relocation" (scout-squad/strategy_ploys/stealth-relocation/1)
+  - /strategy_ploys/3/text: 2 deletions.
+- "astartes-training" (scout-squad/firefight_ploys/astartes-training/1)
+  - /firefight_ploys/0/text: 2 deletions.
+  - "heavy": reference. "Part of a weapon name, not a new Heavy rule or permission to disregard existing Heavy profiles."
+- "raw-physiology" (scout-squad/firefight_ploys/raw-physiology/1)
+  - /firefight_ploys/1/text: 2 deletions.
+- "emboldened-aspirant" (scout-squad/firefight_ploys/emboldened-aspirant/1)
+  - /firefight_ploys/2/text: 2 deletions.
+  - "brutal": flavour. "Adjective describes training, not a Brutal weapon grant."
+- "covert-position" (scout-squad/firefight_ploys/covert-position/1)
+  - /firefight_ploys/3/text: 2 deletions.
+  - "Seek": counter. "Defensive precedence over Seek, not a Seek grant. Preserve example and exception."
+- "camo-cloak" (scout-squad/equipment/camo-cloak/1)
+  - /equipment/0/text: 2 deletions.
+- "targeting-oculars" (scout-squad/equipment/targeting-oculars/1)
+  - /equipment/1/text: 2 deletions.
+  - "Lethal 5+": grant. "Explicit temporary Lethal 5+ grant; exact parameter supplied."
+  - "Saturate": grant. "Explicit Saturate grant under the same activation choice, not a defensive counter."
+  - "lethal": flavour. "Lowercase narrative match distinct from the explicit parameterised Lethal 5+ mechanic."
+- "combat-blades" (scout-squad/equipment/combat-blades/1)
+  - /equipment/2/text: 2 deletions.
+  - "lethal": flavour. "Does not grant Lethal. The actual supplied Combat blade profile has no such rule and remains unchanged."
+- "tactical-vox-link" (scout-squad/equipment/tactical-vox-link/1)
+  - /equipment/3/text: 2 deletions.
+- "OPERATIVE SELECTION" (scout-squad/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 1 deletions.
+  - "HEAVY": reference. "Operative/weapon names do not grant the Heavy weapon rule to the team."
+## spectre-squad
+- "SPECTRE VETERAN SERGEANT" (spectre-squad/datacards/spectre-veteran-sergeant/1)
+  - /datacards/0/passive_abilities/0/description: 0 deletions; UNCERTAIN.
+  - "range": reference. "Control-range action restriction, not a weapon Range grant."
+- "SPECTRE FIELD MEDICAE" (spectre-squad/datacards/spectre-field-medicae/1)
+  - /datacards/1/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Control-range eligibility and Dash destination, not weapon Range."
+  - /datacards/1/passive_abilities/1/description: 0 deletions; UNCERTAIN.
+  - "range": reference. "Healing/action proximity restrictions, not Range."
+- "SPECTRE GRENADIER" (spectre-squad/datacards/spectre-grenadier/1)
+  - /datacards/2/passive_abilities/0/description: 0 deletions.
+  - "limited": reference. "Ordinary limited-uses wording concerns equipment accounting, not an explicit grant/removal of the Limited x weapon rule; no parameter is supplied."
+  - /datacards/2/passive_abilities/1/description: 0 deletions.
+  - "range": reference. "Marker-placement restriction, not weapon Range."
+  - /datacards/2/passive_abilities/2/description: 1 deletions.
+  - "range": reference. "Control-range mine trigger, not Range. Preserve ‘another operative’ rather than restricting to enemies."
+- "SPECTRE GUIDE" (spectre-squad/datacards/spectre-guide/1)
+  - /datacards/3/passive_abilities/1/description: 0 deletions; UNCERTAIN.
+  - /datacards/3/passive_abilities/2/description: 0 deletions; UNCERTAIN.
+- "SPECTRE HEAVY GUNNER" (spectre-squad/datacards/spectre-heavy-gunner/1)
+  - /datacards/5/passive_abilities/0/description: 0 deletions.
+  - "Heavy": modify. "Parameterised replacement of an existing movement restriction, not an unconditional new Heavy grant or permission for other moves."
+  - "range": reference. "Control-range condition for Weapons Team, not weapon Range."
+- "SPECTRE LOADER" (spectre-squad/datacards/spectre-loader/1)
+  - /datacards/6/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Support proximity for one attack reroll, not weapon Range or a named reroll-rule grant."
+  - /datacards/6/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action selection/eligibility restrictions, not Range."
+- "SPECTRE STUB-GUNNER" (spectre-squad/datacards/spectre-stub-gunner/1)
+  - /datacards/8/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Control-range condition for enemy Atk reduction, not a Range grant. The suppressive profile’s direct 0/0 damage and other profile rules remain untouched."
+- "SPECTRE VOX-OPERATOR" (spectre-squad/datacards/spectre-vox-operator/1)
+  - /datacards/10/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action restriction, not Range."
+- "SPECTRE VOX-RELAY BEACON" (spectre-squad/datacards/spectre-vox-relay-beacon/1)
+  - /datacards/11/passive_abilities/1/description: 0 deletions.
+  - "range": reference. "Control-range exceptions, not Range. All Expendable action, retaliation, marker and scoring restrictions remain."
+  - /datacards/11/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action restriction, not Range. Unlike Vox-Operator Signal, no SUPPORT keyword or visibility requirement is supplied here; do not add them."
+- "elite-fieldcraft-card-1" (spectre-squad/faction_rules/elite-fieldcraft-card-1/1)
+  - /faction_rules/0/text: 3 deletions.
+  - "range": reference. "Control-range eligibility, not weapon Range. Cards 2/3 supply further Shoot/movement restrictions and remain mechanical context."
+- "elite-fieldcraft-card-2" (spectre-squad/faction_rules/elite-fieldcraft-card-2/1)
+  - /faction_rules/1/text: 1 deletions.
+  - "range": reference. "Control-range shooting exception, not Range."
+- "elite-fieldcraft-card-3" (spectre-squad/faction_rules/elite-fieldcraft-card-3/1)
+  - /faction_rules/2/text: 1 deletions.
+- "camo-cloaks" (spectre-squad/faction_rules/camo-cloaks/1)
+  - /faction_rules/3/text: 2 deletions.
+- "disappear" (spectre-squad/strategy_ploys/disappear/1)
+  - /strategy_ploys/0/text: 2 deletions.
+- "hidden-engagement" (spectre-squad/strategy_ploys/hidden-engagement/1)
+  - /strategy_ploys/1/text: 2 deletions.
+  - "Balanced": grant. "Explicit conditional Balanced grant; the cover test is not a general Conceal requirement."
+- "ambushing-volley" (spectre-squad/strategy_ploys/ambushing-volley/1)
+  - /strategy_ploys/2/text: 2 deletions.
+  - "Devastating 1": grant. "Explicit Devastating 1 grant with existing-rule alternative; no stacking a second instance."
+  - "Devastating": modify. "Explicit parameter modification, not a parameter-free grant. Preserve each profile’s original x."
+- "patience" (spectre-squad/strategy_ploys/patience/1)
+  - /strategy_ploys/3/text: 2 deletions.
+  - "Relentless": grant. "Explicit conditional Relentless grant, not persistent access or a counteraction benefit."
+- "dodge" (spectre-squad/firefight_ploys/dodge/1)
+  - /firefight_ploys/0/text: 2 deletions.
+- "silent-killers" (spectre-squad/firefight_ploys/silent-killers/1)
+  - /firefight_ploys/1/text: 2 deletions.
+  - "SILENT": reference. "Title names the ploy; its mechanics do not grant Silent shooting."
+- "sharp-reactions" (spectre-squad/firefight_ploys/sharp-reactions/1)
+  - /firefight_ploys/2/text: 2 deletions.
+- "prepared-defence" (spectre-squad/firefight_ploys/prepared-defence/1)
+  - /firefight_ploys/3/text: 2 deletions.
+- "sniper-overwatch" (spectre-squad/equipment/sniper-overwatch/1)
+  - /equipment/0/text: 2 deletions.
+  - "Devastating 2": grant. "Direct equipment weapon profile grants its stated Devastating 2 when used; not an addition to other weapons. Keep profile unchanged."
+  - "Saturate": grant. "Direct profile fact attached only to equipment weapon; do not propagate to operative’s other guns."
+  - "Silent": grant. "Explicit direct-profile Silent, unlike the Silent Killers title; profile remains unchanged."
+  - "Heavy": grant. "Direct profile fact with exact move restriction, not unqualified Heavy or a restriction on all other weapons."
+- "tvid-feed-triangulation" (spectre-squad/equipment/tvid-feed-triangulation/1)
+  - /equipment/1/text: 2 deletions.
+- "starshell-flare" (spectre-squad/equipment/starshell-flare/1)
+  - /equipment/2/text: 2 deletions.
+  - "Stun": reference. "Named grenade action, not a Stun weapon-rule grant. Narrative ‘stun and distract’ is also not a grant."
+- "advanced-camouflage" (spectre-squad/equipment/advanced-camouflage/1)
+  - /equipment/3/text: 2 deletions.
+  - "Seek": counter. "Defensive rule takes precedence over Seek, not a grant of Seek to friendly weapons."
+- "OPERATIVE SELECTION" (spectre-squad/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 2 deletions; UNCERTAIN.
+  - "HEAVY": reference. "Operative name is not a Heavy weapon-rule grant."
+## tempestus-aquilons
+- "AQUILON TEMPESTOR" (tempestus-aquilons/datacards/aquilon-tempestor/1)
+  - /datacards/0/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Control range restricts a support action; it does not grant a Range weapon rule."
+- "AQUILON GRENADIER" (tempestus-aquilons/datacards/aquilon-grenadier/1)
+  - /datacards/1/passive_abilities/0/description: 0 deletions.
+  - "stun": reference. "Access to a stun grenade is not a prose grant of the Stun weapon rule to the operative's other weapons."
+  - "limited": modify. "Exempts grenade use from the team's equipment-use allowance; does not grant Limited or invent a numerical parameter."
+- "AQUILON GUNFIGHTER" (tempestus-aquilons/datacards/aquilon-gunfighter/1)
+  - /datacards/2/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Control-range exclusion is a target restriction, not a Range weapon-rule grant."
+  - /datacards/2/passive_abilities/1/description: 0 deletions.
+  - "hot": reference. "Hot-shot is the weapon's name, not the Hot rule; preserve the focused profile's existing rules."
+- "AQUILON MARKSMAN" (tempestus-aquilons/datacards/aquilon-marksman/1)
+  - /datacards/4/passive_abilities/0/description: 0 deletions.
+  - "Severe": grant. "Explicit conditional Severe grant to all long-las profiles, not to fists or the whole team."
+  - "hot": reference. "Hot-shot is a weapon name and does not add Hot to any profile."
+- "drop-insertion" (tempestus-aquilons/faction_rules/drop-insertion/1)
+  - /faction_rules/0/text: 2 deletions.
+  - /faction_rules/0/options/0/text: 0 deletions; UNCERTAIN.
+- "gravchute" (tempestus-aquilons/faction_rules/gravchute/1)
+  - /faction_rules/1/text: 2 deletions.
+- "sudden-offensive" (tempestus-aquilons/strategy_ploys/sudden-offensive/1)
+  - /strategy_ploys/0/text: 2 deletions.
+  - "Balanced": grant. "Explicit activation-limited grant. Keep the five-operatives/first-three example as useful clarification."
+- "maintain-momentum" (tempestus-aquilons/strategy_ploys/maintain-momentum/1)
+  - /strategy_ploys/1/text: 2 deletions.
+  - "Severe": grant. "Explicit conditional grant; enemy readiness is required."
+- "eye-above" (tempestus-aquilons/strategy_ploys/eye-above/1)
+  - /strategy_ploys/2/text: 2 deletions.
+- "drop-and-secure" (tempestus-aquilons/strategy_ploys/drop-and-secure/1)
+  - /strategy_ploys/3/text: 2 deletions.
+- "hot-drop" (tempestus-aquilons/firefight_ploys/hot-drop/1)
+  - /firefight_ploys/0/text: 2 deletions.
+  - "HOT": reference. "HOT occurs only in the title. Re-roll permission is not a Hot weapon-rule grant."
+- "adjust-coordinates" (tempestus-aquilons/firefight_ploys/adjust-coordinates/1)
+  - /firefight_ploys/1/text: 2 deletions.
+- "tempestus-exemplars" (tempestus-aquilons/firefight_ploys/tempestus-exemplars/1)
+  - /firefight_ploys/2/text: 2 deletions.
+- "progena" (tempestus-aquilons/firefight_ploys/progena/1)
+  - /firefight_ploys/3/text: 2 deletions.
+- "tempestus-daggers" (tempestus-aquilons/equipment/tempestus-daggers/1)
+  - /equipment/0/text: 2 deletions.
+- "combat-stimms" (tempestus-aquilons/equipment/combat-stimms/1)
+  - /equipment/1/text: 2 deletions.
+- "drop-augury" (tempestus-aquilons/equipment/drop-augury/1)
+  - /equipment/2/text: 2 deletions.
+- "remote-overseer" (tempestus-aquilons/equipment/remote-overseer/1)
+  - /equipment/3/text: 2 deletions.
+- "OPERATIVE SELECTION" (tempestus-aquilons/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 2 deletions.
+  - "SEEK": reference. "Seek & Destroy is an archetype, not a grant of the Seek weapon rule."
+  - "Hot": reference. "Hot-shot identifies weapons in selection instructions, not Hot weapon-rule access."
+## vespid-stingwings
+- "VESPID STRAIN LEADER" (vespid-stingwings/datacards/vespid-strain-leader/1)
+  - /datacards/0/passive_abilities/1/description: 0 deletions.
+  - "range": reference. "Control range qualifies a CP discount; no Range weapon rule."
+- "OVERSIGHT DRONE" (vespid-stingwings/datacards/oversight-drone/1)
+  - /datacards/1/passive_abilities/0/description: 0 deletions.
+  - "Seek": counter. "Seek illustrates an explicitly overridden targeting rule, not a friendly offensive grant."
+  - "Piercing": counter. "Defensive negation of the attacker's rule, separate from the preceding targeting protection."
+  - /datacards/1/unique_actions/0/description: 0 deletions.
+  - "Lethal 5+": grant. "Explicit timed support grant, excluding the Drone itself and requiring the stated proximity and visibility."
+  - "Saturate": grant. "Explicit conditional Saturate grant, not unconditional team-wide access."
+  - "range": reference. "Control-range restrictions do not grant the Range weapon rule."
+- "VESPID SHADESTRAIN" (vespid-stingwings/datacards/vespid-shadestrain/1)
+  - /datacards/3/passive_abilities/0/description: 0 deletions.
+  - "Blast": example. "Useful example of an exception to targeting protection, not a Blast grant."
+  - /datacards/3/passive_abilities/1/description: 0 deletions.
+  - "Piercing": counter. "Defensive cancellation, not an offensive grant; critical cover-save retention is also preserved."
+  - "Blast": example. "Clarifies an exception; does not add Blast to friendly weapons."
+- "VESPID SKYBLAST" (vespid-stingwings/datacards/vespid-skyblast/1)
+  - /datacards/4/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Marker placement references control range, not the Range weapon rule."
+- "VESPID SWARMGUARD" (vespid-stingwings/datacards/vespid-swarmguard/1)
+  - /datacards/5/passive_abilities/0/description: 1 deletions.
+  - "Torrent 0\"": modify. "Explains the existing parameter and limits secondary targets to the zone; does not introduce additional Torrent access."
+  - "Torrent": reference. "Explicit retention and interaction clarification of the direct profile rule, not a new unparameterized grant."
+  - /datacards/5/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action restriction, not a Range weapon-rule grant."
+- "VESPID WARRIOR" (vespid-stingwings/datacards/vespid-warrior/1)
+  - /datacards/6/passive_abilities/0/description: 0 deletions.
+  - "Accurate 1": grant. "Explicit grant restricted to one weapon and a no-spending condition."
+- "communion" (vespid-stingwings/faction_rules/communion/1)
+  - /faction_rules/0/text: 3 deletions.
+  - /faction_rules/0/options/0/text: 0 deletions.
+  - "Torrent": modify. "Modifies the application of Communion targeting restrictions to existing Torrent, not a grant."
+  - "Blast": modify. "Target-selection clarification for an existing rule; no Blast parameter is added."
+  - "range": reference. "Control-range exclusion, not a Range grant; the separate 8-inch selection requirement remains intact."
+  - /faction_rules/0/options/1/text: 0 deletions.
+  - "range": reference. "Movement/end-position restriction, not the Range weapon rule."
+- "neutron-charge" (vespid-stingwings/faction_rules/neutron-charge/1)
+  - /faction_rules/1/text: 2 deletions; UNCERTAIN.
+  - "heavy": flavour. "Heavy describes armour, not a movement restriction or Heavy weapon rule."
+- "fly" (vespid-stingwings/faction_rules/fly/1)
+  - /faction_rules/2/text: 2 deletions.
+  - "range": reference. "A setup restriction using control range is not a ranged-weapon rule."
+- "hardened-exoskeleton" (vespid-stingwings/strategy_ploys/hardened-exoskeleton/1)
+  - /strategy_ploys/0/text: 2 deletions.
+- "aerial-agility" (vespid-stingwings/strategy_ploys/aerial-agility/1)
+  - /strategy_ploys/1/text: 2 deletions.
+- "airborne-predators" (vespid-stingwings/strategy_ploys/airborne-predators/1)
+  - /strategy_ploys/2/text: 2 deletions.
+  - "Balanced": grant. "Explicit timed grant; movement outside the activation does not satisfy this wording."
+  - "lethal": flavour. "Descriptive lethal is not the Lethal weapon rule; no parameter supplied."
+- "sting" (vespid-stingwings/strategy_ploys/sting/1)
+  - /strategy_ploys/3/text: 2 deletions.
+  - "Lethal 5+": grant. "Explicit parameterized grant; not a benefit for all melee weapons or the Drone's ram."
+  - "Shock": grant. "Explicit Shock grant restricted to named weapons."
+  - "piercing": flavour. "Describes fictional penetration; does not confer Piercing or a parameter."
+- "ocelli" (vespid-stingwings/firefight_ploys/ocelli/1)
+  - /firefight_ploys/0/text: 2 deletions.
+- "darting-flight" (vespid-stingwings/firefight_ploys/darting-flight/1)
+  - /firefight_ploys/1/text: 2 deletions.
+- "neutron-overload" (vespid-stingwings/firefight_ploys/neutron-overload/1)
+  - /firefight_ploys/2/text: 2 deletions.
+- "vicious-venom" (vespid-stingwings/firefight_ploys/vicious-venom/1)
+  - /firefight_ploys/3/text: 2 deletions.
+- "neurostimulant" (vespid-stingwings/equipment/neurostimulant/1)
+  - /equipment/0/text: 2 deletions.
+- "convergence-stimulant" (vespid-stingwings/equipment/convergence-stimulant/1)
+  - /equipment/1/text: 2 deletions.
+- "accelerant-stimulant" (vespid-stingwings/equipment/accelerant-stimulant/1)
+  - /equipment/2/text: 2 deletions.
+- "aggression-stimulant" (vespid-stingwings/equipment/aggression-stimulant/1)
+  - /equipment/3/text: 2 deletions.
+  - "Ceaseless": grant. "Explicit conditional weapon-rule grant."
+- "OPERATIVE SELECTION" (vespid-stingwings/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 1 deletions; UNCERTAIN.
+  - "SEEK": reference. "Seek & Destroy does not grant Seek to any weapon."
+## void-dancer-troupe
+- "SHADOWSEER" (void-dancer-troupe/datacards/shadowseer/1)
+  - /datacards/3/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action prohibition, not Range. Preserve the dice example and damage cap."
+  - /datacards/3/unique_actions/1/description: 0 deletions.
+  - "range": reference. "Control range qualifies a psychic action, not weapon range."
+- "saedath" (void-dancer-troupe/faction_rules/saedath/1)
+  - /faction_rules/0/text: 3 deletions.
+  - /faction_rules/0/options/0/text: 0 deletions.
+  - "Balanced": grant. "Both explicit Balanced grants are combined in one option segment; preserve their separate melee/ranged and fighting conditions."
+- "harlequins-panoply" (void-dancer-troupe/faction_rules/harlequins-panoply/1)
+  - /faction_rules/1/text: 2 deletions.
+  - "Piercing 1": counter. "Explicit defensive negation of Piercing 1 as a consequence of the general reduction, not a friendly grant."
+  - "piercing": counter. "Mechanical occurrence counters an existing incoming rule. Lowercase 'piercing shots' in the removed narrative is not an independent grant."
+  - "range": reference. "Movement permission, not a Range weapon-rule grant."
+- "darting-salvo" (void-dancer-troupe/strategy_ploys/darting-salvo/1)
+  - /strategy_ploys/0/text: 2 deletions.
+- "rising-crescendo" (void-dancer-troupe/strategy_ploys/rising-crescendo/1)
+  - /strategy_ploys/1/text: 2 deletions.
+  - "lethal": flavour. "Lethal is descriptive, not a rule grant, and has no numerical parameter."
+- "prismatic-blur" (void-dancer-troupe/strategy_ploys/prismatic-blur/1)
+  - /strategy_ploys/2/text: 2 deletions.
+- "cegorachs-jest" (void-dancer-troupe/strategy_ploys/cegorachs-jest/1)
+  - /strategy_ploys/3/text: 2 deletions.
+  - "Brutal": counter. "Narrow defensive override, not Brutal granted to friendly weapons."
+- "murderous-entrance" (void-dancer-troupe/firefight_ploys/murderous-entrance/1)
+  - /firefight_ploys/0/text: 2 deletions.
+- "the-curtain-falls" (void-dancer-troupe/firefight_ploys/the-curtain-falls/1)
+  - /firefight_ploys/1/text: 2 deletions.
+  - "devastating": flavour. "Descriptive devastating does not grant Devastating damage; actual effect ends sequence, discards remaining dice and grants up-to-3-inch Fall Back despite prior action restrictions."
+- "elusive-target" (void-dancer-troupe/firefight_ploys/elusive-target/1)
+  - /firefight_ploys/2/text: 2 deletions.
+  - "Seek": counter. "Seek is an example of a rule explicitly overridden by defensive protection, not a friendly grant."
+- "domino-field" (void-dancer-troupe/firefight_ploys/domino-field/1)
+  - /firefight_ploys/3/text: 2 deletions.
+- "wraithbone-talisman" (void-dancer-troupe/equipment/wraithbone-talisman/1)
+  - /equipment/0/text: 2 deletions.
+- "shrieker-toxin-rounds" (void-dancer-troupe/equipment/shrieker-toxin-rounds/1)
+  - /equipment/1/text: 2 deletions.
+  - "Devastating 1": grant. "Explicit timed parameterized grant, not a permanent addition to all ranged profiles."
+  - "devastating": flavour. "Lowercase narrative occurrence is separate from the explicit Devastating 1 grant; it grants no additional damage or rule."
+- "death-mask" (void-dancer-troupe/equipment/death-mask/1)
+  - /equipment/2/text: 2 deletions.
+- "understudys-mask" (void-dancer-troupe/equipment/understudys-mask/1)
+  - /equipment/3/text: 2 deletions.
+- "OPERATIVE SELECTION" (void-dancer-troupe/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 2 deletions.
+## warpcoven
+- "SORCERER OF DESTINY" (warpcoven/datacards/sorcerer-of-destiny/1)
+  - /datacards/0/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action restriction, not a Range weapon rule."
+  - /datacards/0/unique_actions/1/description: 0 deletions.
+  - "range": reference. "Control range limits the action, not weapon range; preserve non-stat-change clarification."
+- "SORCERER OF TEMPYRION" (warpcoven/datacards/sorcerer-of-tempyrion/1)
+  - /datacards/1/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action restriction, not Range weapon-rule access."
+  - /datacards/1/unique_actions/1/description: 0 deletions.
+  - "range": reference. "Control range specifies marker placement/return, not a weapon Range grant."
+- "SORCERER OF WARPFIRE" (warpcoven/datacards/sorcerer-of-warpfire/1)
+  - /datacards/2/unique_actions/0/description: 0 deletions.
+  - "Ceaseless": grant. "Explicit target-dependent friendly grant, not Ceaseless granted to the enemy bearing the token."
+  - "range": reference. "Control range restricts action use and does not add a Range weapon parameter."
+- "RUBRIC MARINE WARRIOR" (warpcoven/datacards/rubric-marine-warrior/1)
+  - /datacards/5/passive_abilities/1/description: 0 deletions.
+  - "Ceaseless": grant. "Explicit conditional grant, not a Heavy-like restriction on subsequent movement."
+- "TZAANGOR HORN BEARER" (warpcoven/datacards/tzaangor-horn-bearer/1)
+  - /datacards/7/passive_abilities/0/description: 0 deletions; UNCERTAIN.
+  - "range": reference. "Control range is an action restriction, not a Range weapon grant."
+- "boons-of-tzeentch" (warpcoven/faction_rules/boons-of-tzeentch/1)
+  - /faction_rules/0/text: 5 deletions.
+  - "Saturate": grant. "Explicit grant within one named selectable boon; preserve the separate no-obscured benefit."
+  - /faction_rules/0/options/0/text: 3 deletions.
+  - "range": reference. "Action permission within control range is not a Range weapon-rule grant."
+  - /faction_rules/0/options/1/text: 2 deletions.
+  - "Devastating 1": grant. "Explicit grant with profile-specific exceptions, not unconditional Devastating 1 on every psychic weapon."
+  - "Devastating 2": modify. "Replaces the existing rule with its area version, retaining damage 2 and explicit 2-inch radius rather than treating it as an additional independent grant."
+  - "Seek": grant. "Candidate Seek specifically means Seek Light here; the boon establishes an exclusive per-action choice, not unrestricted Seek or simultaneous Devastating 1."
+- "astartes" (warpcoven/faction_rules/astartes/1)
+  - /faction_rules/1/text: 2 deletions.
+- "aetherial-warding" (warpcoven/strategy_ploys/aetherial-warding/1)
+  - /strategy_ploys/0/text: 2 deletions.
+  - "Piercing Crits 1": counter. "Defensive restriction of incoming Piercing, not Piercing Crits granted to friendly offensive weapons."
+  - "Piercing 1": counter. "Replaces unconditional Piercing 1 with Piercing Crits 1, restricting its operation."
+  - "Piercing": counter. "Generic match belongs to the same defensive replacement, not an additional offensive rule."
+- "fate-itself-is-my-weapon" (warpcoven/strategy_ploys/fate-itself-is-my-weapon/1)
+  - /strategy_ploys/1/text: 2 deletions.
+- "brotherhood-of-sorcerers" (warpcoven/strategy_ploys/brotherhood-of-sorcerers/1)
+  - /strategy_ploys/2/text: 2 deletions.
+  - "Ceaseless": grant. "Explicit conditional replacement grant, not both benefits from the same ploy."
+  - "Balanced": grant. "Explicit base grant with proximity-dependent alternative; excludes non-PSYCHIC weapons."
+- "savage-herd" (warpcoven/strategy_ploys/savage-herd/1)
+  - /strategy_ploys/3/text: 2 deletions.
+  - "Accurate 1": grant. "Explicit parameterized grant; keep separate from conditional Severe."
+  - "Severe": grant. "Explicit additional grant with two alternative conditions, not unconditional Severe for all Tzaangors."
+- "all-is-dust" (warpcoven/firefight_ploys/all-is-dust/1)
+  - /firefight_ploys/0/text: 2 deletions.
+- "capricious-plan" (warpcoven/firefight_ploys/capricious-plan/1)
+  - /firefight_ploys/1/text: 2 deletions.
+- "psychic-cabal" (warpcoven/firefight_ploys/psychic-cabal/1)
+  - /firefight_ploys/2/text: 2 deletions.
+- "mutant-herd" (warpcoven/firefight_ploys/mutant-herd/1)
+  - /firefight_ploys/3/text: 2 deletions.
+- "ensorcelled-rounds" (warpcoven/equipment/ensorcelled-rounds/1)
+  - /equipment/0/text: 2 deletions.
+  - "Devastating 1": grant. "Explicit parameterized grant, not all bolt-like or PSYCHIC weapons."
+- "daemonmaw-weapons" (warpcoven/equipment/daemonmaw-weapons/1)
+  - /equipment/1/text: 2 deletions.
+  - "Accurate 1": grant. "Explicit conditional grant; not for Sorcerers, Tzaangors or all Fight actions."
+- "arcane-robes" (warpcoven/equipment/arcane-robes/1)
+  - /equipment/2/text: 2 deletions.
+- "sorcerous-scrolls" (warpcoven/equipment/sorcerous-scrolls/1)
+  - /equipment/3/text: 2 deletions.
+- "OPERATIVE SELECTION" (warpcoven/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 2 deletions; UNCERTAIN.
+## wolf-scouts
+- "WOLF SCOUT FANGBEARER" (wolf-scouts/datacards/wolf-scout-fangbearer/1)
+  - /datacards/1/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Control range determines healing eligibility and an action restriction, not a Range weapon rule."
+- "WOLF SCOUT FROSTEYE" (wolf-scouts/datacards/wolf-scout-frosteye/1)
+  - /datacards/2/unique_actions/0/description: 0 deletions.
+  - "Saturate": grant. "Explicit optional grant; the selected Saturate option also prevents enemy obscuring while shooting this weapon. It does not grant both options simultaneously."
+  - "Severe": grant. "Explicit alternative weapon-rule grant, not unconditional access to both choices."
+  - "range": reference. "Enemy control range restricts the action; no numerical Range weapon rule is supplied."
+- "WOLF SCOUT GUNNER" (wolf-scouts/datacards/wolf-scout-gunner/1)
+  - /datacards/3/passive_abilities/0/description: 0 deletions.
+  - "Punishing": grant. "Explicit conditional grant to both plasma gun profiles."
+  - "Hot": modify. "Removes the friendly weapon's existing Hot rule under the condition; does not grant Hot. The direct supercharge profile remains a source fact outside this condition."
+- "WOLF SCOUT HUNTER" (wolf-scouts/datacards/wolf-scout-hunter/1)
+  - /datacards/4/passive_abilities/0/description: 0 deletions.
+  - "Severe": grant. "Explicit conditional grant to its weapons, not to all team weapons everywhere."
+- "WOLF SCOUT TRAPMASTER" (wolf-scouts/datacards/wolf-scout-trapmaster/1)
+  - /datacards/6/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Control range restricts marker placement, not a weapon Range grant. The removal exception remains intact."
+  - /datacards/6/passive_abilities/1/description: 0 deletions.
+  - "range": reference. "Mine trigger proximity, not a Range weapon rule; affected operatives are not limited to enemies. Preserve APL duration, damage alternatives, action ending and placement instructions."
+- "elemental-storm" (wolf-scouts/faction_rules/elemental-storm/1)
+  - /faction_rules/0/text: 2 deletions.
+- "hunting-astartes" (wolf-scouts/faction_rules/hunting-astartes/1)
+  - /faction_rules/1/text: 2 deletions.
+  - "lethal": flavour. "Literary adjective with no Lethal threshold or weapon grant. All double-action costs, PSYCHIC restrictions and STORM counteraction choices remain."
+- "cloaked-by-the-storm" (wolf-scouts/strategy_ploys/cloaked-by-the-storm/1)
+  - /strategy_ploys/0/text: 2 deletions.
+- "tempestuous-wrath" (wolf-scouts/strategy_ploys/tempestuous-wrath/1)
+  - /strategy_ploys/1/text: 2 deletions.
+  - "Balanced": grant. "Explicit conditional melee grant; preserves the alternative start-of-activation qualification."
+- "storms-bite" (wolf-scouts/strategy_ploys/storms-bite/1)
+  - /strategy_ploys/2/text: 2 deletions.
+- "savage-fighters" (wolf-scouts/strategy_ploys/savage-fighters/1)
+  - /strategy_ploys/3/text: 2 deletions.
+  - "range": reference. "Control-range condition for D3+1 damage, not a weapon Range rule."
+- "acute-senses" (wolf-scouts/firefight_ploys/acute-senses/1)
+  - /firefight_ploys/0/text: 2 deletions.
+  - "Range 6\"": grant. "Explicit Range 6-inch grant paired with Seek Light and enemy obscuring prevention; no longer range is invented."
+  - "Seek": grant. "Candidate label Seek resolves specifically to Seek Light, not unrestricted Seek; Range 6 inches and no enemy obscuring also apply."
+- "counterattack" (wolf-scouts/firefight_ploys/counterattack/1)
+  - /firefight_ploys/1/text: 2 deletions.
+- "touched-by-lokyar" (wolf-scouts/firefight_ploys/touched-by-lokyar/1)
+  - /firefight_ploys/2/text: 2 deletions.
+- "transhuman-physiology" (wolf-scouts/firefight_ploys/transhuman-physiology/1)
+  - /firefight_ploys/3/text: 2 deletions.
+- "frost-weapons" (wolf-scouts/equipment/frost-weapons/1)
+  - /equipment/0/text: 2 deletions.
+  - "Lethal 5+": grant. "Explicit Lethal 5+ grant to combat blades only, not all weapons."
+  - "lethal": flavour. "Literary adjective, distinct from the explicit parameterized Lethal 5+ mechanics that remain."
+- "runic-charms" (wolf-scouts/equipment/runic-charms/1)
+  - /equipment/1/text: 2 deletions.
+  - "Piercing 1": example. "Useful illustration of worsening Piercing x by 1, not a friendly Piercing 1 grant. Retain the illustration."
+  - "Piercing": counter. "Defensive reduction of incoming Piercing x by 1, not an offensive grant; FENRISIAN WOLF excluded."
+- "wolfteeth-necklaces" (wolf-scouts/equipment/wolfteeth-necklaces/1)
+  - /equipment/2/text: 2 deletions.
+- "talismanic-trophies" (wolf-scouts/equipment/talismanic-trophies/1)
+  - /equipment/3/text: 2 deletions.
+- "OPERATIVE SELECTION" (wolf-scouts/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 0 deletions.
+  - "SEEK": reference. "SEEK & DESTROY names an archetype, not a Seek weapon-rule grant. Preserve operative counts, list and duplicate-selection restriction."
+## wrecka-krew
+- "WRECKA BOSS NOB" (wrecka-krew/datacards/wrecka-boss-nob/1)
+  - /datacards/0/passive_abilities/1/description: 0 deletions.
+  - "range": reference. "Control-range exclusion for Salvo target selection; not Range x. Preserve primary-before-secondary ordering and once-per-target restriction."
+- "WRECKA BOMB SQUIG" (wrecka-krew/datacards/wrecka-bomb-squig/1)
+  - /datacards/1/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Overrides action eligibility and targeting, not a Range weapon-rule grant. Retain the self-target and no-cover/no-obscuring mechanics."
+- "BREAKA BOY DEMOLISHA" (wrecka-krew/datacards/breaka-boy-demolisha/1)
+  - /datacards/2/passive_abilities/1/description: 0 deletions; UNCERTAIN.
+  - "range": reference. "Control range defines the damage area, affecting other operatives without a friendly exclusion. It does not grant Range x."
+- "BREAKA BOY FIGHTER" (wrecka-krew/datacards/breaka-boy-fighter/1)
+  - /datacards/3/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Terrain/action proximity, not Range x. Keep the 1-inch marker and terrain-thickness conditions and all action restrictions."
+- "BREAKA BOY KRUSHA" (wrecka-krew/datacards/breaka-boy-krusha/1)
+  - /datacards/4/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Control-range end-position restriction, not a Range weapon rule. Keep straight-line, further-away and placement conditions."
+  - /datacards/4/passive_abilities/1/description: 0 deletions.
+  - "Rending": counter. "Named as an example of a rule constrained by the explicit defensive prohibition, not granted to Krusha. Retain the useful example list."
+  - "Severe": counter. "The prohibition constrains opposing Severe critical conversion; the example is not an offensive grant."
+  - "Lethal": counter. "Defensive restriction on opposing Lethal effects; no Lethal threshold is supplied or granted."
+- "TANKBUSTA GUNNER" (wrecka-krew/datacards/tankbusta-gunner/1)
+  - /datacards/5/passive_abilities/0/description: 0 deletions.
+  - "Blast": example. "Example explaining secondary-target eligibility for gaining 1 Wrecka point; no new Blast rule or radius. Existing Blast 1-inch profiles remain direct facts."
+- "TANKBUSTA ROKKITEER" (wrecka-krew/datacards/tankbusta-rokkiteer/1)
+  - /datacards/6/passive_abilities/0/description: 0 deletions; UNCERTAIN.
+  - /datacards/6/passive_abilities/1/description: 0 deletions; UNCERTAIN.
+- "wrecka-rampage" (wrecka-krew/faction_rules/wrecka-rampage/1)
+  - /faction_rules/0/text: 2 deletions.
+- "tanked-up" (wrecka-krew/faction_rules/tanked-up/1)
+  - /faction_rules/1/text: 2 deletions.
+- "waaagh" (wrecka-krew/strategy_ploys/waaagh/1)
+  - /strategy_ploys/0/text: 2 deletions.
+  - "Balanced": grant. "Explicit team melee grant; do not extend to ranged weapons or invent an exclusion."
+- "tuff-gitz" (wrecka-krew/strategy_ploys/tuff-gitz/1)
+  - /strategy_ploys/1/text: 2 deletions.
+- "destruction" (wrecka-krew/strategy_ploys/destruction/1)
+  - /strategy_ploys/2/text: 2 deletions.
+  - "Saturate": grant. "Explicit ranged grant. The preceding narrative is not an extra cover requirement."
+- "amped-up" (wrecka-krew/strategy_ploys/amped-up/1)
+  - /strategy_ploys/3/text: 2 deletions.
+- "just-a-scratch" (wrecka-krew/firefight_ploys/just-a-scratch/1)
+  - /firefight_ploys/0/text: 2 deletions.
+- "demolition-job" (wrecka-krew/firefight_ploys/demolition-job/1)
+  - /firefight_ploys/1/text: 2 deletions.
+  - "Blast": reference. "Clarifies placement when the selected weapon already has Blast, without granting Blast or inventing a radius."
+  - "range": reference. "Control range is marker proximity, not a Range weapon rule; keep 3-inch free-point area, Bomb Squig exclusion and removal in next Strategy phase Ready step."
+- "proppa-scrap" (wrecka-krew/firefight_ploys/proppa-scrap/1)
+  - /firefight_ploys/2/text: 2 deletions.
+  - "seek": flavour. "Ordinary verb, not Seek. Keep two Fight actions during the specified friendly BREAKA BOY or BOSS NOB activation."
+- "kaboom" (wrecka-krew/firefight_ploys/kaboom/1)
+  - /firefight_ploys/3/text: 2 deletions.
+  - "Severe": grant. "Explicit restricted Severe grant. Keep clarification that Severe does not generate a Wrecka point because it is not a 6."
+  - "Blast": modify. "Adds 1 inch to existing Blast, rather than granting an unspecified new Blast rule. Does not extend Severe to secondary targets."
+- "drill-rokkits" (wrecka-krew/equipment/drill-rokkits/1)
+  - /equipment/0/text: 2 deletions.
+  - "Piercing 1": grant. "Explicit Piercing 1 grant for the named weapons only, not rokkit pistols or rack."
+  - "Blast": modify. "Removes the friendly weapon's Blast in exchange for Piercing 1; not a Blast grant or counter to an enemy."
+- "extra-armour" (wrecka-krew/equipment/extra-armour/1)
+  - /equipment/1/text: 2 deletions.
+- "engine-oil" (wrecka-krew/equipment/engine-oil/1)
+  - /equipment/2/text: 2 deletions.
+- "glyphs" (wrecka-krew/equipment/glyphs/1)
+  - /equipment/3/text: 2 deletions.
+- "OPERATIVE SELECTION" (wrecka-krew/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 0 deletions.
+  - "SEEK": reference. "SEEK & DESTROY is an archetype, not Seek. All operative counts, loadout alternatives and selection restrictions remain."
+## wyrmblade
+- "KELERMORPH" (wyrmblade/datacards/kelermorph/1)
+  - /datacards/1/passive_abilities/2/description: 0 deletions.
+  - "Severe": grant. "Explicit ally grant with both visibility and distance requirements, not an unconditional self/team grant."
+- "LOCUS" (wyrmblade/datacards/locus/1)
+  - /datacards/2/passive_abilities/0/description: 0 deletions.
+  - "range": reference. "Action/control-range mechanic, not weapon Range. Preserve two Fight actions and permission to Dash afterwards."
+  - /datacards/2/passive_abilities/1/description: 0 deletions.
+  - "range": reference. "Movement end-position requirement, not a Range weapon rule."
+- "NEOPHYTE HEAVY GUNNER" (wyrmblade/datacards/neophyte-heavy-gunner/1)
+  - /datacards/4/passive_abilities/0/description: 0 deletions.
+  - "Relentless": grant. "Explicit conditional upgrade grant to Relentless, not unconditional Relentless. Moving after shooting is not prohibited by this ability; direct Heavy profile restrictions remain source facts."
+  - "Ceaseless": grant. "Explicit conditional Ceaseless grant with an existing-rule upgrade. Preserve the Cult Ambush example and movement clarification."
+- "SANCTUS SNIPER" (wyrmblade/datacards/sanctus-sniper/1)
+  - /datacards/6/unique_actions/0/description: 0 deletions.
+  - "Lethal 5+": grant. "Explicit threshold and profile-specific grant; not the mobile profile."
+  - "range": reference. "Enemy control range prohibits the action, not Range x."
+  - /datacards/6/unique_actions/1/description: 0 deletions.
+  - "Saturate": grant. "Conditional weapon grant against token-bearing enemy, not Saturate granted to the enemy or permanent against every target. No-obscuring effect is also retained."
+  - "range": reference. "Control-range prohibition, not a Range weapon rule."
+- "SANCTUS TALON" (wyrmblade/datacards/sanctus-talon/1)
+  - /datacards/7/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Charge end-position constraint, not Range x. Keep immediate Fight against selected enemy and first-strike extra-strike timing."
+  - /datacards/7/unique_actions/1/description: 0 deletions.
+  - "Balanced": grant. "Explicit target-conditioned Balanced grant; not an unrestricted team or enemy grant."
+  - "Brutal": grant. "Explicit conditional Brutal grant alongside Balanced; direct Lethal 4+ and Shock profile facts remain unchanged."
+  - "range": reference. "Control-range action prohibition, not a Range weapon-rule grant."
+- "familiar-territory" (wyrmblade/faction_rules/familiar-territory/1)
+  - /faction_rules/0/text: 3 deletions.
+- "cult-agent" (wyrmblade/faction_rules/cult-agent/1)
+  - /faction_rules/1/text: 2 deletions.
+  - "Saturate": counter. "Defensive negation of the attacker's rule, not a friendly offensive grant. Preserve cover-save alternatives and Vantage non-cumulation."
+  - "Piercing": counter. "Explicit defensive negation; no Piercing value is invented or granted."
+- "cult-ambush" (wyrmblade/faction_rules/cult-ambush/1)
+  - /faction_rules/2/text: 2 deletions.
+  - "Ceaseless": grant. "Explicit conditional grant. Does not automatically apply to retaliation or counteraction."
+  - "lethal": flavour. "Literary adjective, not a Lethal weapon-rule grant or threshold."
+- "the-day-is-at-hand" (wyrmblade/strategy_ploys/the-day-is-at-hand/1)
+  - /strategy_ploys/0/text: 2 deletions.
+  - "Rending": grant. "Explicit ranged grant; the separate +1 melee Atk to maximum 5 is retained, not recast as Rending."
+  - "brutal": flavour. "Adjective, not Brutal weapon-rule access. It does not restrict enemy blocking."
+- "crossfire" (wyrmblade/strategy_ploys/crossfire/1)
+  - /strategy_ploys/1/text: 2 deletions.
+  - "Accurate 1": grant. "Explicit Accurate 1 grant dependent on target shooting history, not unconditional Accurate. The source says an operative, without adding an enemy-only restriction."
+  - "lethal": flavour. "Literary adjective without a Lethal threshold or grant."
+- "one-with-the-shadows" (wyrmblade/strategy_ploys/one-with-the-shadows/1)
+  - /strategy_ploys/2/text: 2 deletions.
+- "divert-and-disappear" (wyrmblade/strategy_ploys/divert-and-disappear/1)
+  - /strategy_ploys/3/text: 2 deletions.
+- "slink-into-darkness" (wyrmblade/firefight_ploys/slink-into-darkness/1)
+  - /firefight_ploys/0/text: 2 deletions.
+- "coiled-serpent" (wyrmblade/firefight_ploys/coiled-serpent/1)
+  - /firefight_ploys/1/text: 2 deletions.
+- "unquestioning-loyalty" (wyrmblade/firefight_ploys/unquestioning-loyalty/1)
+  - /firefight_ploys/2/text: 2 deletions.
+  - "Torrent": reference. "Existing attacker rule disables this ploy; it is neither granted nor negated by the defender."
+  - "Blast": reference. "Eligibility exception based on an existing attacker rule, not a new Blast grant or removal."
+  - "range": reference. "Temporary control-range treatment to allow target substitution, not Range x. Preserve Shoot cover/obscuring inheritance and exclusions."
+- "a-plan-generations-in" (wyrmblade/firefight_ploys/a-plan-generations-in/1)
+  - /firefight_ploys/3/text: 2 deletions.
+- "blasting-charges" (wyrmblade/equipment/blasting-charges/1)
+  - /equipment/0/text: 2 deletions.
+  - "Saturate": grant. "Direct granted weapon profile includes Saturate. Preserve 4 attacks, Hit 4+, damage 3/5, Range 4 inches and Blast 1 inch as source facts."
+  - "Blast 1\"": grant. "Explicit direct profile Blast radius of 1 inch, not inferred from narrative."
+  - "Range 4\"": grant. "Explicit direct profile range of 4 inches; does not change all Neophyte ranged weapons."
+- "cult-knives" (wyrmblade/equipment/cult-knives/1)
+  - /equipment/1/text: 2 deletions.
+  - "lethal": flavour. "Adjective, not Lethal x+. The actual granted Cult knife is retained with 3 attacks, Hit 4+ and damage 3/4, with no supplied Lethal rule."
+- "explosive-traps" (wyrmblade/equipment/explosive-traps/1)
+  - /equipment/2/text: 2 deletions.
+- "spotlights" (wyrmblade/equipment/spotlights/1)
+  - /equipment/3/text: 2 deletions.
+  - "range": reference. "Control-range exclusion on the supporting Neophyte; not a Range grant. The shooter need not itself be that Neophyte."
+- "OPERATIVE SELECTION" (wyrmblade/operatives_selection/operative-selection/1)
+  - /operatives_selection/0/text: 1 deletions; UNCERTAIN.
+  - "HEAVY": reference. "Operative type label, not a Heavy weapon-rule grant; direct datacard profiles determine Heavy restrictions."
+  - "SEEK": reference. "Archetype name, not Seek weapon-rule access."
+## xv26-stealth-battlesuits
+- "XV26 SHAS’VRE" (xv26-stealth-battlesuits/datacards/xv26-shasvre/1)
+  - /datacards/0/passive_abilities/1/description: 0 deletions; UNCERTAIN.
+  - "Accurate 3": modify. "Accurate 3 is the cap of a conditional modifier, not a standalone Accurate 3 grant."
+  - "Accurate 1": reference. "Prerequisite prevents generating Accurate from no existing value; not an Accurate 1 grant."
+  - "Accurate": modify. "Changes an existing faction-rule parameter and preserves the minimum/cap; no independent grant."
+- "XV26 DESIGNATOR" (xv26-stealth-battlesuits/datacards/xv26-designator/1)
+  - /datacards/1/passive_abilities/0/description: 0 deletions.
+  - "Severe": grant. "Explicit target-conditioned grant, not Severe granted to the marked enemy. The Designator need not be active; retain that clarification."
+  - /datacards/1/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Enemy control-range action restriction, not weapon Range. Preserve the selected-enemy, once-per-turning-point and end-of-action limits."
+- "XV26 LIBERATOR" (xv26-stealth-battlesuits/datacards/xv26-liberator/1)
+  - /datacards/3/passive_abilities/0/description: 0 deletions.
+  - "stun": reference. "Names an equipment item, not an explicit Stun weapon-rule grant to the operative's weapons. The supplied segment does not provide a stun grenade weapon profile; do not infer one."
+  - "limited": modify. "Exempts its grenade use from the team's equipment limits, not a Limited x weapon grant; no numerical uses are invented. Preserve +1 Hit for frag/krak only."
+- "XV26 LODESTAR" (xv26-stealth-battlesuits/datacards/xv26-lodestar/1)
+  - /datacards/4/passive_abilities/0/description: 0 deletions.
+  - "Piercing": counter. "Explicit defensive negation plus obscuring, not Piercing granted to friendly weapons."
+  - "range": reference. "Control-range precondition, not Range x; keep all separate target-distance and duration restrictions."
+- "XV26 NEUTRALISER" (xv26-stealth-battlesuits/datacards/xv26-neutraliser/1)
+  - /datacards/5/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Action prohibition within enemy control range, not a Range weapon rule. Preserve both cost modes and duration."
+- "MV15 GUN DRONE" (xv26-stealth-battlesuits/datacards/mv15-gun-drone/1)
+  - /datacards/6/unique_actions/0/description: 0 deletions.
+  - "range": reference. "Control-range action restriction, not a weapon Range grant; no shooting weapon profile is invented for the action."
+- "MV75 MARKER DRONE" (xv26-stealth-battlesuits/datacards/mv75-marker-drone/1)
+  - /datacards/7/passive_abilities/1/description: 0 deletions.
+  - "Severe": grant. "Explicit support grant to shooter's weapons. Marker Drone need not be active; its lack of a ranged profile does not justify deleting the supplied support rule or inventing a ranged weapon."
+- "kauyon" (xv26-stealth-battlesuits/faction_rules/kauyon/1)
+  - /faction_rules/0/text: 2 deletions; UNCERTAIN.
+  - "Accurate 1": grant. "Explicit location-conditioned Accurate value, not universal Accurate 1. Preserve all table rows; overlap resolution is not invented."
+  - "Accurate 2": grant. "Explicit location-conditioned Accurate value; it refers to the enemy's position, not the shooter's."
+  - "Accurate 3": grant. "Explicit table grant with a distinct location requirement, not blanket Accurate 3."
+  - "Accurate": grant. "Explicit parameterized grant, not a parameter-free Accurate grant or permission to sum table rows."
+- "stealth-fields" (xv26-stealth-battlesuits/faction_rules/stealth-fields/1)
+  - /faction_rules/1/text: 2 deletions.
+- "patient-hunters" (xv26-stealth-battlesuits/strategy_ploys/patient-hunters/1)
+  - /strategy_ploys/0/text: 2 deletions.
+  - "Balanced": grant. "Explicit conditional Balanced grant to weapons; does not state retaliation."
+  - "Saturate": grant. "Explicit Saturate grant is ranged-only and target-state conditional; not a rule granted to the enemy."
+- "bonds-of-unity" (xv26-stealth-battlesuits/strategy_ploys/bonds-of-unity/1)
+  - /strategy_ploys/1/text: 2 deletions.
+- "prepare-ambush" (xv26-stealth-battlesuits/strategy_ploys/prepare-ambush/1)
+  - /strategy_ploys/2/text: 2 deletions.
+  - "Seek": grant. "Explicit Seek grant, not Seek Light. Keep marker removal at action end or next turning point Ready step, whichever first."
+  - "range": flavour. "Literary range mention without Range x. Mechanical 2-inch marker distances remain intact and are not weapon ranges."
+- "holowave-countermeasures" (xv26-stealth-battlesuits/strategy_ploys/holowave-countermeasures/1)
+  - /strategy_ploys/3/text: 2 deletions.
+- "vectored-retro-thrusters" (xv26-stealth-battlesuits/firefight_ploys/vectored-retro-thrusters/1)
+  - /firefight_ploys/0/text: 2 deletions.
+  - "range": reference. "Control-range trigger, not a Range grant. Keep precedence against prevention and enemy's subsequent free Reposition using remaining original Charge distance, even if normally action-restricted."
+- "ghostshroud" (xv26-stealth-battlesuits/firefight_ploys/ghostshroud/1)
+  - /firefight_ploys/1/text: 2 deletions.
+- "engage-jet-pack" (xv26-stealth-battlesuits/firefight_ploys/engage-jet-pack/1)
+  - /firefight_ploys/2/text: 2 deletions.
+- "saviour-protocols" (xv26-stealth-battlesuits/firefight_ploys/saviour-protocols/1)
+  - /firefight_ploys/3/text: 2 deletions.
+  - "Torrent": reference. "Torrent disables this ploy; the ploy neither grants nor removes the attacker's rule. Keep visible/within-3-inch friendly DRONE replacement and inherited cover/obscuring."
+  - "Blast": reference. "Existing Blast makes substitution ineffective; not an offensive grant or negation. Original friendly target excludes DRONE."
+- "xv26-multitrackers" (xv26-stealth-battlesuits/equipment/xv26-multitrackers/1)
+  - /equipment/0/text: 2 deletions.
+  - "Torrent 2\"": grant. "Explicit alternative parameterized grant, not a permanent profile rewrite. Direct Torrent 1 inch remains the baseline source fact."
+  - "Torrent 3\"": grant. "Explicit alternative grant with a restrictive secondary-target cap, not unrestricted Torrent 3 inches."
+- "counter-network-jammers" (xv26-stealth-battlesuits/equipment/counter-network-jammers/1)
+  - /equipment/1/text: 2 deletions.
+  - "devastating": flavour. "Adjective, not Devastating x damage or weapon access. Preserve STRATEGIC GAMBIT, selected objective/mission marker, turning-point duration and total enemy contesting APL treated as 1 lower if at least one is within 3 inches of friendly XV26; the cumulative-stat clarification remains."
+- "advanced-blacksun-filters" (xv26-stealth-battlesuits/equipment/advanced-blacksun-filters/1)
+  - /equipment/2/text: 2 deletions.
+- "hardwired-target-locks" (xv26-stealth-battlesuits/equipment/hardwired-target-locks/1)
+  - /equipment/3/text: 2 deletions.
+
+## Possible General Policy Improvements
+- "policy-proposal: Consider an explicit convention for a single candidate label that both grants a rule and conditionally modifies its operation in the same segment. Preserve both effects in decision fields while emitting the candidate only once, as required by the current contract."
+- "policy-proposal: Clarify that extracted option names can contain mechanical sentence prefixes; heading cleanup should require complete name-plus-text context, not merely title-like presentation."
+- "policy-proposal: Define a reusable output convention for mechanical clauses extracted into option/ability names and for diagram-only fragments. Review evidence is currently segment-local, so preserve malformed boundaries and flag them instead of silently reconstructing missing clauses."
+- "policy-proposal: Define a result-contract path for reporting mechanically explicit rules omitted from supplied candidates (including line-wrapped names/parameters), without silently expanding candidate labels."
+- "policy-proposal: Clarify treatment of overlapping generic candidates inside parameterized labels (for example Piercing inside Piercing Crits 1) so a lexical overlap cannot produce a second unqualified grant."
+- "policy-proposal: Clarify that a candidate occurring in an illustrative parenthetical may be classified counter when the enclosing operative clause explicitly suppresses that rule, while a worked numerical consequence may be classified example; retain both enclosing scope and illustration."
+- "policy-proposal: Explicitly distinguish mechanical sentence fragments stored in option or ability names from structural headings; preserve them and flag incomplete context rather than treating field names as automatically removable."
+- "policy-proposal: Define a reusable reporting convention for explicit mechanical grants missing from supplied candidate lists, including labels broken by extraction line wraps, without letting review workers invent candidate identities."
+- "policy-proposal: Provide offset-addressed deletion spans for identical inert continuation labels, and specify how to flag mechanically complete but structurally split rules whose timing/target clauses are stored in adjacent names. Until then retain ambiguous spans and audit the raw context."
+- "policy-proposal: Permit a record-level uncertainty flag for incomplete structured profiles on records with zero prose segments; a segment-only flag cannot represent those source anomalies without inventing a segment."
+- "policy-proposal: Specify how overlapping family and qualified candidate labels should be reported without producing duplicate or broader grants; the exact qualified rule and its parameters should remain the authoritative interpretation."
+- "policy-proposal: Define a reusable treatment for overlapping generic and parameterized candidates so a generic family match inside a specific variant cannot create a duplicate or less-restricted grant."
+- "policy-proposal: Require explicit linkage and preserved source annotations for extracted numbered benefit tables and deictic selection footnotes before treating them as fully established conditional rules; otherwise retain text with uncertainty."
+- "policy-proposal: Future contracts could distinguish explicit equipment-weapon access with its direct profile rules from grants applied to existing weapons, so direct profile facts remain local without being mistaken for team-wide additions."
+- "policy-proposal: Future staging could flag mechanical sentence fragments in ability names and action-like abilities lacking costs as structural uncertainties independently of keyword-candidate classification. Preserve these fields and their limits until verified."
+- "policy-proposal: Candidate generation should recognize parameterized rules split across extracted line breaks and distinguish the full parameterized label from shorter overlapping matches; the reviewer should still classify the supplied labels contextually and report omissions without silently adding candidates."
+- "policy-proposal: Keep embedded option/boon names when they delimit independently selectable mechanical effects, and preserve sentence prefixes stored as option names; structural cleanup must not erase selection conditions."
+- "policy-proposal: Clarify whether an illustrative list directly explaining a defensive prohibition should be classified primarily as counter or example. This review uses counter when the surrounding operative rule explicitly restricts the named opposing effects, and example for a purely explanatory consequence such as Piercing 1 being ignored. Neither creates offensive access."
+
+Exact deleted spans and full evidence are retained only in staging audit files. The JSON report includes findings, uncertainty notes and source issues.
+Policy is unchanged. Cache reuse uses source timestamps and explicit policy/review versions; model adapters are not implemented.

@@ -2,3 +2,6 @@ __pycache__/
 *.pyc
 .venv/
 public/
+staging/
+app-data/*
+!app-data/current/
